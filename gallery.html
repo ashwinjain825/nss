@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Gallery & Downloads | NSS IIITDM Kurnool</title>
+  <meta name="description" content="Official photo archive of NSS IIITDM Kurnool. View and download high-resolution event photographs of blood donation drives, tree plantations, dental camps, and outreach.">
+  <link rel="icon" href="assets/images/iiitdmk-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .gallery-filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .gallery-filter-btn {
+      padding: 9px 20px;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: #ffffff;
+      border: 1.5px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+    .gallery-filter-btn:hover {
+      border-color: var(--primary-600);
+      color: var(--primary-800);
+    }
+    .gallery-filter-btn.active {
+      background: var(--primary-900);
+      color: #ffffff;
+      border-color: var(--primary-900);
+    }
+    .photo-card-container {
+      position: relative;
+      height: 260px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      background: var(--primary-900);
+    }
+    .photo-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition-slow);
+    }
+    .photo-card-container:hover .photo-card-img {
+      transform: scale(1.08);
+    }
+    .photo-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 25, 47, 0.95) 0%, rgba(10, 25, 47, 0.4) 60%, transparent 100%);
+      opacity: 0;
+      transition: var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
+      color: #ffffff;
+    }
+    .photo-card-container:hover .photo-card-overlay {
+      opacity: 1;
+    }
+    .photo-card-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #fde047;
+      margin-bottom: 4px;
+    }
+    .photo-card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .photo-card-caption {
+      font-size: 0.78rem;
+      color: #cbd5e1;
+      line-height: 1.4;
+      margin-bottom: 12px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .photo-actions-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-photo-download {
+      background: #2563eb;
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.78rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+    .btn-photo-download:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+    .btn-photo-view {
+      background: rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 0.78rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+    .btn-photo-view:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================
+       1. OFFICIAL INSTITUTE & NSS MASTHEAD (LEFT & RIGHT LOGOS)
+       ======================================================================== -->
+  <header class="institute-masthead">
+    <div class="container masthead-wrapper">
+      <a href="https://iiitk.ac.in" target="_blank" class="institute-brand" title="IIITDM Kurnool Website" rel="noopener noreferrer">
+        <img src="assets/images/iiitdmk-logo.png" alt="IIITDM Kurnool Logo" class="masthead-logo">
+        <div class="brand-text-group">
+          <h1 class="institute-name">Indian Institute of Information Technology, Design and Manufacturing, Kurnool</h1>
+          <div class="institute-subtext">An Institute of National Importance under Ministry of Education, Govt. of India</div>
+        </div>
+      </a>
+      <div class="nss-brand">
+        <div class="nss-text-group">
+          <h2 class="nss-name">National Service Scheme</h2>
+          <div class="nss-subtext">राष्ट्रीय सेवा योजना • Not Me, But You</div>
+        </div>
+        <img src="assets/images/nss-logo.png" alt="National Service Scheme Logo" class="masthead-logo">
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       2. MAIN NAVIGATION BAR WITH DROPDOWN MENUS
+       ======================================================================== -->
+  <nav class="main-header">
+    <div class="container nav-wrapper">
+      <ul id="navMenu" class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+
+        <!-- Events Dropdown -->
+        <li class="nav-item-dropdown">
+          <a href="events.html" class="nav-link nav-dropdown-toggle">
+            Events <i class="fa-solid fa-chevron-down"></i>
+          </a>
+          <ul class="nav-dropdown-menu">
+            <li class="nav-dropdown-item"><a href="events.html" class="nav-dropdown-link"><i class="fa-regular fa-calendar-days"></i> All Events</a></li>
+            <li class="nav-dropdown-item"><a href="events.html?year=2025-2026" class="nav-dropdown-link"><i class="fa-solid fa-star"></i> Current Year (2025-26)</a></li>
+            <li class="nav-dropdown-item"><a href="events.html?year=2024-2025" class="nav-dropdown-link"><i class="fa-solid fa-calendar-check"></i> 2024-2025</a></li>
+            <li class="nav-dropdown-item"><a href="events.html?year=2023-2024" class="nav-dropdown-link"><i class="fa-solid fa-calendar-check"></i> 2023-2024</a></li>
+            <li class="nav-dropdown-item"><a href="events.html?year=2022-2023" class="nav-dropdown-link"><i class="fa-solid fa-calendar-check"></i> 2022-2023</a></li>
+            <li class="nav-dropdown-divider"></li>
+            <li class="nav-dropdown-item"><a href="events.html?year=2019-2018 Archive" class="nav-dropdown-link"><i class="fa-solid fa-box-archive"></i> 2018-19 Historical Archive</a></li>
+          </ul>
+        </li>
+
+        <!-- NSS Team Dropdown -->
+        <li class="nav-item-dropdown">
+          <a href="team.html" class="nav-link nav-dropdown-toggle">
+            NSS Team <i class="fa-solid fa-chevron-down"></i>
+          </a>
+          <ul class="nav-dropdown-menu">
+            <li class="nav-dropdown-item"><a href="team.html" class="nav-dropdown-link"><i class="fa-solid fa-users"></i> Full NSS Team Directory</a></li>
+            <li class="nav-dropdown-item"><a href="team.html#patronSection" class="nav-dropdown-link"><i class="fa-solid fa-award"></i> Chief Patron (Director)</a></li>
+            <li class="nav-dropdown-item"><a href="team.html#facultyGrid" class="nav-dropdown-link"><i class="fa-solid fa-user-shield"></i> Programme Officer</a></li>
+            <li class="nav-dropdown-item"><a href="team.html#facultyGrid" class="nav-dropdown-link"><i class="fa-solid fa-chalkboard-user"></i> Departmental Advisors</a></li>
+          </ul>
+        </li>
+
+        <!-- Gallery Dropdown -->
+        <li class="nav-item-dropdown">
+          <a href="gallery.html" class="nav-link nav-dropdown-toggle active">
+            Gallery <i class="fa-solid fa-chevron-down"></i>
+          </a>
+          <ul class="nav-dropdown-menu">
+            <li class="nav-dropdown-item"><a href="gallery.html" class="nav-dropdown-link"><i class="fa-regular fa-images"></i> Photo Gallery & Downloads</a></li>
+            <li class="nav-dropdown-item"><a href="gallery.html?cat=blood-health" class="nav-dropdown-link"><i class="fa-solid fa-heart-pulse"></i> Blood Donation & Health</a></li>
+            <li class="nav-dropdown-item"><a href="gallery.html?cat=environment" class="nav-dropdown-link"><i class="fa-solid fa-seedling"></i> Tree Plantation & Greenery</a></li>
+            <li class="nav-dropdown-item"><a href="gallery.html?cat=education" class="nav-dropdown-link"><i class="fa-solid fa-graduation-cap"></i> STEM & Rural School Visits</a></li>
+            <li class="nav-dropdown-item"><a href="gallery.html?cat=community" class="nav-dropdown-link"><i class="fa-solid fa-person-running"></i> Youth Day & Community</a></li>
+          </ul>
+        </li>
+
+        <li><a href="existing-website.html" class="nav-link">Existing Website</a></li>
+
+        <!-- Institute Links Dropdown -->
+        <li class="nav-item-dropdown">
+          <a href="javascript:void(0)" class="nav-link nav-dropdown-toggle">
+            Institute Links <i class="fa-solid fa-chevron-down"></i>
+          </a>
+          <ul class="nav-dropdown-menu">
+            <li class="nav-dropdown-item"><a href="https://iiitk.ac.in" target="_blank" class="nav-dropdown-link" rel="noopener noreferrer"><i class="fa-solid fa-building-columns"></i> IIITDM Kurnool Home ↗</a></li>
+            <li class="nav-dropdown-item"><a href="https://iiitk.ac.in/Activities/Social-Service-Group/page" target="_blank" class="nav-dropdown-link" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Existing NSS on iiitk.ac.in ↗</a></li>
+            <li class="nav-dropdown-item"><a href="https://iiitk.ac.in/academic-administration/page" target="_blank" class="nav-dropdown-link" rel="noopener noreferrer"><i class="fa-solid fa-graduation-cap"></i> Student Affairs ↗</a></li>
+            <li class="nav-dropdown-item"><a href="https://iiitk.samarth.ac.in/" target="_blank" class="nav-dropdown-link" rel="noopener noreferrer"><i class="fa-solid fa-server"></i> Samarth ERP Portal ↗</a></li>
+          </ul>
+        </li>
+
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <button id="mobileMenuToggle" class="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========================================================================
+       3. PHOTO GALLERY & DOWNLOAD REPOSITORY
+       ======================================================================== -->
+  <section id="gallery" class="gallery-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-pretitle">VISUAL ARCHIVE & DOWNLOADS</div>
+        <h2 class="section-title">Glimpses of Service in Action</h2>
+        <p class="section-subtitle">
+          Explore and download authentic photographs from our community outreach, tree plantation campaigns, voluntary blood donation drives, and school mentorship programs.
+        </p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="gallery-filter-bar">
+        <button class="gallery-filter-btn active" onclick="filterGallery('all', this)">All Photographs</button>
+        <button class="gallery-filter-btn" onclick="filterGallery('blood-health', this)">Blood Donation & Health</button>
+        <button class="gallery-filter-btn" onclick="filterGallery('environment', this)">Tree Plantation & Greening</button>
+        <button class="gallery-filter-btn" onclick="filterGallery('education', this)">STEM & Rural Education</button>
+        <button class="gallery-filter-btn" onclick="filterGallery('community', this)">Youth Day & Community</button>
+      </div>
+
+      <!-- Photo Cards Grid -->
+      <div id="galleryGrid" class="gallery-grid">
+        
+        <!-- Photo 1: Authentic Tree Plantation 2019 -->
+        <div class="photo-card-container" data-cat="environment" onclick="window.NSS_PORTAL.openLightbox('assets/images/events/tree-plantation-2019.jpg', 'Tree Plantation along Paver Block Pathway - BWC members & faculty')">
+          <img src="assets/images/events/tree-plantation-2019.jpg" alt="Tree Plantation along Paver Block Pathway" class="photo-card-img" loading="lazy" onerror="this.src='https://i.imgur.com/nwTiQYE.jpg'">
+          <div class="photo-card-overlay">
+            <span class="photo-card-tag"><i class="fa-solid fa-tree"></i> Environment • 2019</span>
+            <h4 class="photo-card-title">Tree Plantation along Paver Block Pathway</h4>
+            <p class="photo-card-caption">BWC members, guest speakers, and faculty planting saplings with AP Forest Department.</p>
+            <div class="photo-actions-row">
+              <button class="btn-photo-download" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/tree-plantation-2019.jpg', 'IIITDMK_NSS_Tree_Plantation_2019.jpg')">
+                <i class="fa-solid fa-download"></i> Download
+              </button>
+              <button class="btn-photo-view" onclick="event.stopPropagation(); window.NSS_PORTAL.openLightbox('assets/images/events/tree-plantation-2019.jpg', 'Tree Plantation along Paver Block Pathway - BWC members & faculty')">
+                <i class="fa-solid fa-expand"></i> View Full
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 2: Authentic Blood Donation 2019 -->
+        <div class="photo-card-container" data-cat="blood-health" onclick="window.NSS_PORTAL.openLightbox('assets/images/events/blood-donation-2019.png', 'Red Cross Blood Donation Camp - 53 units collected')">
+          <img src="assets/images/events/blood-donation-2019.png" alt="Red Cross Blood Donation Camp" class="photo-card-img" loading="lazy" onerror="this.src='https://i.imgur.com/9yKoPiK.png'">
+          <div class="photo-card-overlay">
+            <span class="photo-card-tag"><i class="fa-solid fa-heart-pulse"></i> Blood Donation • 2019</span>
+            <h4 class="photo-card-title">Red Cross Blood Donation Camp</h4>
+            <p class="photo-card-caption">Healthy participation by students and faculty, safely collecting 53 units with Red Cross.</p>
+            <div class="photo-actions-row">
+              <button class="btn-photo-download" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/blood-donation-2019.png', 'IIITDMK_NSS_Blood_Donation_2019.png')">
+                <i class="fa-solid fa-download"></i> Download
+              </button>
+              <button class="btn-photo-view" onclick="event.stopPropagation(); window.NSS_PORTAL.openLightbox('assets/images/events/blood-donation-2019.png', 'Red Cross Blood Donation Camp - 53 units collected')">
+                <i class="fa-solid fa-expand"></i> View Full
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 3: Authentic Dental Camp 2018 -->
+        <div class="photo-card-container" data-cat="blood-health" onclick="window.NSS_PORTAL.openLightbox('assets/images/events/dental-camp-2018.png', 'Free Dental Health Checkup Camp - G Pulla Reddy Dental College')">
+          <img src="assets/images/events/dental-camp-2018.png" alt="Free Dental Health Checkup Camp" class="photo-card-img" loading="lazy" onerror="this.src='https://i.imgur.com/zBKpwdF.png'">
+          <div class="photo-card-overlay">
+            <span class="photo-card-tag"><i class="fa-solid fa-tooth"></i> Health Camp • 2018</span>
+            <h4 class="photo-card-title">Free Dental Health Checkup Camp</h4>
+            <p class="photo-card-caption">G Pulla Reddy Dental College doctors conducting oral health screenings and dental hygiene counseling.</p>
+            <div class="photo-actions-row">
+              <button class="btn-photo-download" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/dental-camp-2018.png', 'IIITDMK_NSS_Dental_Camp_2018.png')">
+                <i class="fa-solid fa-download"></i> Download
+              </button>
+              <button class="btn-photo-view" onclick="event.stopPropagation(); window.NSS_PORTAL.openLightbox('assets/images/events/dental-camp-2018.png', 'Free Dental Health Checkup Camp - G Pulla Reddy Dental College')">
+                <i class="fa-solid fa-expand"></i> View Full
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 4: Authentic Sapling Care -->
+        <div class="photo-card-container" data-cat="environment" onclick="window.NSS_PORTAL.openLightbox('assets/images/events/sapling-care-jagannathagattu.jpg', 'Campus Tree Sapling Care - Jagannathagattu Campus')">
+          <img src="assets/images/events/sapling-care-jagannathagattu.jpg" alt="Campus Tree Sapling Care" class="photo-card-img" loading="lazy" onerror="this.src='https://i.imgur.com/B5kTSRr.jpg'">
+          <div class="photo-card-overlay">
+            <span class="photo-card-tag"><i class="fa-solid fa-seedling"></i> Environment • Jagannathagattu</span>
+            <h4 class="photo-card-title">Campus Tree Sapling Care</h4>
+            <p class="photo-card-caption">Participants nurturing young saplings across the scenic rocky hillock campus grounds.</p>
+            <div class="photo-actions-row">
+              <button class="btn-photo-download" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/sapling-care-jagannathagattu.jpg', 'IIITDMK_NSS_Sapling_Care.jpg')">
+                <i class="fa-solid fa-download"></i> Download
+              </button>
+              <button class="btn-photo-view" onclick="event.stopPropagation(); window.NSS_PORTAL.openLightbox('assets/images/events/sapling-care-jagannathagattu.jpg', 'Campus Tree Sapling Care - Jagannathagattu Campus')">
+                <i class="fa-solid fa-expand"></i> View Full
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 5: Volunteer Group Planting -->
+        <div class="photo-card-container" data-cat="environment" onclick="window.NSS_PORTAL.openLightbox('assets/images/events/volunteer-group-planting.jpg', 'Volunteer Group Tree Plantation Drive')">
+          <img src="assets/images/events/volunteer-group-planting.jpg" alt="Volunteer Group Planting Drive" class="photo-card-img" loading="lazy" onerror="this.src='https://i.imgur.com/awnpNvD.jpg'">
+          <div class="photo-card-overlay">
+            <span class="photo-card-tag"><i class="fa-solid fa-people-carry-box"></i> Volunteers • Greening</span>
+            <h4 class="photo-card-title">Volunteer Group Tree Plantation Drive</h4>
+            <p class="photo-card-caption">Social Service Group members planting trees to enhance biodiversity in Kurnool.</p>
+            <div class="photo-actions-row">
+              <button class="btn-photo-download" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/volunteer-group-planting.jpg', 'IIITDMK_NSS_Volunteer_Planting.jpg')">
+                <i class="fa-solid fa-download"></i> Download
+              </button>
+              <button class="btn-photo-view" onclick="event.stopPropagation(); window.NSS_PORTAL.openLightbox('assets/images/events/volunteer-group-planting.jpg', 'Volunteer Group Tree Plantation Drive')">
+                <i class="fa-solid fa-expand"></i> View Full
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 6: Mega Blood Donation 2026 -->
+        <div class="photo-card-container" data-cat="blood-health" onclick="window.NSS_PORTAL.openLightbox('assets/images/events/mega-blood-donation-2026.jpg', 'Annual Mega Blood Donation Drive 2026')">
+          <img src="assets/images/events/mega-blood-donation-2026.jpg" alt="Annual Mega Blood Donation Drive 2026" class="photo-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&w=1000&q=80'">
+          <div class="photo-card-overlay">
+            <span class="photo-card-tag"><i class="fa-solid fa-heart-pulse"></i> Blood Drive • 2025-26</span>
+            <h4 class="photo-card-title">Annual Mega Blood Donation Drive 2026</h4>
+            <p class="photo-card-caption">Students and faculty participating generously to donate 86 units for emergency needs.</p>
+            <div class="photo-actions-row">
+              <button class="btn-photo-download" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/mega-blood-donation-2026.jpg', 'IIITDMK_NSS_Blood_Drive_2026.jpg')">
+                <i class="fa-solid fa-download"></i> Download
+              </button>
+              <button class="btn-photo-view" onclick="event.stopPropagation(); window.NSS_PORTAL.openLightbox('assets/images/events/mega-blood-donation-2026.jpg', 'Annual Mega Blood Donation Drive 2026')">
+                <i class="fa-solid fa-expand"></i> View Full
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 7: STEM Workshop -->
+        <div class="photo-card-container" data-cat="education" onclick="window.NSS_PORTAL.openLightbox('assets/images/events/stem-coding-workshop.jpg', 'School Students Robotics & STEM Outreach')">
+          <img src="assets/images/events/stem-coding-workshop.jpg" alt="School Students Robotics & STEM Outreach" class="photo-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=80'">
+          <div class="photo-card-overlay">
+            <span class="photo-card-tag"><i class="fa-solid fa-graduation-cap"></i> STEM Outreach • 2026</span>
+            <h4 class="photo-card-title">School Students Robotics & STEM Outreach</h4>
+            <p class="photo-card-caption">Hands-on visual coding and robotics mentorship at ZP High School, Dinnedevarapadu.</p>
+            <div class="photo-actions-row">
+              <button class="btn-photo-download" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/stem-coding-workshop.jpg', 'IIITDMK_NSS_STEM_Workshop.jpg')">
+                <i class="fa-solid fa-download"></i> Download
+              </button>
+              <button class="btn-photo-view" onclick="event.stopPropagation(); window.NSS_PORTAL.openLightbox('assets/images/events/stem-coding-workshop.jpg', 'School Students Robotics & STEM Outreach')">
+                <i class="fa-solid fa-expand"></i> View Full
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 8: Youth Day Run -->
+        <div class="photo-card-container" data-cat="community" onclick="window.NSS_PORTAL.openLightbox('assets/images/events/youth-day-5k-run.jpg', 'National Youth Day 5K Run for Unity')">
+          <img src="assets/images/events/youth-day-5k-run.jpg" alt="National Youth Day 5K Run" class="photo-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=1000&q=80'">
+          <div class="photo-card-overlay">
+            <span class="photo-card-tag"><i class="fa-solid fa-person-running"></i> National Youth Day</span>
+            <h4 class="photo-card-title">National Youth Day 5K Run for Unity</h4>
+            <p class="photo-card-caption">Students and faculty running for health, unity, and national integration on Vivekananda Jayanti.</p>
+            <div class="photo-actions-row">
+              <button class="btn-photo-download" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/youth-day-5k-run.jpg', 'IIITDMK_NSS_Youth_Day_Run.jpg')">
+                <i class="fa-solid fa-download"></i> Download
+              </button>
+              <button class="btn-photo-view" onclick="event.stopPropagation(); window.NSS_PORTAL.openLightbox('assets/images/events/youth-day-5k-run.jpg', 'National Youth Day 5K Run for Unity')">
+                <i class="fa-solid fa-expand"></i> View Full
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 9: Swachhata Shramdaan -->
+        <div class="photo-card-container" data-cat="environment" onclick="window.NSS_PORTAL.openLightbox('assets/images/events/swachhata-cleanliness-drive.jpg', 'Swachhata Hi Seva Cleanliness Shramdaan')">
+          <img src="assets/images/events/swachhata-cleanliness-drive.jpg" alt="Swachhata Cleanliness Drive" class="photo-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?auto=format&fit=crop&w=1000&q=80'">
+          <div class="photo-card-overlay">
+            <span class="photo-card-tag"><i class="fa-solid fa-broom"></i> Swachhata • Shramdaan</span>
+            <h4 class="photo-card-title">Swachhata Hi Seva Cleanliness Shramdaan</h4>
+            <p class="photo-card-caption">Over 210 kg of single-use plastic and debris segregated and removed along campus approach road.</p>
+            <div class="photo-actions-row">
+              <button class="btn-photo-download" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/swachhata-cleanliness-drive.jpg', 'IIITDMK_NSS_Swachhata_Drive.jpg')">
+                <i class="fa-solid fa-download"></i> Download
+              </button>
+              <button class="btn-photo-view" onclick="event.stopPropagation(); window.NSS_PORTAL.openLightbox('assets/images/events/swachhata-cleanliness-drive.jpg', 'Swachhata Hi Seva Cleanliness Shramdaan')">
+                <i class="fa-solid fa-expand"></i> View Full
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 10: Rural Residential Camp -->
+        <div class="photo-card-container" data-cat="community" onclick="window.NSS_PORTAL.openLightbox('assets/images/events/rural-residential-camp.jpg', 'Special Rural Residential Camp at Adopted Village')">
+          <img src="assets/images/events/rural-residential-camp.jpg" alt="Special Rural Residential Camp" class="photo-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1000&q=80'">
+          <div class="photo-card-overlay">
+            <span class="photo-card-tag"><i class="fa-solid fa-campground"></i> Rural Camp • Village Service</span>
+            <h4 class="photo-card-title">Special Rural Residential Camp at Adopted Village</h4>
+            <p class="photo-card-caption">Volunteers conducting socio-economic surveys, street plays, and primary school revitalization.</p>
+            <div class="photo-actions-row">
+              <button class="btn-photo-download" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/rural-residential-camp.jpg', 'IIITDMK_NSS_Rural_Camp.jpg')">
+                <i class="fa-solid fa-download"></i> Download
+              </button>
+              <button class="btn-photo-view" onclick="event.stopPropagation(); window.NSS_PORTAL.openLightbox('assets/images/events/rural-residential-camp.jpg', 'Special Rural Residential Camp at Adopted Village')">
+                <i class="fa-solid fa-expand"></i> View Full
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 11: Mental Wellness Talk -->
+        <div class="photo-card-container" data-cat="community" onclick="window.NSS_PORTAL.openLightbox('assets/images/events/mental-wellness-session.jpg', 'Emotional Stress Coping Strategies - Prof. V. Sarma')">
+          <img src="assets/images/events/mental-wellness-session.jpg" alt="Emotional Stress Coping Strategies" class="photo-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1000&q=80'">
+          <div class="photo-card-overlay">
+            <span class="photo-card-tag"><i class="fa-solid fa-brain"></i> Mental Wellness • Expert Talk</span>
+            <h4 class="photo-card-title">Emotional Stress Coping Strategies</h4>
+            <p class="photo-card-caption">Illuminating talk on student stress management by Prof. V. Sarma from official archives.</p>
+            <div class="photo-actions-row">
+              <button class="btn-photo-download" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/mental-wellness-session.jpg', 'IIITDMK_NSS_Mental_Wellness_Talk.jpg')">
+                <i class="fa-solid fa-download"></i> Download
+              </button>
+              <button class="btn-photo-view" onclick="event.stopPropagation(); window.NSS_PORTAL.openLightbox('assets/images/events/mental-wellness-session.jpg', 'Emotional Stress Coping Strategies - Prof. V. Sarma')">
+                <i class="fa-solid fa-expand"></i> View Full
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo 12: Dental Health Screening -->
+        <div class="photo-card-container" data-cat="blood-health" onclick="window.NSS_PORTAL.openLightbox('assets/images/events/dental-health-screening.jpg', 'Dental Screening & Oral Hygiene Awareness')">
+          <img src="assets/images/events/dental-health-screening.jpg" alt="Dental Screening" class="photo-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1000&q=80'">
+          <div class="photo-card-overlay">
+            <span class="photo-card-tag"><i class="fa-solid fa-tooth"></i> Healthcare • 2024-25</span>
+            <h4 class="photo-card-title">Dental Screening & Oral Hygiene Awareness</h4>
+            <p class="photo-card-caption">Expert checkups and free oral hygiene kits provided to over 210 students and staff.</p>
+            <div class="photo-actions-row">
+              <button class="btn-photo-download" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/dental-health-screening.jpg', 'IIITDMK_NSS_Dental_Screening.jpg')">
+                <i class="fa-solid fa-download"></i> Download
+              </button>
+              <button class="btn-photo-view" onclick="event.stopPropagation(); window.NSS_PORTAL.openLightbox('assets/images/events/dental-health-screening.jpg', 'Dental Screening & Oral Hygiene Awareness')">
+                <i class="fa-solid fa-expand"></i> View Full
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       4. MAIN FOOTER
+       ======================================================================== -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 class="footer-brand-title">IIITDM KURNOOL</h3>
+          <div class="footer-motto-text">राष्ट्रीय सेवा योजना • NOT ME, BUT YOU</div>
+          <p class="footer-about-text">
+            National Service Scheme (NSS) unit at Indian Institute of Information Technology, Design and Manufacturing Kurnool is an Institute of National Importance under Ministry of Education, Govt. of India.
+          </p>
+          <div class="footer-social-row">
+            <a href="https://www.facebook.com/Iiitdm-Kurnool-211133533006549/" target="_blank" class="footer-social-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://twitter.com/iiitdmkurnool" target="_blank" class="footer-social-btn" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/channel/UCXUm4xE1QB6jkBMRBnmtguw" target="_blank" class="footer-social-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.instagram.com/iiit.Kurnool/" target="_blank" class="footer-social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/iiit-Kurnool" target="_blank" class="footer-social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Portal Windows</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+            <li><a href="events.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Events (20XX & This Year)</a></li>
+            <li><a href="team.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> NSS Team</a></li>
+            <li><a href="gallery.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Photo Gallery & Downloads</a></li>
+            <li><a href="existing-website.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Existing Website</a></li>
+            <li><a href="contact.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Institute Links</h4>
+          <ul class="footer-links-list">
+            <li><a href="https://iiitk.ac.in" target="_blank" class="footer-link" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> IIITDM Kurnool Home</a></li>
+            <li><a href="https://iiitk.ac.in/academic-administration/page" target="_blank" class="footer-link" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Student Affairs</a></li>
+            <li><a href="https://iiitk.samarth.ac.in/" target="_blank" class="footer-link" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Samarth ERP Portal</a></li>
+            <li><a href="existing-website.html" class="footer-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Existing NSS Page</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Campus Location</h4>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Jagannathagattu, Dinnedevarapadu, Kurnool - 518008, Andhra Pradesh</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span>nss@iiitk.ac.in</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <span>+91-8518-289114</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom-bar">
+        <div>© 2026 National Service Scheme (NSS), IIITDM Kurnool. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       5. FULLSCREEN LIGHTBOX WITH DOWNLOAD BUTTON
+       ======================================================================== -->
+  <div id="galleryLightboxModal" class="modal-backdrop">
+    <div class="modal-container" style="max-width: 950px; background: #0a192f; color: #ffffff; padding: 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.2);">
+      <button class="modal-close-btn" style="background: rgba(255,255,255,0.2); color: #ffffff;" onclick="window.NSS_PORTAL.closeModal(document.getElementById('galleryLightboxModal'))" aria-label="Close lightbox">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div style="background: #000000; text-align: center; padding: 10px;">
+        <img id="lightboxImg" src="" alt="Full view" style="width: 100%; max-height: 72vh; object-fit: contain; margin: 0 auto;">
+      </div>
+      <div id="lightboxCaption" style="padding: 16px 24px; background: #0a192f; border-top: 1px solid rgba(255,255,255,0.1);"></div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/editor.js"></script>
+
+  <script>
+    function filterGallery(category, btnElement) {
+      document.querySelectorAll('.gallery-filter-btn').forEach(btn => btn.classList.remove('active'));
+      if (btnElement) btnElement.classList.add('active');
+
+      const cards = document.querySelectorAll('.photo-card-container');
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-cat') || '';
+        if (category === 'all' || cardCat === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Auto-filter from URL query parameter e.g. gallery.html?cat=blood-health
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const cat = params.get('cat');
+      if (cat) {
+        const btn = document.querySelector(`.gallery-filter-btn[onclick*="${cat}"]`);
+        if (btn) filterGallery(cat, btn);
+      }
+    });
+  </script>
+</body>
+</html>

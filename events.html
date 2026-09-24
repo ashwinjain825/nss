@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events (20XX & This Year) | NSS IIITDM Kurnool</title>
+  <meta name="description" content="Events conducted by the National Service Scheme (NSS) at IIITDM Kurnool across academic years. View details and download event photographs.">
+  <link rel="icon" href="assets/images/iiitdmk-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       1. OFFICIAL INSTITUTE & NSS MASTHEAD (LEFT & RIGHT LOGOS)
+       ======================================================================== -->
+  <header class="institute-masthead">
+    <div class="container masthead-wrapper">
+      <a href="https://iiitk.ac.in" target="_blank" class="institute-brand" title="IIITDM Kurnool Website" rel="noopener noreferrer">
+        <img src="assets/images/iiitdmk-logo.png" alt="IIITDM Kurnool Logo" class="masthead-logo">
+        <div class="brand-text-group">
+          <h1 class="institute-name">Indian Institute of Information Technology, Design and Manufacturing, Kurnool</h1>
+          <div class="institute-subtext">An Institute of National Importance under Ministry of Education, Govt. of India</div>
+        </div>
+      </a>
+      <div class="nss-brand">
+        <div class="nss-text-group">
+          <h2 class="nss-name">National Service Scheme</h2>
+          <div class="nss-subtext">राष्ट्रीय सेवा योजना • Not Me, But You</div>
+        </div>
+        <img src="assets/images/nss-logo.png" alt="National Service Scheme Logo" class="masthead-logo">
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       2. MAIN NAVIGATION BAR WITH DROPDOWN MENUS
+       ======================================================================== -->
+  <nav class="main-header">
+    <div class="container nav-wrapper">
+      <ul id="navMenu" class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+
+        <!-- Events Dropdown -->
+        <li class="nav-item-dropdown">
+          <a href="events.html" class="nav-link nav-dropdown-toggle active">
+            Events <i class="fa-solid fa-chevron-down"></i>
+          </a>
+          <ul class="nav-dropdown-menu">
+            <li class="nav-dropdown-item"><a href="events.html" class="nav-dropdown-link"><i class="fa-regular fa-calendar-days"></i> All Events</a></li>
+            <li class="nav-dropdown-item"><a href="events.html?year=2025-2026" class="nav-dropdown-link"><i class="fa-solid fa-star"></i> Current Year (2025-26)</a></li>
+            <li class="nav-dropdown-item"><a href="events.html?year=2024-2025" class="nav-dropdown-link"><i class="fa-solid fa-calendar-check"></i> 2024-2025</a></li>
+            <li class="nav-dropdown-item"><a href="events.html?year=2023-2024" class="nav-dropdown-link"><i class="fa-solid fa-calendar-check"></i> 2023-2024</a></li>
+            <li class="nav-dropdown-item"><a href="events.html?year=2022-2023" class="nav-dropdown-link"><i class="fa-solid fa-calendar-check"></i> 2022-2023</a></li>
+            <li class="nav-dropdown-divider"></li>
+            <li class="nav-dropdown-item"><a href="events.html?year=2019-2018 Archive" class="nav-dropdown-link"><i class="fa-solid fa-box-archive"></i> 2018-19 Historical Archive</a></li>
+          </ul>
+        </li>
+
+        <!-- NSS Team Dropdown -->
+        <li class="nav-item-dropdown">
+          <a href="team.html" class="nav-link nav-dropdown-toggle">
+            NSS Team <i class="fa-solid fa-chevron-down"></i>
+          </a>
+          <ul class="nav-dropdown-menu">
+            <li class="nav-dropdown-item"><a href="team.html" class="nav-dropdown-link"><i class="fa-solid fa-users"></i> Full NSS Team Directory</a></li>
+            <li class="nav-dropdown-item"><a href="team.html#patronSection" class="nav-dropdown-link"><i class="fa-solid fa-award"></i> Chief Patron (Director)</a></li>
+            <li class="nav-dropdown-item"><a href="team.html#facultyGrid" class="nav-dropdown-link"><i class="fa-solid fa-user-shield"></i> Programme Officer</a></li>
+            <li class="nav-dropdown-item"><a href="team.html#facultyGrid" class="nav-dropdown-link"><i class="fa-solid fa-chalkboard-user"></i> Departmental Advisors</a></li>
+          </ul>
+        </li>
+
+        <!-- Gallery Dropdown -->
+        <li class="nav-item-dropdown">
+          <a href="gallery.html" class="nav-link nav-dropdown-toggle">
+            Gallery <i class="fa-solid fa-chevron-down"></i>
+          </a>
+          <ul class="nav-dropdown-menu">
+            <li class="nav-dropdown-item"><a href="gallery.html" class="nav-dropdown-link"><i class="fa-regular fa-images"></i> Photo Gallery & Downloads</a></li>
+            <li class="nav-dropdown-item"><a href="gallery.html?cat=blood-health" class="nav-dropdown-link"><i class="fa-solid fa-heart-pulse"></i> Blood Donation & Health</a></li>
+            <li class="nav-dropdown-item"><a href="gallery.html?cat=environment" class="nav-dropdown-link"><i class="fa-solid fa-seedling"></i> Tree Plantation & Greenery</a></li>
+            <li class="nav-dropdown-item"><a href="gallery.html?cat=education" class="nav-dropdown-link"><i class="fa-solid fa-graduation-cap"></i> STEM & Rural School Visits</a></li>
+            <li class="nav-dropdown-item"><a href="gallery.html?cat=community" class="nav-dropdown-link"><i class="fa-solid fa-person-running"></i> Youth Day & Community</a></li>
+          </ul>
+        </li>
+
+        <li><a href="existing-website.html" class="nav-link">Existing Website</a></li>
+
+        <!-- Institute Links Dropdown -->
+        <li class="nav-item-dropdown">
+          <a href="javascript:void(0)" class="nav-link nav-dropdown-toggle">
+            Institute Links <i class="fa-solid fa-chevron-down"></i>
+          </a>
+          <ul class="nav-dropdown-menu">
+            <li class="nav-dropdown-item"><a href="https://iiitk.ac.in" target="_blank" class="nav-dropdown-link" rel="noopener noreferrer"><i class="fa-solid fa-building-columns"></i> IIITDM Kurnool Home ↗</a></li>
+            <li class="nav-dropdown-item"><a href="https://iiitk.ac.in/Activities/Social-Service-Group/page" target="_blank" class="nav-dropdown-link" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Existing NSS on iiitk.ac.in ↗</a></li>
+            <li class="nav-dropdown-item"><a href="https://iiitk.ac.in/academic-administration/page" target="_blank" class="nav-dropdown-link" rel="noopener noreferrer"><i class="fa-solid fa-graduation-cap"></i> Student Affairs ↗</a></li>
+            <li class="nav-dropdown-item"><a href="https://iiitk.samarth.ac.in/" target="_blank" class="nav-dropdown-link" rel="noopener noreferrer"><i class="fa-solid fa-server"></i> Samarth ERP Portal ↗</a></li>
+          </ul>
+        </li>
+
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+      <button id="mobileMenuToggle" class="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========================================================================
+       3. EVENTS REPOSITORY (WITH DOWNLOADS)
+       ======================================================================== -->
+  <section id="events" class="events-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-pretitle">ACTIVITY REPOSITORY & PHOTOGRAPHS</div>
+        <h2 class="section-title">Events Conducted in 20XX & This Year</h2>
+        <p class="section-subtitle">
+          Filter by year to explore social drives, health camps, workshops, and historical archives conducted by IIITDM Kurnool. Click any event to read the activity report and download high-resolution photos.
+        </p>
+      </div>
+
+      <!-- Year Filter Tabs -->
+      <div id="yearTabsContainer" class="year-tabs-container">
+        <button class="year-tab-btn active" data-year="all">All Years</button>
+        <button class="year-tab-btn" data-year="2025-2026">Current Year (2025-26)</button>
+        <button class="year-tab-btn" data-year="2024-2025">2024-2025</button>
+        <button class="year-tab-btn" data-year="2023-2024">2023-2024</button>
+        <button class="year-tab-btn" data-year="2022-2023">2022-2023</button>
+        <button class="year-tab-btn" data-year="2019-2018 Archive">2019-2018 Archive</button>
+      </div>
+
+      <!-- Live Search & Count -->
+      <div class="filter-controls-row">
+        <div class="search-input-wrapper">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="eventSearchInput" class="search-input" placeholder="Search events by title, venue, partner...">
+          <button id="clearSearchBtn" style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); cursor: pointer;" title="Clear Search">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <span id="eventsCountDisplay" style="font-size: 0.88rem; font-weight: 600; color: var(--text-secondary);">
+            Showing all events
+          </span>
+        </div>
+      </div>
+
+      <!-- Events Grid -->
+      <div id="eventsGrid" class="events-grid">
+        
+        <!-- EVENT 1 (2025-2026: Blood Camp) -->
+        <div class="event-card" data-year="2025-2026" data-id="ev-2026-blood-camp">
+          <div class="event-card-img-wrapper">
+            <img src="assets/images/events/mega-blood-donation-2026.jpg" alt="Annual Mega Blood Donation Drive 2026" class="event-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&w=1000&q=80'">
+            <button class="btn-quick-download" title="Download Cover Photo" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/mega-blood-donation-2026.jpg', 'IIITDMK_NSS_Blood_Camp_2026.jpg')">
+              <i class="fa-solid fa-download"></i>
+            </button>
+            <span class="event-status-badge badge-completed">Completed</span>
+            <span class="event-year-badge"><i class="fa-regular fa-calendar"></i> 2025-2026</span>
+            <span class="event-photo-count-badge"><i class="fa-solid fa-camera"></i> 3 Photos</span>
+          </div>
+          <div class="event-card-body">
+            <div class="event-meta-row">
+              <span class="event-meta-item"><i class="fa-regular fa-calendar-check"></i> February 24, 2026</span>
+              <span class="event-meta-item"><i class="fa-solid fa-location-dot"></i> SAC Hall, Campus</span>
+            </div>
+            <h3 class="event-title">Annual Mega Blood Donation Drive 2026</h3>
+            <p class="event-summary">A high-impact blood donation camp organized with great enthusiasm. Students, research scholars, and faculty participated selflessly to donate blood for patients with Thalassemia and emergency needs.</p>
+            <div class="event-card-footer">
+              <button class="btn-card-download" title="Download Cover Image" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/mega-blood-donation-2026.jpg', 'IIITDMK_NSS_Blood_Camp_2026.jpg')">
+                <i class="fa-solid fa-download"></i> Photo
+              </button>
+              <button class="event-details-btn" onclick="window.NSS_PORTAL.openEventDetailsById('ev-2026-blood-camp')">
+                Details & Gallery <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- EVENT 2 (2025-2026: Green Hillock Plantation) -->
+        <div class="event-card" data-year="2025-2026" data-id="ev-2025-hillock-plantation">
+          <div class="event-card-img-wrapper">
+            <img src="assets/images/events/sapling-care-jagannathagattu.jpg" alt="Green Jagannathagattu Campus Plantation Drive Phase-V" class="event-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1000&q=80'">
+            <button class="btn-quick-download" title="Download Cover Photo" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/sapling-care-jagannathagattu.jpg', 'IIITDMK_NSS_Plantation_Phase_V.jpg')">
+              <i class="fa-solid fa-download"></i>
+            </button>
+            <span class="event-status-badge badge-completed">Completed</span>
+            <span class="event-year-badge"><i class="fa-regular fa-calendar"></i> 2025-2026</span>
+            <span class="event-photo-count-badge"><i class="fa-solid fa-camera"></i> 3 Photos</span>
+          </div>
+          <div class="event-card-body">
+            <div class="event-meta-row">
+              <span class="event-meta-item"><i class="fa-regular fa-calendar-check"></i> October 14, 2025</span>
+              <span class="event-meta-item"><i class="fa-solid fa-location-dot"></i> Campus Perimeter</span>
+            </div>
+            <h3 class="event-title">Green Jagannathagattu Campus Plantation Drive Phase-V</h3>
+            <p class="event-summary">Massive afforestation drive planting over 300 drought-tolerant native saplings across the rocky terrain of Jagannathagattu to increase green cover.</p>
+            <div class="event-card-footer">
+              <button class="btn-card-download" title="Download Cover Image" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/sapling-care-jagannathagattu.jpg', 'IIITDMK_NSS_Plantation_Phase_V.jpg')">
+                <i class="fa-solid fa-download"></i> Photo
+              </button>
+              <button class="event-details-btn" onclick="window.NSS_PORTAL.openEventDetailsById('ev-2025-hillock-plantation')">
+                Details & Gallery <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- EVENT 3 (2025-2026: Rural STEM Camp) -->
+        <div class="event-card" data-year="2025-2026" data-id="ev-2026-stem-school">
+          <div class="event-card-img-wrapper">
+            <img src="assets/images/events/stem-coding-workshop.jpg" alt="Rural STEM & Coding Literacy Workshop" class="event-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=80'">
+            <button class="btn-quick-download" title="Download Cover Photo" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/stem-coding-workshop.jpg', 'IIITDMK_NSS_STEM_Workshop.jpg')">
+              <i class="fa-solid fa-download"></i>
+            </button>
+            <span class="event-status-badge badge-completed">Completed</span>
+            <span class="event-year-badge"><i class="fa-regular fa-calendar"></i> 2025-2026</span>
+            <span class="event-photo-count-badge"><i class="fa-solid fa-camera"></i> 2 Photos</span>
+          </div>
+          <div class="event-card-body">
+            <div class="event-meta-row">
+              <span class="event-meta-item"><i class="fa-regular fa-calendar-check"></i> January 18, 2026</span>
+              <span class="event-meta-item"><i class="fa-solid fa-location-dot"></i> ZP High School, Dinnedevarapadu</span>
+            </div>
+            <h3 class="event-title">Rural STEM & Coding Literacy Workshop</h3>
+            <p class="event-summary">Interactive hands-on session introducing 8th and 9th grade rural students to visual block programming (Scratch), robotics basics, and internet safety.</p>
+            <div class="event-card-footer">
+              <button class="btn-card-download" title="Download Cover Image" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/stem-coding-workshop.jpg', 'IIITDMK_NSS_STEM_Workshop.jpg')">
+                <i class="fa-solid fa-download"></i> Photo
+              </button>
+              <button class="event-details-btn" onclick="window.NSS_PORTAL.openEventDetailsById('ev-2026-stem-school')">
+                Details & Gallery <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- EVENT 4 (2025-2026: Upcoming Special 7-day Camp) -->
+        <div class="event-card" data-year="2025-2026" data-id="ev-2026-upcoming-camp">
+          <div class="event-card-img-wrapper">
+            <img src="assets/images/events/rural-residential-camp.jpg" alt="Special 7-Day Rural Residential Camp 2026" class="event-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1000&q=80'">
+            <button class="btn-quick-download" title="Download Cover Photo" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/rural-residential-camp.jpg', 'IIITDMK_NSS_Rural_Camp.jpg')">
+              <i class="fa-solid fa-download"></i>
+            </button>
+            <span class="event-status-badge badge-upcoming">Upcoming</span>
+            <span class="event-year-badge"><i class="fa-regular fa-calendar"></i> 2025-2026</span>
+            <span class="event-photo-count-badge"><i class="fa-solid fa-camera"></i> 2 Photos</span>
+          </div>
+          <div class="event-card-body">
+            <div class="event-meta-row">
+              <span class="event-meta-item"><i class="fa-regular fa-calendar-check"></i> April 05 - 11, 2026</span>
+              <span class="event-meta-item"><i class="fa-solid fa-location-dot"></i> Adopted Village Cluster</span>
+            </div>
+            <h3 class="event-title">Special 7-Day Rural Residential Camp 2026</h3>
+            <p class="event-summary">Annual flagship residential camp focusing on health awareness, village socio-economic survey, solar lamp maintenance, and school infrastructure revitalization.</p>
+            <div class="event-card-footer">
+              <button class="btn-card-download" title="Download Cover Image" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/rural-residential-camp.jpg', 'IIITDMK_NSS_Rural_Camp.jpg')">
+                <i class="fa-solid fa-download"></i> Photo
+              </button>
+              <button class="event-details-btn" onclick="window.NSS_PORTAL.openEventDetailsById('ev-2026-upcoming-camp')">
+                Details & Gallery <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- EVENT 5 (2024-2025: Youth Day Run) -->
+        <div class="event-card" data-year="2024-2025" data-id="ev-2024-youth-day">
+          <div class="event-card-img-wrapper">
+            <img src="assets/images/events/youth-day-5k-run.jpg" alt="National Youth Day & Run for Unity 2025" class="event-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=1000&q=80'">
+            <button class="btn-quick-download" title="Download Cover Photo" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/youth-day-5k-run.jpg', 'IIITDMK_NSS_Youth_Run_2025.jpg')">
+              <i class="fa-solid fa-download"></i>
+            </button>
+            <span class="event-status-badge badge-completed">Completed</span>
+            <span class="event-year-badge"><i class="fa-regular fa-calendar"></i> 2024-2025</span>
+            <span class="event-photo-count-badge"><i class="fa-solid fa-camera"></i> 2 Photos</span>
+          </div>
+          <div class="event-card-body">
+            <div class="event-meta-row">
+              <span class="event-meta-item"><i class="fa-regular fa-calendar-check"></i> January 12, 2025</span>
+              <span class="event-meta-item"><i class="fa-solid fa-location-dot"></i> Admin Quadrangle</span>
+            </div>
+            <h3 class="event-title">National Youth Day & Run for Unity 2025</h3>
+            <p class="event-summary">Commemorating Swami Vivekananda Jayanti with a 5K Run for Unity, youth symposium, and essay competition on technology for rural transformation.</p>
+            <div class="event-card-footer">
+              <button class="btn-card-download" title="Download Cover Image" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/youth-day-5k-run.jpg', 'IIITDMK_NSS_Youth_Run_2025.jpg')">
+                <i class="fa-solid fa-download"></i> Photo
+              </button>
+              <button class="event-details-btn" onclick="window.NSS_PORTAL.openEventDetailsById('ev-2024-youth-day')">
+                Details & Gallery <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- EVENT 6 (2024-2025: Dental Camp) -->
+        <div class="event-card" data-year="2024-2025" data-id="ev-2024-dental-health">
+          <div class="event-card-img-wrapper">
+            <img src="assets/images/events/dental-health-screening.jpg" alt="Free Dental Screening & Oral Hygiene Camp 2024" class="event-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1000&q=80'">
+            <button class="btn-quick-download" title="Download Cover Photo" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/dental-health-screening.jpg', 'IIITDMK_NSS_Dental_Camp_2024.jpg')">
+              <i class="fa-solid fa-download"></i>
+            </button>
+            <span class="event-status-badge badge-completed">Completed</span>
+            <span class="event-year-badge"><i class="fa-regular fa-calendar"></i> 2024-2025</span>
+            <span class="event-photo-count-badge"><i class="fa-solid fa-camera"></i> 2 Photos</span>
+          </div>
+          <div class="event-card-body">
+            <div class="event-meta-row">
+              <span class="event-meta-item"><i class="fa-regular fa-calendar-check"></i> November 08, 2024</span>
+              <span class="event-meta-item"><i class="fa-solid fa-location-dot"></i> Medical Center & SAC</span>
+            </div>
+            <h3 class="event-title">Free Dental Screening & Oral Hygiene Camp 2024</h3>
+            <p class="event-summary">Comprehensive dental checkups, cavity detection, and dental hygiene awareness sessions for students, housekeeping staff, and security personnel.</p>
+            <div class="event-card-footer">
+              <button class="btn-card-download" title="Download Cover Image" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/dental-health-screening.jpg', 'IIITDMK_NSS_Dental_Camp_2024.jpg')">
+                <i class="fa-solid fa-download"></i> Photo
+              </button>
+              <button class="event-details-btn" onclick="window.NSS_PORTAL.openEventDetailsById('ev-2024-dental-health')">
+                Details & Gallery <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- EVENT 7 (2023-2024: Swachhata Cleanliness Drive) -->
+        <div class="event-card" data-year="2023-2024" data-id="ev-2023-swachhata-hi-seva">
+          <div class="event-card-img-wrapper">
+            <img src="assets/images/events/swachhata-cleanliness-drive.jpg" alt="Swachhata Hi Seva: Cleanliness Drive & Shramdaan" class="event-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?auto=format&fit=crop&w=1000&q=80'">
+            <button class="btn-quick-download" title="Download Cover Photo" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/swachhata-cleanliness-drive.jpg', 'IIITDMK_NSS_Swachhata_2023.jpg')">
+              <i class="fa-solid fa-download"></i>
+            </button>
+            <span class="event-status-badge badge-completed">Completed</span>
+            <span class="event-year-badge"><i class="fa-regular fa-calendar"></i> 2023-2024</span>
+            <span class="event-photo-count-badge"><i class="fa-solid fa-camera"></i> 2 Photos</span>
+          </div>
+          <div class="event-card-body">
+            <div class="event-meta-row">
+              <span class="event-meta-item"><i class="fa-regular fa-calendar-check"></i> October 02, 2023</span>
+              <span class="event-meta-item"><i class="fa-solid fa-location-dot"></i> Campus & Approach Road</span>
+            </div>
+            <h3 class="event-title">Swachhata Hi Seva: Cleanliness Drive & Shramdaan</h3>
+            <p class="event-summary">One-hour intensive Shramdaan for cleanliness on Gandhi Jayanti. Over 210 kg of single-use plastic and litter was segregated and cleared.</p>
+            <div class="event-card-footer">
+              <button class="btn-card-download" title="Download Cover Image" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/swachhata-cleanliness-drive.jpg', 'IIITDMK_NSS_Swachhata_2023.jpg')">
+                <i class="fa-solid fa-download"></i> Photo
+              </button>
+              <button class="event-details-btn" onclick="window.NSS_PORTAL.openEventDetailsById('ev-2023-swachhata-hi-seva')">
+                Details & Gallery <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- EVENT 8 (2022-2023: Historical Event: Prof. V. Sarma) -->
+        <div class="event-card" data-year="2022-2023" data-id="ev-2022-stress-session">
+          <div class="event-card-img-wrapper">
+            <img src="assets/images/events/mental-wellness-session.jpg" alt="Emotional Stress Handling & Mental Wellness Session" class="event-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1000&q=80'">
+            <button class="btn-quick-download" title="Download Cover Photo" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/mental-wellness-session.jpg', 'IIITDMK_NSS_Stress_Management.jpg')">
+              <i class="fa-solid fa-download"></i>
+            </button>
+            <span class="event-status-badge badge-completed">Completed</span>
+            <span class="event-year-badge"><i class="fa-regular fa-calendar"></i> 2022-2023</span>
+            <span class="event-photo-count-badge"><i class="fa-solid fa-camera"></i> 2 Photos</span>
+          </div>
+          <div class="event-card-body">
+            <div class="event-meta-row">
+              <span class="event-meta-item"><i class="fa-regular fa-calendar-check"></i> April 01, 2022</span>
+              <span class="event-meta-item"><i class="fa-solid fa-location-dot"></i> Institute Auditorium</span>
+            </div>
+            <h3 class="event-title">Emotional Stress Handling & Mental Wellness Session</h3>
+            <p class="event-summary">An illuminating expert talk on 'Emotional Stress Coping Strategies' delivered by Prof. V. Sarma, focusing on mental health awareness and stress management.</p>
+            <div class="event-card-footer">
+              <button class="btn-card-download" title="Download Cover Image" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/mental-wellness-session.jpg', 'IIITDMK_NSS_Stress_Management.jpg')">
+                <i class="fa-solid fa-download"></i> Photo
+              </button>
+              <button class="event-details-btn" onclick="window.NSS_PORTAL.openEventDetailsById('ev-2022-stress-session')">
+                Details & Gallery <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- EVENT 9 (2019-2018 Archive: Tree Plantation from Existing Website) -->
+        <div class="event-card" data-year="2019-2018 Archive" data-id="ev-2019-tree-plantation">
+          <div class="event-card-img-wrapper">
+            <img src="assets/images/events/tree-plantation-2019.jpg" alt="Institute Tree Plantation Drive 2019" class="event-card-img" loading="lazy" onerror="this.src='https://i.imgur.com/nwTiQYE.jpg'">
+            <button class="btn-quick-download" title="Download Authentic Event Photo" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/tree-plantation-2019.jpg', 'IIITDMK_NSS_Tree_Plantation_2019.jpg')">
+              <i class="fa-solid fa-download"></i>
+            </button>
+            <span class="event-status-badge badge-completed">Completed</span>
+            <span class="event-year-badge"><i class="fa-regular fa-calendar"></i> 2019-2018 Archive</span>
+            <span class="event-photo-count-badge"><i class="fa-solid fa-camera"></i> 4 Photos</span>
+          </div>
+          <div class="event-card-body">
+            <div class="event-meta-row">
+              <span class="event-meta-item"><i class="fa-regular fa-calendar-check"></i> May 11, 2019</span>
+              <span class="event-meta-item"><i class="fa-solid fa-location-dot"></i> Paver Block Pathway</span>
+            </div>
+            <h3 class="event-title">Institute Tree Plantation Drive 2019</h3>
+            <p class="event-summary">Social Service Group (SSG) of IIITDM Kurnool organized a tree plantation drive with BWC members, Guest Speakers, and FDP participants along the paver block pathway.</p>
+            <div class="event-card-footer">
+              <button class="btn-card-download" title="Download Authentic Photo" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/tree-plantation-2019.jpg', 'IIITDMK_NSS_Tree_Plantation_2019.jpg')">
+                <i class="fa-solid fa-download"></i> Photo
+              </button>
+              <button class="event-details-btn" onclick="window.NSS_PORTAL.openEventDetailsById('ev-2019-tree-plantation')">
+                Details & Gallery <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- EVENT 10 (2019-2018 Archive: Blood Donation Camp from Existing Website) -->
+        <div class="event-card" data-year="2019-2018 Archive" data-id="ev-2019-blood-camp">
+          <div class="event-card-img-wrapper">
+            <img src="assets/images/events/blood-donation-2019.png" alt="Voluntary Blood Donation Camp 2019" class="event-card-img" loading="lazy" onerror="this.src='https://i.imgur.com/9yKoPiK.png'">
+            <button class="btn-quick-download" title="Download Authentic Event Photo" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/blood-donation-2019.png', 'IIITDMK_NSS_Blood_Donation_2019.png')">
+              <i class="fa-solid fa-download"></i>
+            </button>
+            <span class="event-status-badge badge-completed">Completed</span>
+            <span class="event-year-badge"><i class="fa-regular fa-calendar"></i> 2019-2018 Archive</span>
+            <span class="event-photo-count-badge"><i class="fa-solid fa-camera"></i> 1 Photo</span>
+          </div>
+          <div class="event-card-body">
+            <div class="event-meta-row">
+              <span class="event-meta-item"><i class="fa-regular fa-calendar-check"></i> March 19, 2019</span>
+              <span class="event-meta-item"><i class="fa-solid fa-location-dot"></i> Campus Hall</span>
+            </div>
+            <h3 class="event-title">Voluntary Blood Donation Camp 2019</h3>
+            <p class="event-summary">The Social Service Group organized a blood donation camp with Indian Red Cross Society. Exactly 53 donors reported and 53 units of blood was collected.</p>
+            <div class="event-card-footer">
+              <button class="btn-card-download" title="Download Authentic Photo" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/blood-donation-2019.png', 'IIITDMK_NSS_Blood_Donation_2019.png')">
+                <i class="fa-solid fa-download"></i> Photo
+              </button>
+              <button class="event-details-btn" onclick="window.NSS_PORTAL.openEventDetailsById('ev-2019-blood-camp')">
+                Details & Gallery <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- EVENT 11 (2019-2018 Archive: Dental Camp from Existing Website) -->
+        <div class="event-card" data-year="2019-2018 Archive" data-id="ev-2018-dental-camp">
+          <div class="event-card-img-wrapper">
+            <img src="assets/images/events/dental-camp-2018.png" alt="Free Dental Health Checkup Camp 2018" class="event-card-img" loading="lazy" onerror="this.src='https://i.imgur.com/zBKpwdF.png'">
+            <button class="btn-quick-download" title="Download Authentic Event Photo" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/dental-camp-2018.png', 'IIITDMK_NSS_Dental_Camp_2018.png')">
+              <i class="fa-solid fa-download"></i>
+            </button>
+            <span class="event-status-badge badge-completed">Completed</span>
+            <span class="event-year-badge"><i class="fa-regular fa-calendar"></i> 2019-2018 Archive</span>
+            <span class="event-photo-count-badge"><i class="fa-solid fa-camera"></i> 1 Photo</span>
+          </div>
+          <div class="event-card-body">
+            <div class="event-meta-row">
+              <span class="event-meta-item"><i class="fa-regular fa-calendar-check"></i> August 30, 2018</span>
+              <span class="event-meta-item"><i class="fa-solid fa-location-dot"></i> Campus Hall</span>
+            </div>
+            <h3 class="event-title">Free Dental Health Checkup Camp 2018</h3>
+            <p class="event-summary">Free dental checkup camp in association with G Pulla Reddy Dental College and Hospital. Doctors conducted oral health screenings and dental hygiene counseling.</p>
+            <div class="event-card-footer">
+              <button class="btn-card-download" title="Download Authentic Photo" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('assets/images/events/dental-camp-2018.png', 'IIITDMK_NSS_Dental_Camp_2018.png')">
+                <i class="fa-solid fa-download"></i> Photo
+              </button>
+              <button class="event-details-btn" onclick="window.NSS_PORTAL.openEventDetailsById('ev-2018-dental-camp')">
+                Details & Gallery <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       4. MAIN FOOTER
+       ======================================================================== -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 class="footer-brand-title">IIITDM KURNOOL</h3>
+          <div class="footer-motto-text">राष्ट्रीय सेवा योजना • NOT ME, BUT YOU</div>
+          <p class="footer-about-text">
+            National Service Scheme (NSS) unit at Indian Institute of Information Technology, Design and Manufacturing Kurnool is an Institute of National Importance under Ministry of Education, Govt. of India.
+          </p>
+          <div class="footer-social-row">
+            <a href="https://www.facebook.com/Iiitdm-Kurnool-211133533006549/" target="_blank" class="footer-social-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://twitter.com/iiitdmkurnool" target="_blank" class="footer-social-btn" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/channel/UCXUm4xE1QB6jkBMRBnmtguw" target="_blank" class="footer-social-btn" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.instagram.com/iiit.Kurnool/" target="_blank" class="footer-social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/iiit-Kurnool" target="_blank" class="footer-social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Portal Windows</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+            <li><a href="events.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Events (20XX & This Year)</a></li>
+            <li><a href="team.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> NSS Team</a></li>
+            <li><a href="gallery.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Photo Gallery & Downloads</a></li>
+            <li><a href="existing-website.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Existing Website</a></li>
+            <li><a href="contact.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Institute Links</h4>
+          <ul class="footer-links-list">
+            <li><a href="https://iiitk.ac.in" target="_blank" class="footer-link" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> IIITDM Kurnool Home</a></li>
+            <li><a href="https://iiitk.ac.in/academic-administration/page" target="_blank" class="footer-link" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Student Affairs</a></li>
+            <li><a href="https://iiitk.samarth.ac.in/" target="_blank" class="footer-link" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Samarth ERP Portal</a></li>
+            <li><a href="existing-website.html" class="footer-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Existing NSS Page</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Campus Location</h4>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Jagannathagattu, Dinnedevarapadu, Kurnool - 518008, Andhra Pradesh</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span>nss@iiitk.ac.in</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <span>+91-8518-289114</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom-bar">
+        <div>© 2026 National Service Scheme (NSS), IIITDM Kurnool. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       5. EVENT DETAILS & PHOTO GALLERY MODAL
+       ======================================================================== -->
+  <div id="eventDetailModal" class="modal-backdrop">
+    <div class="modal-container">
+      <button class="modal-close-btn" onclick="window.NSS_PORTAL.closeModal(document.getElementById('eventDetailModal'))" aria-label="Close modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div id="eventModalBodyContent" class="modal-body" style="padding-top: 40px;"></div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       6. FULLSCREEN LIGHTBOX WITH DOWNLOAD BUTTON
+       ======================================================================== -->
+  <div id="galleryLightboxModal" class="modal-backdrop">
+    <div class="modal-container" style="max-width: 950px; background: #0a192f; color: #ffffff; padding: 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.2);">
+      <button class="modal-close-btn" style="background: rgba(255,255,255,0.2); color: #ffffff;" onclick="window.NSS_PORTAL.closeModal(document.getElementById('galleryLightboxModal'))" aria-label="Close lightbox">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div style="background: #000000; text-align: center; padding: 10px;">
+        <img id="lightboxImg" src="" alt="Full view" style="width: 100%; max-height: 72vh; object-fit: contain; margin: 0 auto;">
+      </div>
+      <div id="lightboxCaption" style="padding: 16px 24px; background: #0a192f; border-top: 1px solid rgba(255,255,255,0.1);"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/editor.js"></script>
+</body>
+</html>
