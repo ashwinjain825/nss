@@ -45,13 +45,155 @@
     navMenu: document.getElementById('navMenu')
   };
 
-  function init() {
+  async function init() {
+    await loadHeader();
     setupFilters();
     checkUrlParameters();
     filterEvents();
     setupDropdowns();
     setupEventListeners();
     setupToast();
+  }
+
+  /**
+   * 0. Dynamic Shared Header Component Loader
+   */
+  async function loadHeader() {
+    const headerContainer = document.getElementById('site-header');
+    if (!headerContainer) return;
+
+    try {
+      const response = await fetch('header.html');
+      if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+      const html = await response.text();
+      headerContainer.innerHTML = html;
+    } catch (err) {
+      console.warn('Loading fallback header component (useful for local file:// mode):', err);
+      headerContainer.innerHTML = getFallbackHeader();
+    }
+
+    // Refresh header elements cache
+    elements.mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    elements.navMenu = document.getElementById('navMenu');
+
+    // Automatically highlight the current page in the navigation bar
+    highlightActiveNav();
+
+    // Re-bind dropdown and mobile menus for the injected markup
+    setupDropdowns();
+  }
+
+  function highlightActiveNav() {
+    const path = window.location.pathname.toLowerCase();
+    let currentNav = 'index';
+
+    if (path.includes('events.html')) {
+      currentNav = 'events';
+    } else if (path.includes('team.html')) {
+      currentNav = 'team';
+    } else if (path.includes('gallery.html')) {
+      currentNav = 'gallery';
+    } else if (path.includes('existing-website.html')) {
+      currentNav = 'existing-website';
+    } else if (path.includes('contact.html')) {
+      currentNav = 'contact';
+    } else if (path.endsWith('/') || path.endsWith('index.html') || !path.includes('.html')) {
+      currentNav = 'index';
+    }
+
+    const item = document.querySelector(`[data-nav="${currentNav}"]`);
+    if (item) {
+      if (item.tagName === 'A') {
+        item.classList.add('active');
+      } else {
+        const link = item.querySelector('.nav-link');
+        if (link) link.classList.add('active');
+      }
+    }
+  }
+
+  function getFallbackHeader() {
+    return `
+<header class="institute-masthead">
+  <div class="container masthead-wrapper">
+    <a href="https://iiitk.ac.in" target="_blank" class="institute-brand" title="IIITDM Kurnool Website" rel="noopener noreferrer">
+      <img src="assets/images/iiitdmk-logo.png" alt="IIITDM Kurnool Logo" class="masthead-logo">
+      <div class="brand-text-group">
+        <h1 class="institute-name">Indian Institute of Information Technology, Design and Manufacturing, Kurnool</h1>
+        <div class="institute-subtext">An Institute of National Importance under Ministry of Education, Govt. of India</div>
+      </div>
+    </a>
+    <div class="nss-brand">
+      <div class="nss-text-group">
+        <h2 class="nss-name">National Service Scheme</h2>
+        <div class="nss-subtext">राष्ट्रीय सेवा योजना • Not Me, But You</div>
+      </div>
+      <img src="assets/images/nss-logo.png" alt="National Service Scheme Logo" class="masthead-logo">
+    </div>
+  </div>
+</header>
+
+<nav class="main-header">
+  <div class="container nav-wrapper">
+    <ul id="navMenu" class="nav-menu">
+      <li><a href="index.html" class="nav-link" data-nav="index">Home</a></li>
+      <li class="nav-item-dropdown" data-nav="events">
+        <a href="events.html" class="nav-link nav-dropdown-toggle">
+          Events <i class="fa-solid fa-chevron-down"></i>
+        </a>
+        <ul class="nav-dropdown-menu">
+          <li class="nav-dropdown-item"><a href="events.html" class="nav-dropdown-link"><i class="fa-regular fa-calendar-days"></i> All Events</a></li>
+          <li class="nav-dropdown-item"><a href="events.html?year=2025-2026" class="nav-dropdown-link"><i class="fa-solid fa-star"></i> Current Year (2025-26)</a></li>
+          <li class="nav-dropdown-item"><a href="events.html?year=2024-2025" class="nav-dropdown-link"><i class="fa-solid fa-calendar-check"></i> 2024-2025</a></li>
+          <li class="nav-dropdown-item"><a href="events.html?year=2023-2024" class="nav-dropdown-link"><i class="fa-solid fa-calendar-check"></i> 2023-2024</a></li>
+          <li class="nav-dropdown-item"><a href="events.html?year=2022-2023" class="nav-dropdown-link"><i class="fa-solid fa-calendar-check"></i> 2022-2023</a></li>
+          <li class="nav-dropdown-divider"></li>
+          <li class="nav-dropdown-item"><a href="events.html?year=2019-2018 Archive" class="nav-dropdown-link"><i class="fa-solid fa-box-archive"></i> 2018-19 Historical Archive</a></li>
+        </ul>
+      </li>
+      <li class="nav-item-dropdown" data-nav="team">
+        <a href="team.html" class="nav-link nav-dropdown-toggle">
+          NSS Team <i class="fa-solid fa-chevron-down"></i>
+        </a>
+        <ul class="nav-dropdown-menu">
+          <li class="nav-dropdown-item"><a href="team.html" class="nav-dropdown-link"><i class="fa-solid fa-users"></i> Full NSS Team Directory</a></li>
+          <li class="nav-dropdown-item"><a href="team.html#patronSection" class="nav-dropdown-link"><i class="fa-solid fa-award"></i> Chief Patron (Director)</a></li>
+          <li class="nav-dropdown-item"><a href="team.html#facultyGrid" class="nav-dropdown-link"><i class="fa-solid fa-user-shield"></i> Programme Officer</a></li>
+          <li class="nav-dropdown-item"><a href="team.html#facultyGrid" class="nav-dropdown-link"><i class="fa-solid fa-chalkboard-user"></i> Departmental Advisors</a></li>
+        </ul>
+      </li>
+      <li class="nav-item-dropdown" data-nav="gallery">
+        <a href="gallery.html" class="nav-link nav-dropdown-toggle">
+          Gallery <i class="fa-solid fa-chevron-down"></i>
+        </a>
+        <ul class="nav-dropdown-menu">
+          <li class="nav-dropdown-item"><a href="gallery.html" class="nav-dropdown-link"><i class="fa-regular fa-images"></i> Photo Gallery & Downloads</a></li>
+          <li class="nav-dropdown-item"><a href="gallery.html?cat=blood-health" class="nav-dropdown-link"><i class="fa-solid fa-heart-pulse"></i> Blood Donation & Health</a></li>
+          <li class="nav-dropdown-item"><a href="gallery.html?cat=environment" class="nav-dropdown-link"><i class="fa-solid fa-seedling"></i> Tree Plantation & Greenery</a></li>
+          <li class="nav-dropdown-item"><a href="gallery.html?cat=education" class="nav-dropdown-link"><i class="fa-solid fa-graduation-cap"></i> STEM & Rural School Visits</a></li>
+          <li class="nav-dropdown-item"><a href="gallery.html?cat=community" class="nav-dropdown-link"><i class="fa-solid fa-person-running"></i> Youth Day & Community</a></li>
+        </ul>
+      </li>
+      <li><a href="existing-website.html" class="nav-link" data-nav="existing-website">Existing Website</a></li>
+      <li class="nav-item-dropdown">
+        <a href="javascript:void(0)" class="nav-link nav-dropdown-toggle">
+          Institute Links <i class="fa-solid fa-chevron-down"></i>
+        </a>
+        <ul class="nav-dropdown-menu">
+          <li class="nav-dropdown-item"><a href="https://iiitk.ac.in" target="_blank" class="nav-dropdown-link" rel="noopener noreferrer"><i class="fa-solid fa-building-columns"></i> IIITDM Kurnool Home ↗</a></li>
+          <li class="nav-dropdown-item"><a href="https://iiitk.ac.in/Activities/Social-Service-Group/page" target="_blank" class="nav-dropdown-link" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Existing NSS on iiitk.ac.in ↗</a></li>
+          <li class="nav-dropdown-item"><a href="https://iiitk.ac.in/academic-administration/page" target="_blank" class="nav-dropdown-link" rel="noopener noreferrer"><i class="fa-solid fa-graduation-cap"></i> Student Affairs ↗</a></li>
+          <li class="nav-dropdown-item"><a href="https://iiitk.samarth.ac.in/" target="_blank" class="nav-dropdown-link" rel="noopener noreferrer"><i class="fa-solid fa-server"></i> Samarth ERP Portal ↗</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html" class="nav-link" data-nav="contact">Contact</a></li>
+    </ul>
+    <button id="mobileMenuToggle" class="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+</nav>
+    `;
   }
 
   /**
