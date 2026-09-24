@@ -108,7 +108,7 @@ img {
 .institute-masthead {
   background: #ffffff;
   border-bottom: 1px solid var(--border-light);
-  padding: 16px 0;
+  padding: 20px 0;
   box-shadow: 0 2px 8px rgba(10, 25, 47, 0.04);
 }
 
@@ -116,73 +116,67 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 28px;
 }
 
-/* Left: Institute Logo & Name */
-.institute-brand {
+.masthead-logo-link {
   display: flex;
   align-items: center;
-  gap: 18px;
-  flex: 1;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .masthead-logo {
-  height: 80px;
+  height: 108px;
   width: auto;
   object-fit: contain;
   flex-shrink: 0;
 }
 
-.brand-text-group {
+/* Center Content: Hierarchy & Typography */
+.masthead-center-content {
+  flex: 1;
+  text-align: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
 }
 
-.institute-name {
-  font-size: 1.28rem;
+.masthead-nss-title {
+  font-size: 1.85rem;
   font-weight: 800;
   color: var(--primary-900);
   line-height: 1.25;
   letter-spacing: -0.3px;
+  margin-bottom: 5px;
 }
 
-.institute-subtext {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  font-weight: 500;
-  margin-top: 4px;
-}
-
-/* Right: NSS Logo & Name */
-.nss-brand {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  text-align: right;
-  flex-shrink: 0;
-}
-
-.nss-text-group {
-  display: flex;
-  flex-direction: column;
-}
-
-.nss-name {
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: #1e3a8a;
-  line-height: 1.2;
-  letter-spacing: -0.2px;
-}
-
-.nss-subtext {
-  font-size: 0.82rem;
-  color: var(--accent-crimson);
+.masthead-inst-name-en {
+  font-size: 1.25rem;
   font-weight: 700;
-  letter-spacing: 0.5px;
-  margin-top: 3px;
+  color: #1e3a8a;
+  line-height: 1.35;
+  margin-bottom: 6px;
 }
+
+.masthead-nss-hindi {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent-crimson);
+  line-height: 1.35;
+  letter-spacing: 0.4px;
+  margin-bottom: 4px;
+}
+
+.masthead-inst-name-hi {
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+
 
 /* --------------------------------------------------------------------------
    2. MAIN STICKY NAVIGATION BAR
@@ -1385,17 +1379,29 @@ img {
    -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
   .masthead-wrapper {
-    flex-direction: column;
-    text-align: center;
-    gap: 16px;
-  }
-  .institute-brand {
+    flex-wrap: wrap;
     justify-content: center;
-    max-width: 100%;
+    gap: 18px;
   }
-  .nss-brand {
-    justify-content: center;
-    text-align: center;
+  .masthead-center-content {
+    order: 3;
+    width: 100%;
+    margin-top: 8px;
+  }
+  .masthead-nss-title {
+    font-size: 1.55rem;
+  }
+  .masthead-inst-name-en {
+    font-size: 1.1rem;
+  }
+  .masthead-nss-hindi {
+    font-size: 1.05rem;
+  }
+  .masthead-inst-name-hi {
+    font-size: 1.02rem;
+  }
+  .masthead-logo {
+    height: 88px;
   }
   .hero-title {
     font-size: 2.5rem;
@@ -1425,14 +1431,20 @@ img {
   .mobile-menu-toggle {
     display: block;
   }
-  .institute-name {
-    font-size: 1.05rem;
+  .masthead-nss-title {
+    font-size: 1.35rem;
   }
-  .nss-name {
-    font-size: 1.15rem;
+  .masthead-inst-name-en {
+    font-size: 0.95rem;
+  }
+  .masthead-nss-hindi {
+    font-size: 0.92rem;
+  }
+  .masthead-inst-name-hi {
+    font-size: 0.9rem;
   }
   .masthead-logo {
-    height: 60px;
+    height: 72px;
   }
   .hero-title {
     font-size: 2rem;

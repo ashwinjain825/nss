@@ -116,18 +116,16 @@
     return `
 <header class="institute-masthead">
   <div class="container masthead-wrapper">
-    <a href="https://iiitk.ac.in" target="_blank" class="institute-brand" title="IIITDM Kurnool Website" rel="noopener noreferrer">
+    <a href="https://iiitk.ac.in" target="_blank" class="masthead-logo-link" title="IIITDM Kurnool Official Website" rel="noopener noreferrer">
       <img src="assets/images/iiitdmk-logo.png" alt="IIITDM Kurnool Logo" class="masthead-logo">
-      <div class="brand-text-group">
-        <h1 class="institute-name">Indian Institute of Information Technology, Design and Manufacturing, Kurnool</h1>
-        <div class="institute-subtext">An Institute of National Importance under Ministry of Education, Govt. of India</div>
-      </div>
     </a>
-    <div class="nss-brand">
-      <div class="nss-text-group">
-        <h2 class="nss-name">National Service Scheme</h2>
-        <div class="nss-subtext">राष्ट्रीय सेवा योजना • Not Me, But You</div>
-      </div>
+    <div class="masthead-center-content">
+      <h1 class="masthead-nss-title">National Service Scheme (NSS)</h1>
+      <h2 class="masthead-inst-name-en">Indian Institute of Information Technology, Design and Manufacturing, Kurnool</h2>
+      <div class="masthead-nss-hindi">राष्ट्रीय सेवा योजना</div>
+      <div class="masthead-inst-name-hi">भारतीय सूचना प्रौद्योगिकी अभिकल्पना एवं विनिर्माण संस्थान कर्नूल</div>
+    </div>
+    <div class="masthead-logo-link nss-logo-wrapper" title="National Service Scheme">
       <img src="assets/images/nss-logo.png" alt="National Service Scheme Logo" class="masthead-logo">
     </div>
   </div>
