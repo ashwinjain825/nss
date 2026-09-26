@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NSS at IIITDM Kurnool – News & Media Coverage</title>
+  <meta name="description" content="Official press releases, media coverage, and newspaper reports highlighting NSS activities, community drives, and social initiatives at IIITDM Kurnool.">
+  <link rel="icon" href="../assets/images/iiitdmk-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       NSS IN NEWS & MEDIA COVERAGE SECTION
+       ======================================================================== -->
+  <main class="news-page-section">
+    <div class="container">
+      
+      <!-- Institutional Breadcrumb / Back Link -->
+      <a href="../index.html" class="news-back-link" title="Return to NSS Portal Homepage">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Back to NSS Portal</span>
+      </a>
+
+      <!-- Section Header -->
+      <div class="section-header news-header-banner">
+        <h1 class="section-title">News & Media Coverage</h1>
+        <p class="section-subtitle">
+          Documenting our community engagement, health camps, social outreach, and civic initiatives through national dailies, leading newspapers, and digital media publications.
+        </p>
+      </div>
+
+      <!-- Masonry News Gallery Container -->
+      <div id="newsGalleryContainer" class="news-masonry-container" aria-live="polite">
+        <!-- Rendered dynamically from js/data.js -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Common Shared Footer Component -->
+  <div id="site-footer"></div>
+
+  <!-- Scripts -->
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    (function () {
+      'use strict';
+
+      function renderNewsGallery() {
+        const container = document.getElementById('newsGalleryContainer');
+        if (!container) return;
+
+        const newsData = (window.NSS_DATA && Array.isArray(window.NSS_DATA.news)) 
+          ? window.NSS_DATA.news 
+          : [];
+
+        if (newsData.length === 0) {
+          container.innerHTML = `
+            <div style="column-span: all; text-align: center; padding: 60px 20px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 4px;">
+              <p style="color: #64748b; margin: 0; font-size: 1rem;">No media coverage records found at this time.</p>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = newsData.map((item, index) => {
+          let imageSrc = item.image || '';
+          if (imageSrc.startsWith('./')) {
+            imageSrc = '../' + imageSrc.slice(2);
+          } else if (imageSrc && !imageSrc.startsWith('http') && !imageSrc.startsWith('/') && !imageSrc.startsWith('../')) {
+            imageSrc = '../' + imageSrc;
+          }
+
+          const title = item.title || 'NSS IIITDM Kurnool Media Coverage';
+          const source = item.source || 'Media Publication';
+          const date = item.date || '';
+          const link = item.link || '#';
+
+          // Simplified, more formal card structure without the heavy overlays
+          return `
+            <article class="news-card" onclick="window.open('${encodeURI(link)}', '_blank', 'noopener,noreferrer')" tabindex="0" role="link" aria-label="${title.replace(/"/g, '&quot;')} - Opens in new tab">
+              <div class="news-img-box">
+                <img 
+                  src="${imageSrc}" 
+                  alt="${title.replace(/"/g, '&quot;')}" 
+                  class="news-img" 
+                  loading="${index < 2 ? 'eager' : 'lazy'}"
+                  onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=800&q=80';"
+                >
+              </div>
+              <div class="news-content">
+                <div class="news-meta-row">
+                  <span class="news-source-tag">${source}</span>
+                  ${date ? `<span class="news-date">${date}</span>` : ''}
+                </div>
+                <h2 class="news-title">${title}</h2>
+                <div class="news-footer-link">
+                  <span>Read full article</span>
+                  <i class="fa-solid fa-arrow-right-long"></i>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', renderNewsGallery);
+      } else {
+        renderNewsGallery();
+      }
+    })();
+  </script>
+</body>
+</html>

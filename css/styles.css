@@ -2237,4 +2237,160 @@ img {
   }
 }
 
+/* ==========================================================================
+   14. NSS IN NEWS & MEDIA COVERAGE (Formal & Enlarged)
+   ========================================================================== */
+.news-page-section {
+  padding: 60px 0 80px 0;
+  background-color: #f8fafc; /* Softer, institutional gray/blue */
+  min-height: calc(100vh - 280px);
+  font-family: 'Inter', sans-serif;
+}
 
+.news-header-banner {
+  text-align: center;
+  margin-bottom: 48px;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 20px;
+}
+
+.news-title {
+  margin-bottom: 12px;
+  color: #0f172a;
+}
+
+.news-subtitle {
+  margin: 0;
+  max-width: 820px;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.news-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #334155;
+  text-decoration: none;
+  margin-bottom: 32px;
+  transition: color 0.2s ease;
+}
+
+.news-back-link:hover {
+  color: #0f172a;
+  text-decoration: underline;
+}
+
+/* Responsive Masonry: 2 columns increases image size considerably */
+.news-masonry-container {
+  column-count: 2;
+  column-gap: 32px;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .news-masonry-container {
+    column-count: 1;
+    column-gap: 0;
+  }
+}
+
+/* News Article Card - Formalized */
+.news-card {
+  break-inside: avoid;
+  margin-bottom: 32px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px; /* Sharper corners for formal document look */
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* Reduced, subtle hover effect */
+.news-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.news-img-box {
+  width: 100%;
+  overflow: hidden;
+  background-color: #f1f5f9;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.news-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Removed scale/zoom effect */
+}
+
+/* News Content & Metadata */
+.news-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  gap: 8px;
+}
+
+/* Formalized Tag */
+.news-source-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #475569;
+  background: #f1f5f9;
+  padding: 4px 10px;
+  border-radius: 2px;
+}
+
+.news-date {
+  font-size: 0.85rem;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.news-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #0f172a;
+  line-height: 1.5;
+  margin: 0 0 20px 0;
+}
+
+/* Clean, simple footer link without dashed borders */
+.news-footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #2563eb; /* Classic accessible link blue */
+  margin-top: auto;
+}
+
+.news-footer-link i {
+  font-size: 0.8rem;
+  transition: transform 0.2s ease;
+}
+
+.news-card:hover .news-footer-link i {
+  transform: translateX(4px);
+}

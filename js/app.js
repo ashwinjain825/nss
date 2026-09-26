@@ -505,7 +505,9 @@
     if (!footerContainer) return;
 
     try {
-      const response = await fetch('footer.html');
+      const isSubfolder = window.location.pathname.includes('/nss-in-news/') || window.location.pathname.includes('\\nss-in-news\\');
+      const footerPath = isSubfolder ? '../footer.html' : 'footer.html';
+      const response = await fetch(footerPath);
       if (!response.ok) throw new Error(`HTTP error ${response.status}`);
       const html = await response.text();
       footerContainer.innerHTML = html;

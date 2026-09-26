@@ -558,7 +558,7 @@ window.NSS_DATA = {
   // ----------------------------------------------------------------------------
   nssTeam: {
     current: {
-      academicYear: "2025–2026",
+      academicYear: "2026–2027",
       faculty: [
         {
           name: "Dr. Somnath Dey",
@@ -737,7 +737,28 @@ window.NSS_DATA = {
   ],
 
   // ----------------------------------------------------------------------------
-  // 10. FREQUENTLY ASKED QUESTIONS (FAQs)
+  // 10. NSS in News & Media (Press Releases, Articles, and Media Coverage)
+  // ----------------------------------------------------------------------------
+
+  news: [
+    {
+      title: "IIITDM Kurnool NSS Volunteers serve prasadam, refreshments to devotees",
+      date: "February 15, 2026",
+      source: "The Hindu",
+      image: "./assets/images/news/iiitdm-nss-prasadam-service.jpg",
+      link: "https://www.thehindu.com/news/national/andhra-pradesh/iiitdm-kurnool-nss-volunteers-serve-prasadam-refreshments-to-devotees/article70635865.ece"
+    },
+    {
+      title: "Blood Donation Drive held at IIITDM Kurnool as part of I-Day fete",
+      date: "August 15, 2025",
+      source: "The Hindu",
+      image: "./assets/images/news/blood-donation-drive-79th-independence.jpg",
+      link: "https://www.thehindu.com/news/national/andhra-pradesh/blood-donation-camp-held-at-iiitdm-as-part-of-i-day-fete/article69936755.ece"
+    },
+  ],
+
+  // ----------------------------------------------------------------------------
+  // 11. FREQUENTLY ASKED QUESTIONS (FAQs)
   // ----------------------------------------------------------------------------
   faqs: [
     {
