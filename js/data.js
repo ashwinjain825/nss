@@ -605,34 +605,34 @@ window.NSS_DATA = {
     {
       name: "Pranith",
       role: "President",
-      roll: "125AD0039",
+      roll: "524ME0013",
       year: "3rd Year B.Tech",
       department: "AD",
       email: "nss.head@iiitk.ac.in",
-      image: "./assets/images/nss-team/125AD0039.jpg"
+      image: "./assets/images/nss-team/524ME0013.jpg"
     },
     {
       name: "Billa Saikrishna",
       role: "Vice-President",
-      roll: "524ME0013",
+      roll: "124AD0047",
       year: "3rd Year B.Tech",
       department: "ECE",
       email: "nss.colead@iiitk.ac.in",
-      image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80"
+      image: ""
     },
     {
       name: "Hasini Kolluri",
       role: "Vice President",
-      roll: "124AD0048",
+      roll: "124AD0017",
       year: "3rd Year B.Tech",
       department: "Mechanical",
       email: "nss.health@iiitk.ac.in",
-      image: "./assets/images/nss-team/124AD0048.jpg"
+      image: "./assets/images/nss-team/124AD0017.jpg"
     },
     {
       name: "Priya Deepika",
       role: "Tresurer",
-      roll: "125AD0039",
+      roll: "124AD0002",
       year: "3rd Year B.Tech",
       department: "CSE",
       email: "nss.green@iiitk.ac.in",
@@ -641,11 +641,11 @@ window.NSS_DATA = {
     {
       name: "Duvva Sai Vivek",
       role: "Tresurer",
-      roll: "125AD0039",
+      roll: "124AD0048",
       year: "Third Year B.Tech",
       department: "CSE",
       email: "nss.tech@iiitk.ac.in",
-      image: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&q=80"
+      image: "./assets/images/nss-team/124AD0048.jpg"
     }
   ],
 
