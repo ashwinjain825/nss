@@ -47,12 +47,201 @@
 
   async function init() {
     await loadHeader();
+    await loadNssTeamSection();
     setupFilters();
     checkUrlParameters();
     filterEvents();
     setupDropdowns();
     setupEventListeners();
     setupToast();
+  }
+
+  /**
+   * 0B. Dynamic NSS Team Section Component Loader (Homepage Only)
+   */
+  async function loadNssTeamSection() {
+    const teamContainer = document.getElementById('nss-team-container');
+    if (!teamContainer) return; // Only exists on index.html
+
+    try {
+      const response = await fetch('nss-team-section.html');
+      if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+      const html = await response.text();
+      teamContainer.innerHTML = html;
+    } catch (err) {
+      console.warn('Loading fallback NSS team component markup (useful for local file:// mode):', err);
+      teamContainer.innerHTML = getNssTeamFallbackHtml();
+    }
+
+    renderNssTeamData();
+    setupNssTeamScroll();
+  }
+
+  function getNssTeamFallbackHtml() {
+    return `
+<section id="nss-team" class="nss-team-section">
+  <div class="container">
+    <div class="nss-team-header">
+      <span class="nss-team-badge">ORGANIZATIONAL CELL</span>
+      <h2 class="nss-team-title">NSS Team</h2>
+      <p class="nss-team-subtitle">
+        The faculty mentors and student leaders driving social consciousness, youth empowerment, and community engagement at IIITDM Kurnool.
+      </p>
+    </div>
+    <div class="nss-team-block">
+      <div class="nss-team-block-header">
+        <h3 class="nss-team-block-title">Current Team (2025–2026)</h3>
+        <span class="nss-team-block-tag">Active Tenure</span>
+      </div>
+      <div class="nss-team-group">
+        <h4 class="nss-team-group-title">Faculty In-Charges & Advisors</h4>
+        <div id="currentFacultyGrid" class="nss-team-grid nss-faculty-grid"></div>
+      </div>
+      <div class="nss-team-group" style="margin-top: 36px;">
+        <h4 class="nss-team-group-title">Student Office Bearers & Leads</h4>
+        <div id="currentStudentsGrid" class="nss-team-grid nss-student-grid"></div>
+      </div>
+    </div>
+    <div class="nss-team-block nss-past-teams-block">
+      <div class="nss-team-block-header">
+        <div>
+          <h3 class="nss-team-block-title">Past Year Teams</h3>
+          <p class="nss-team-block-subtitle">Honoring former faculty advisors and student coordinators whose dedicated leadership established and grew the NSS cell.</p>
+        </div>
+      </div>
+      <div id="pastTeamsContainer"></div>
+    </div>
+  </div>
+</section>
+    `;
+  }
+
+  function renderNssTeamData() {
+    const teamData = (window.NSS_DATA && window.NSS_DATA.nssTeam) || null;
+    if (!teamData) return;
+
+    // 1. Current Faculty
+    const currFacGrid = document.getElementById('currentFacultyGrid');
+    if (currFacGrid && teamData.current && Array.isArray(teamData.current.faculty)) {
+      currFacGrid.innerHTML = teamData.current.faculty.map(f => `
+        <div class="nss-member-card">
+          <div class="nss-member-photo-wrap">
+            <img src="${f.photo}" alt="${f.name}" class="nss-member-photo" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80'">
+          </div>
+          <h5 class="nss-member-name">${f.name}</h5>
+          <span class="nss-member-role">${f.role}</span>
+          <div class="nss-member-detail">${f.designation}</div>
+          <div class="nss-member-subdetail">${f.department}</div>
+        </div>
+      `).join('');
+    }
+
+    // 2. Current Students
+    const currStuGrid = document.getElementById('currentStudentsGrid');
+    if (currStuGrid && teamData.current && Array.isArray(teamData.current.students)) {
+      currStuGrid.innerHTML = teamData.current.students.map(s => `
+        <div class="nss-member-card">
+          <div class="nss-member-photo-wrap">
+            <img src="${s.photo}" alt="${s.name}" class="nss-member-photo" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80'">
+          </div>
+          <h5 class="nss-member-name">${s.name}</h5>
+          <span class="nss-member-role">${s.role}</span>
+          <div class="nss-member-detail">${s.branch}</div>
+          <div class="nss-member-subdetail">${s.department}</div>
+        </div>
+      `).join('');
+    }
+
+    // 3. Past Year Teams
+    const pastContainer = document.getElementById('pastTeamsContainer');
+    if (pastContainer && Array.isArray(teamData.pastTeams)) {
+      pastContainer.innerHTML = teamData.pastTeams.map(pt => `
+        <div class="nss-past-year-wrapper">
+          <div class="nss-past-year-header">
+            <h4 class="nss-past-year-title">Academic Year ${pt.year}</h4>
+          </div>
+          <div class="nss-past-year-body">
+            ${Array.isArray(pt.faculty) && pt.faculty.length > 0 ? `
+              <div class="nss-past-year-subheading">Faculty In-Charges</div>
+              <div class="nss-team-grid nss-faculty-grid" style="margin-bottom: 24px;">
+                ${pt.faculty.map(f => `
+                  <div class="nss-member-card">
+                    <div class="nss-member-photo-wrap">
+                      <img src="${f.photo}" alt="${f.name}" class="nss-member-photo" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80'">
+                    </div>
+                    <h5 class="nss-member-name">${f.name}</h5>
+                    <span class="nss-member-role">${f.role}</span>
+                    <div class="nss-member-detail">${f.designation}</div>
+                    <div class="nss-member-subdetail">${f.department}</div>
+                  </div>
+                `).join('')}
+              </div>
+            ` : ''}
+
+            ${Array.isArray(pt.students) && pt.students.length > 0 ? `
+              <div class="nss-past-year-subheading">Student Coordinators</div>
+              <div class="nss-team-grid nss-student-grid">
+                ${pt.students.map(s => `
+                  <div class="nss-member-card">
+                    <div class="nss-member-photo-wrap">
+                      <img src="${s.photo}" alt="${s.name}" class="nss-member-photo" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80'">
+                    </div>
+                    <h5 class="nss-member-name">${s.name}</h5>
+                    <span class="nss-member-role">${s.role}</span>
+                    <div class="nss-member-detail">${s.branch}</div>
+                    <div class="nss-member-subdetail">${s.department}</div>
+                  </div>
+                `).join('')}
+              </div>
+            ` : ''}
+          </div>
+        </div>
+      `).join('');
+    }
+  }
+
+  function setupNssTeamScroll() {
+    // 1. Check if page loaded with #nss-team hash
+    if (window.location.hash === '#nss-team') {
+      setTimeout(() => {
+        const teamSec = document.getElementById('nss-team');
+        if (teamSec) {
+          teamSec.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
+    }
+
+    // 2. Delegate clicks on any links pointing to #nss-team or index.html#nss-team
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[href*="#nss-team"]');
+      if (!link) return;
+
+      const currentPath = window.location.pathname.toLowerCase();
+      const isHome = currentPath.endsWith('/') || currentPath.endsWith('index.html') || !currentPath.includes('.html');
+
+      if (isHome) {
+        const teamSec = document.getElementById('nss-team');
+        if (teamSec) {
+          e.preventDefault();
+          teamSec.scrollIntoView({ behavior: 'smooth' });
+          if (history.pushState) {
+            history.pushState(null, null, '#nss-team');
+          } else {
+            window.location.hash = '#nss-team';
+          }
+
+          // Close mobile menu if open
+          if (state.isMobileMenuOpen && elements.navMenu) {
+            state.isMobileMenuOpen = false;
+            elements.navMenu.style.display = 'none';
+          }
+          // Close open dropdowns
+          document.querySelectorAll('.nav-item-dropdown.open').forEach(el => {
+            el.classList.remove('open');
+          });
+        }
+      }
+    });
   }
 
   /**
@@ -152,8 +341,9 @@
         </ul>
       </li>
       <li class="nav-item-dropdown" data-nav="team">
-        <a href="team.html" class="nav-link nav-dropdown-toggle">NSS Team</a>
+        <a href="index.html#nss-team" id="nssTeamNavLink" class="nav-link nav-dropdown-toggle">NSS Team</a>
         <ul class="nav-dropdown-menu">
+          <li class="nav-dropdown-item"><a href="index.html#nss-team" class="nav-dropdown-link">NSS Team (Current & Past)</a></li>
           <li class="nav-dropdown-item"><a href="team.html" class="nav-dropdown-link">Full NSS Team Directory</a></li>
           <li class="nav-dropdown-item"><a href="team.html#patronSection" class="nav-dropdown-link">Chief Patron (Director)</a></li>
           <li class="nav-dropdown-item"><a href="team.html#facultyGrid" class="nav-dropdown-link">Programme Officer</a></li>
@@ -619,7 +809,8 @@
     filterEvents,
     downloadImage,
     downloadCurrentImage,
-    showToast
+    showToast,
+    renderNssTeamData
   };
 
   // Run on DOM ready

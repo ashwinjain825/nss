@@ -598,50 +598,239 @@ window.NSS_DATA = {
   },
 
   // ----------------------------------------------------------------------------
-  // 8. STUDENT CORE EXECUTIVE COMMITTEE
+  // ----------------------------------------------------------------------------
+  // 8. STUDENT CORE EXECUTIVE COMMITTEE (LEGACY & BACKWARD COMPATIBLE)
   // ----------------------------------------------------------------------------
   studentTeam: [
     {
-      name: "Student Overall Coordinator",
-      role: "Overall Student Head (NSS Core)",
-      year: "Final Year B.Tech",
-      department: "CSE",
+      name: "Pranith",
+      role: "President",
+      roll: "125AD0039",
+      year: "3rd Year B.Tech",
+      department: "--",
       email: "nss.head@iiitk.ac.in",
       image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80"
     },
     {
-      name: "Student Co-Coordinator",
-      role: "Co-Lead (Operations & Logistics)",
-      year: "Pre-Final Year B.Tech",
+      name: "Billa Saikrishna",
+      role: "Vice-President",
+      roll: "524ME0013",
+      year: "3rd Year B.Tech",
       department: "ECE",
       email: "nss.colead@iiitk.ac.in",
       image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80"
     },
     {
-      name: "Lead - Health & Blood Camps",
-      role: "Wing Coordinator (Health)",
-      year: "Third Year B.Tech",
+      name: "Hasini Kolluri",
+      role: "Vice President",
+      roll: "125AD0039",
+      year: "3rd Year B.Tech",
       department: "Mechanical",
       email: "nss.health@iiitk.ac.in",
       image: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=400&q=80"
     },
     {
-      name: "Lead - Green & Environment",
-      role: "Wing Coordinator (Eco & Tree Drives)",
-      year: "Third Year B.Tech",
+      name: "Priya Deepika",
+      role: "Tresurer",
+      roll: "125AD0039",
+      year: "3rd Year B.Tech",
       department: "CSE",
       email: "nss.green@iiitk.ac.in",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80"
+      image: "./assets/images/nss-team/124AD0002.jpg"
     },
     {
-      name: "Lead - Web & Technical Operations",
-      role: "Portal & Media Head",
+      name: "Duvva Sai Vivek",
+      role: "Tresurer",
+      roll: "125AD0039",
       year: "Third Year B.Tech",
       department: "CSE",
       email: "nss.tech@iiitk.ac.in",
       image: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&q=80"
     }
   ],
+
+  // ----------------------------------------------------------------------------
+  // 8B. NSS TEAM ROSTER (CURRENT & PAST YEARS - EASY TO UPDATE & MAINTAIN)
+  // ----------------------------------------------------------------------------
+  nssTeam: {
+    current: {
+      academicYear: "2025–2026",
+      faculty: [
+        {
+          name: "Dr. Faculty-in-Charge, NSS",
+          designation: "Associate Professor",
+          department: "Mechanical Engineering",
+          role: "NSS Programme Officer & Coordinator",
+          photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80"
+        },
+        {
+          name: "Dr. Faculty Advisor (CSE)",
+          designation: "Assistant Professor",
+          department: "Computer Science and Engineering",
+          role: "Faculty Advisor (Digital & STEM)",
+          photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80"
+        },
+        {
+          name: "Dr. Faculty Advisor (ECE)",
+          designation: "Assistant Professor",
+          department: "Electronics and Communication Engineering",
+          role: "Faculty Advisor (Health & Blood Drives)",
+          photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80"
+        },
+        {
+          name: "Dr. Faculty Advisor (Sciences)",
+          designation: "Assistant Professor",
+          department: "Sciences & Humanities",
+          role: "Faculty Advisor (Rural Outreach)",
+          photo: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80"
+        }
+      ],
+      students: [
+        {
+          name: "Aarav Sharma",
+          role: "President",
+          branch: "B.Tech Final Year",
+          department: "Computer Science and Engineering",
+          photo: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80"
+        },
+        {
+          name: "Pooja Reddy",
+          role: "Vice President",
+          branch: "B.Tech Final Year",
+          department: "Electronics and Communication Engineering",
+          photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80"
+        },
+        {
+          name: "Rohan Varma",
+          role: "Treasurer",
+          branch: "B.Tech Pre-Final Year",
+          department: "Mechanical Engineering",
+          photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80"
+        },
+        {
+          name: "Ananya Iyer",
+          role: "General Secretary",
+          branch: "B.Tech Pre-Final Year",
+          department: "Computer Science and Engineering",
+          photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80"
+        },
+        {
+          name: "Karthik Nair",
+          role: "Health Wing Lead",
+          branch: "B.Tech Third Year",
+          department: "Mechanical Engineering",
+          photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80"
+        },
+        {
+          name: "Sneha Patel",
+          role: "Environment Wing Lead",
+          branch: "B.Tech Third Year",
+          department: "Computer Science and Engineering",
+          photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80"
+        }
+      ]
+    },
+    pastTeams: [
+      {
+        year: "2024–2025",
+        faculty: [
+          {
+            name: "Dr. Faculty-in-Charge, NSS",
+            designation: "Associate Professor",
+            department: "Mechanical Engineering",
+            role: "NSS Programme Officer",
+            photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            name: "Dr. Faculty Advisor (ECE)",
+            designation: "Assistant Professor",
+            department: "Electronics and Communication Engineering",
+            role: "Faculty In-Charge",
+            photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80"
+          }
+        ],
+        students: [
+          {
+            name: "Vikram Malhotra",
+            role: "President",
+            branch: "B.Tech",
+            department: "Computer Science and Engineering",
+            photo: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            name: "Kavya Deshmukh",
+            role: "Vice President",
+            branch: "B.Tech",
+            department: "Electronics and Communication Engineering",
+            photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            name: "Aditya Prakash",
+            role: "Treasurer",
+            branch: "B.Tech",
+            department: "Mechanical Engineering",
+            photo: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            name: "Divya Nambiar",
+            role: "Secretary",
+            branch: "B.Tech",
+            department: "Computer Science and Engineering",
+            photo: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      },
+      {
+        year: "2023–2024",
+        faculty: [
+          {
+            name: "Dr. Faculty Advisor (Sciences)",
+            designation: "Assistant Professor",
+            department: "Sciences & Humanities",
+            role: "NSS Programme Officer",
+            photo: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            name: "Dr. Faculty Advisor (CSE)",
+            designation: "Assistant Professor",
+            department: "Computer Science and Engineering",
+            role: "Faculty In-Charge",
+            photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80"
+          }
+        ],
+        students: [
+          {
+            name: "Siddharth Rao",
+            role: "President",
+            branch: "B.Tech",
+            department: "Mechanical Engineering",
+            photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            name: "Meera Krishnan",
+            role: "Vice President",
+            branch: "B.Tech",
+            department: "Computer Science and Engineering",
+            photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            name: "Pranav Joshi",
+            role: "Treasurer",
+            branch: "B.Tech",
+            department: "Electronics and Communication Engineering",
+            photo: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=400&q=80"
+          },
+          {
+            name: "Ritu Singhania",
+            role: "Secretary",
+            branch: "B.Tech",
+            department: "Computer Science and Engineering",
+            photo: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80"
+          }
+        ]
+      }
+    ]
+  },
 
   // ----------------------------------------------------------------------------
   // 9. PHOTO GALLERY (With Filter Tags)
