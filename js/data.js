@@ -535,7 +535,7 @@ window.NSS_DATA = {
       role: "Chief Patron, NSS Cell",
       message: "At IIITDM Kurnool, we believe technical education finds its true culmination in social service. Our NSS volunteers embody the spirit of 'Not Me, But You' by applying their intellect and compassion to uplift neighboring communities.",
       email: "director@iiitk.ac.in",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+      image: ".assests/images/director.jpg",
       profileUrl: "https://iiitk.ac.in/Director's-Profile/page"
     },
     
@@ -598,58 +598,6 @@ window.NSS_DATA = {
   },
 
   // ----------------------------------------------------------------------------
-  // ----------------------------------------------------------------------------
-  // 8. STUDENT CORE EXECUTIVE COMMITTEE (LEGACY & BACKWARD COMPATIBLE)
-  // ----------------------------------------------------------------------------
-  studentTeam: [
-    {
-      name: "Pranith",
-      role: "President",
-      roll: "524ME0013",
-      year: "3rd Year B.Tech",
-      department: "AD",
-      email: "nss.head@iiitk.ac.in",
-      image: "./assets/images/nss-team/524ME0013.jpg"
-    },
-    {
-      name: "Billa Saikrishna",
-      role: "Vice-President",
-      roll: "124AD0047",
-      year: "3rd Year B.Tech",
-      department: "ECE",
-      email: "nss.colead@iiitk.ac.in",
-      image: ""
-    },
-    {
-      name: "Hasini Kolluri",
-      role: "Vice President",
-      roll: "124AD0017",
-      year: "3rd Year B.Tech",
-      department: "Mechanical",
-      email: "nss.health@iiitk.ac.in",
-      image: "./assets/images/nss-team/124AD0017.jpg"
-    },
-    {
-      name: "Priya Deepika",
-      role: "Tresurer",
-      roll: "124AD0002",
-      year: "3rd Year B.Tech",
-      department: "CSE",
-      email: "nss.green@iiitk.ac.in",
-      image: "./assets/images/nss-team/124AD0002.jpg"
-    },
-    {
-      name: "Duvva Sai Vivek",
-      role: "Tresurer",
-      roll: "124AD0048",
-      year: "Third Year B.Tech",
-      department: "CSE",
-      email: "nss.tech@iiitk.ac.in",
-      image: "./assets/images/nss-team/124AD0048.jpg"
-    }
-  ],
-
-  // ----------------------------------------------------------------------------
   // 8B. NSS TEAM ROSTER (CURRENT & PAST YEARS - EASY TO UPDATE & MAINTAIN)
   // ----------------------------------------------------------------------------
   nssTeam: {
@@ -662,69 +610,48 @@ window.NSS_DATA = {
           department: "Mechanical Engineering",
           role: "NSS Programme Officer & Coordinator",
           photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80"
-        },
-        {
-          name: "Dr. Faculty Advisor (CSE)",
-          designation: "Assistant Professor",
-          department: "Computer Science and Engineering",
-          role: "Faculty Advisor (Digital & STEM)",
-          photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80"
-        },
-        {
-          name: "Dr. Faculty Advisor (ECE)",
-          designation: "Assistant Professor",
-          department: "Electronics and Communication Engineering",
-          role: "Faculty Advisor (Health & Blood Drives)",
-          photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80"
-        },
-        {
-          name: "Dr. Faculty Advisor (Sciences)",
-          designation: "Assistant Professor",
-          department: "Sciences & Humanities",
-          role: "Faculty Advisor (Rural Outreach)",
-          photo: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80"
         }
       ],
       students: [
         {
           name: "Pranith",
           role: "President",
-          roll: "125AD0039",
+          roll: "524ME0013",
           branch: "3rd Year B.Tech",
-          department: "AD",
-          photo: "./assets/images/nss-team/125AD0039.jpg"
+          department: "ME",
+          photo: "./assets/images/nss-team/524ME0013.jpg"
         },
         {
           name: "Billa Saikrishna",
           role: "Vice-President",
-          roll: "524ME0013",
+          roll: "124AD0047",
           branch: "3rd Year B.Tech",
-          department: "ECE",
-          photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80"
+          department: "AIDS",
+          photo: "./assets/images/nss-team/124AD0047.jpg"
         },
         {
           name: "Hasini Kolluri",
           role: "Vice President",
-          roll: "124AD0048",
+          roll: "124AD0017",
           branch: "3rd Year B.Tech",
-          department: "Mechanical",
-          photo: "./assets/images/nss-team/124AD0048.jpg"
+          department: "AIDS",
+          photo: "./assets/images/nss-team/124AD0017.jpg"
         },
         {
           name: "Priya Deepika",
           role: "Treasurer",
           roll: "124AD0002",
           branch: "3rd Year B.Tech",
-          department: "CSE",
+          department: "AIDS",
           photo: "./assets/images/nss-team/124AD0002.jpg"
         },
         {
           name: "Duvva Sai Vivek",
           role: "Treasurer",
-          roll: "125AD0039",
+          roll: "124AD0048",
           branch: "Third Year B.Tech",
-          department: "CSE",
-          photo: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&q=80"
+          department: "AIDS",
+          photo: "./assets/images/nss-team/124AD0048.jpg"
         }
       ]
     },
@@ -738,13 +665,6 @@ window.NSS_DATA = {
             department: "Mechanical Engineering",
             role: "NSS Programme Officer",
             photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80"
-          },
-          {
-            name: "Dr. Faculty Advisor (ECE)",
-            designation: "Assistant Professor",
-            department: "Electronics and Communication Engineering",
-            role: "Faculty In-Charge",
-            photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80"
           }
         ],
         students: [
@@ -754,27 +674,6 @@ window.NSS_DATA = {
             branch: "B.Tech",
             department: "Computer Science and Engineering",
             photo: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80"
-          },
-          {
-            name: "Kavya Deshmukh",
-            role: "Vice President",
-            branch: "B.Tech",
-            department: "Electronics and Communication Engineering",
-            photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80"
-          },
-          {
-            name: "Aditya Prakash",
-            role: "Treasurer",
-            branch: "B.Tech",
-            department: "Mechanical Engineering",
-            photo: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80"
-          },
-          {
-            name: "Divya Nambiar",
-            role: "Secretary",
-            branch: "B.Tech",
-            department: "Computer Science and Engineering",
-            photo: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80"
           }
         ]
       },
@@ -787,13 +686,6 @@ window.NSS_DATA = {
             department: "Sciences & Humanities",
             role: "NSS Programme Officer",
             photo: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80"
-          },
-          {
-            name: "Dr. Faculty Advisor (CSE)",
-            designation: "Assistant Professor",
-            department: "Computer Science and Engineering",
-            role: "Faculty In-Charge",
-            photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80"
           }
         ],
         students: [
@@ -803,27 +695,6 @@ window.NSS_DATA = {
             branch: "B.Tech",
             department: "Mechanical Engineering",
             photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80"
-          },
-          {
-            name: "Meera Krishnan",
-            role: "Vice President",
-            branch: "B.Tech",
-            department: "Computer Science and Engineering",
-            photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80"
-          },
-          {
-            name: "Pranav Joshi",
-            role: "Treasurer",
-            branch: "B.Tech",
-            department: "Electronics and Communication Engineering",
-            photo: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=400&q=80"
-          },
-          {
-            name: "Ritu Singhania",
-            role: "Secretary",
-            branch: "B.Tech",
-            department: "Computer Science and Engineering",
-            photo: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80"
           }
         ]
       }
