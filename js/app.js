@@ -48,6 +48,7 @@
   async function init() {
     await loadHeader();
     await loadNssTeamSection();
+    await loadFooter();
     renderNssTeamData();
     setupFilters();
     checkUrlParameters();
@@ -89,9 +90,33 @@
         The faculty mentors and student leaders driving social consciousness, youth empowerment, and community engagement at IIITDM Kurnool.
       </p>
     </div>
+
+    <div class="nss-team-group" style="margin-bottom: 40px;">
+      <div class="patron-card" id="patronSection">
+        <div class="patron-img-wrapper">
+          <img src="./assets/images/director.jpg" alt="Prof. B. S. Murty" class="patron-img" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'">
+        </div>
+        <div class="patron-content">
+          <span class="patron-badge">Chief Patron, NSS Cell</span>
+          <h3 class="patron-name">Prof. B. S. Murty</h3>
+          <p class="patron-role">Director, IIITDM Kurnool</p>
+          <p class="patron-quote">
+            "At IIITDM Kurnool, we believe technical education finds its true culmination in social service. Our NSS volunteers embody the spirit of 'Not Me, But You' by applying their intellect and compassion to uplift neighboring communities."
+          </p>
+          <div class="patron-actions">
+            <a href="mailto:director@iiitk.ac.in" class="patron-btn">
+              director@iiitk.ac.in
+            </a>
+            <a href="https://iiitk.ac.in/Director's-Profile/page" target="_blank" class="patron-btn patron-btn-primary" rel="noopener noreferrer">
+              Director Profile
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="nss-team-block">
       <div class="nss-team-block-header">
-        <h3 class="nss-team-block-title">Current Team (2025–2026)</h3>
+        <h3 class="nss-team-block-title">Current Team (2026–2027)</h3>
         <span class="nss-team-block-tag">Active Tenure</span>
       </div>
       <div class="nss-team-group">
@@ -469,6 +494,100 @@
     </button>
   </div>
 </nav>
+    `;
+  }
+
+  /**
+   * 0C. Dynamic Shared Footer Component Loader
+   */
+  async function loadFooter() {
+    const footerContainer = document.getElementById('site-footer');
+    if (!footerContainer) return;
+
+    try {
+      const response = await fetch('footer.html');
+      if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+      const html = await response.text();
+      footerContainer.innerHTML = html;
+    } catch (err) {
+      console.warn('Loading fallback footer component (useful for local file:// mode):', err);
+      footerContainer.innerHTML = getFallbackFooterHtml();
+    }
+  }
+
+  function getFallbackFooterHtml() {
+    return `
+<footer class="iitb-footer">
+  <div class="container iitb-footer-container">
+    <div class="iitb-footer-grid">
+      <div class="iitb-footer-col iitb-footer-brand-col">
+        <h3 class="iitb-footer-brand-title">NSS IIITDM Kurnool</h3>
+        <p class="iitb-footer-desc">
+          We provide opportunities to students to contribute their bit in the welfare of the society. NSS has departments spanning all avenues of community service right from educating the underprivileged to innovating solutions to social problems using technology.
+        </p>
+        <div class="iitb-footer-socials">
+          <a href="https://www.instagram.com/iiit.Kurnool/" target="_blank" rel="noopener noreferrer" class="iitb-social-link" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.youtube.com/channel/UCXUm4xE1QB6jkBMRBnmtguw" target="_blank" rel="noopener noreferrer" class="iitb-social-link" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://www.linkedin.com/company/iiit-Kurnool" target="_blank" rel="noopener noreferrer" class="iitb-social-link" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="iitb-footer-col iitb-footer-contact-col">
+        <h4 class="iitb-footer-heading">Have a question<span class="iitb-accent-mark">?</span></h4>
+        <div class="iitb-contact-list">
+          <div class="iitb-contact-item">
+            <span class="iitb-contact-icon"><i class="fa-solid fa-location-dot"></i></span>
+            <div class="iitb-contact-text">
+              NSS Cell, Ground Floor, SAC Building,<br>
+              IIITDM Kurnool, Jagannathagattu, Dinnedevarapadu,<br>
+              Kurnool – 518008, Andhra Pradesh
+            </div>
+          </div>
+          <div class="iitb-contact-item">
+            <span class="iitb-contact-icon"><i class="fa-solid fa-phone"></i></span>
+            <div class="iitb-contact-text">
+              <a href="tel:+918518289114">+91 8518 289114</a><br>
+              <a href="tel:+918518289100">+91 8518 289100</a>
+            </div>
+          </div>
+          <div class="iitb-contact-item">
+            <span class="iitb-contact-icon"><i class="fa-solid fa-envelope"></i></span>
+            <div class="iitb-contact-text">
+              <a href="mailto:nss@iiitk.ac.in">nss@iiitk.ac.in</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="iitb-footer-col iitb-footer-map-col">
+        <h4 class="iitb-footer-heading">Locate <span class="iitb-accent-mark">Us</span></h4>
+        <div class="iitb-map-frame-wrapper">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3844.757134375086!2d78.03213037599026!3d15.497554985102555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb5dd38bc6f8275%3A0xb6c7d41f53d85bc9!2sIndian%20Institute%20of%20Information%20Technology%20Design%20and%20Manufacturing%20Kurnool!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
+            width="100%"
+            height="180"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="IIITDM Kurnool Campus Map">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="iitb-footer-bottom">
+    <div class="iitb-footer-wave">
+      <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none">
+        <path d="M0,25 C320,60 480,5 800,40 C1120,75 1280,15 1440,30 L1440,80 L0,80 Z" fill="#0f172a" opacity="0.6"/>
+        <path d="M0,40 C360,75 520,20 860,50 C1200,80 1320,30 1440,42" stroke="#ea580c" stroke-width="1.8" fill="none" opacity="0.75"/>
+      </svg>
+    </div>
+    <div class="container iitb-copyright-container">
+      <p class="iitb-copyright-text">
+        © 2026 NSS IIITDM Kurnool. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
     `;
   }
 

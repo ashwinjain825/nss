@@ -783,27 +783,35 @@ img {
 }
 
 .patron-card {
-  background: linear-gradient(135deg, #0a192f 0%, #163660 100%);
-  color: #ffffff;
-  border-radius: var(--radius-xl);
-  padding: 40px;
-  margin-bottom: 48px;
+  background: #ffffff;
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+  border-left: 4px solid var(--primary-800);
+  border-radius: var(--radius-lg);
+  padding: 36px 40px;
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 190px 1fr;
   align-items: center;
-  gap: 40px;
-  box-shadow: var(--shadow-xl);
+  gap: 36px;
+  box-shadow: 0 2px 8px rgba(10, 25, 47, 0.04);
   position: relative;
-  overflow: hidden;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.patron-card:hover {
+  border-color: var(--border-medium);
+  border-left-color: var(--primary-700);
+  box-shadow: 0 4px 16px rgba(10, 25, 47, 0.08);
 }
 
 .patron-img-wrapper {
-  width: 180px;
-  height: 180px;
-  border-radius: var(--radius-lg);
+  width: 170px;
+  height: 170px;
+  border-radius: var(--radius-md);
   overflow: hidden;
-  border: 3px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-light);
+  background-color: var(--bg-alt);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 .patron-img {
@@ -812,41 +820,89 @@ img {
   object-fit: cover;
 }
 
+.patron-content {
+  display: flex;
+  flex-direction: column;
+}
+
 .patron-badge {
   display: inline-block;
-  background: var(--accent-crimson);
-  color: #ffffff;
+  align-self: flex-start;
+  background: rgba(197, 48, 48, 0.08);
+  color: var(--accent-crimson);
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: var(--radius-sm);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(197, 48, 48, 0.15);
 }
 
 .patron-name {
-  font-size: 1.8rem;
+  font-size: 1.65rem;
   font-weight: 800;
-  line-height: 1.2;
+  color: var(--primary-900);
+  line-height: 1.25;
   margin-bottom: 4px;
 }
 
 .patron-role {
-  font-size: 1rem;
-  color: #93c5fd;
-  font-weight: 500;
-  margin-bottom: 16px;
+  font-size: 0.95rem;
+  color: var(--primary-700);
+  font-weight: 600;
+  margin-bottom: 14px;
 }
 
 .patron-quote {
-  font-size: 0.95rem;
-  color: #e2e8f0;
-  line-height: 1.6;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
   font-style: italic;
   margin-bottom: 20px;
-  border-left: 3px solid #60a5fa;
-  padding-left: 16px;
+  border-left: 3px solid var(--primary-600);
+  padding-left: 14px;
+}
+
+.patron-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.patron-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  background: var(--bg-alt);
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
+  transition: var(--transition-fast);
+}
+
+.patron-btn:hover {
+  background: var(--border-light);
+  color: var(--primary-900);
+  border-color: var(--primary-700);
+}
+
+.patron-btn-primary {
+  background: var(--primary-900);
+  color: #ffffff;
+  border-color: var(--primary-900);
+}
+
+.patron-btn-primary:hover {
+  background: var(--primary-800);
+  color: #ffffff;
+  border-color: var(--primary-800);
 }
 
 /* Faculty Cards Grid */
@@ -1248,133 +1304,201 @@ img {
 }
 
 /* --------------------------------------------------------------------------
-   9. FOOTER & CAMPUS INFO
+   9. IIT BOMBAY STYLE OFFICIAL FOOTER COMPONENT
+   Pure Deep Black (#000000), 3-Column Grid, Rust/Orange Highlights, Map Embed
    -------------------------------------------------------------------------- */
-.main-footer {
-  background: var(--primary-950);
-  color: #cbd5e1;
-  padding: 70px 0 30px 0;
-  border-top: 4px solid var(--accent-crimson);
+.iitb-footer {
+  background-color: #000000;
+  color: #d1d5db;
+  padding: 64px 0 0 0;
+  position: relative;
+  overflow: hidden;
+  font-family: inherit;
 }
 
-.footer-grid {
+.iitb-footer-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.iitb-footer-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
-  gap: 40px;
-  margin-bottom: 50px;
+  grid-template-columns: 1.25fr 1fr 1fr;
+  gap: 48px;
+  align-items: flex-start;
+  padding-bottom: 56px;
 }
 
-.footer-brand-title {
-  font-size: 1.3rem;
+/* Col 1: Brand & Purpose */
+.iitb-footer-brand-title {
+  font-size: 1.45rem;
   font-weight: 800;
   color: #ffffff;
-  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+  margin-bottom: 18px;
 }
 
-.footer-motto-text {
-  color: #fbbf24;
-  font-size: 0.85rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-.footer-about-text {
+.iitb-footer-desc {
   font-size: 0.88rem;
-  line-height: 1.6;
-  color: #94a3b8;
+  line-height: 1.65;
+  color: #9ca3af;
   margin-bottom: 24px;
+  max-width: 380px;
 }
 
-.footer-col-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 20px;
-  position: relative;
-  padding-bottom: 10px;
-}
-
-.footer-col-title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 32px;
-  height: 2px;
-  background: var(--accent-crimson);
-}
-
-.footer-links-list {
-  list-style: none;
+.iitb-footer-socials {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   gap: 12px;
-  font-size: 0.88rem;
 }
 
-.footer-link {
-  color: #94a3b8;
-  transition: var(--transition-fast);
+.iitb-social-link {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  font-size: 0.95rem;
+  transition: var(--transition-fast);
+  text-decoration: none;
 }
 
-.footer-link:hover {
+.iitb-social-link:hover {
+  background: #ea580c;
   color: #ffffff;
-  transform: translateX(4px);
+  transform: translateY(-2px);
 }
 
-.footer-contact-item {
+/* Headings with Rust/Orange Accent */
+.iitb-footer-heading {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 22px;
+  letter-spacing: -0.01em;
+}
+
+.iitb-accent-mark {
+  color: #ea580c;
+  font-weight: 800;
+}
+
+/* Col 2: Have a question? */
+.iitb-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.iitb-contact-item {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  font-size: 0.88rem;
-  color: #94a3b8;
-  margin-bottom: 14px;
-  line-height: 1.5;
 }
 
-.footer-contact-item i {
-  color: #60a5fa;
+.iitb-contact-icon {
+  color: #ea580c;
+  font-size: 0.95rem;
   margin-top: 3px;
+  flex-shrink: 0;
+  width: 18px;
+  text-align: center;
 }
 
-.footer-social-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 20px;
+.iitb-contact-text {
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: #d1d5db;
 }
 
-.footer-social-btn {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
+.iitb-contact-text a {
+  color: #d1d5db;
+  text-decoration: none;
   transition: var(--transition-fast);
 }
 
-.footer-social-btn:hover {
-  background: var(--primary-700);
-  transform: translateY(-3px);
+.iitb-contact-text a:hover {
+  color: #ea580c;
 }
 
-.footer-bottom-bar {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* Col 3: Locate Us */
+.iitb-map-frame-wrapper {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #111827;
+}
+
+.iitb-map-frame-wrapper iframe {
+  display: block;
+  width: 100%;
+  height: 175px;
+}
+
+/* Bottom Wave & Ribbon */
+.iitb-footer-bottom {
+  position: relative;
+  background-color: #0b1120;
+}
+
+.iitb-footer-wave {
+  position: absolute;
+  top: -38px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  overflow: hidden;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.iitb-footer-wave svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.iitb-copyright-container {
+  padding: 24px 24px;
+  text-align: center;
+}
+
+.iitb-copyright-text {
   font-size: 0.82rem;
-  color: #64748b;
-  flex-wrap: wrap;
-  gap: 16px;
+  color: #94a3b8;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 992px) {
+  .iitb-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+  .iitb-footer-map-col {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .iitb-footer {
+    padding-top: 48px;
+  }
+  .iitb-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-bottom: 40px;
+  }
+  .iitb-footer-map-col {
+    grid-column: span 1;
+  }
 }
 
 .footer-legacy-link {
@@ -1424,15 +1548,23 @@ img {
   .patron-card {
     grid-template-columns: 1fr;
     text-align: center;
+    padding: 28px 24px;
+    gap: 24px;
   }
   .patron-img-wrapper {
     margin: 0 auto;
   }
+  .patron-badge {
+    align-self: center;
+  }
   .patron-quote {
     border-left: none;
-    border-top: 2px solid #60a5fa;
-    padding-top: 16px;
+    border-top: 2px solid var(--border-light);
+    padding-top: 14px;
     padding-left: 0;
+  }
+  .patron-actions {
+    justify-content: center;
   }
 }
 

@@ -535,7 +535,7 @@ window.NSS_DATA = {
       role: "Chief Patron, NSS Cell",
       message: "At IIITDM Kurnool, we believe technical education finds its true culmination in social service. Our NSS volunteers embody the spirit of 'Not Me, But You' by applying their intellect and compassion to uplift neighboring communities.",
       email: "director@iiitk.ac.in",
-      image: ".assests/images/director.jpg",
+      image: "./assets/images/director.jpg",
       profileUrl: "https://iiitk.ac.in/Director's-Profile/page"
     },
     
@@ -550,51 +550,7 @@ window.NSS_DATA = {
       phone: "+91-8518-289114",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
       bio: "Guiding the NSS volunteers of IIITDM Kurnool in orchestrating impactful health camps, rural educational visits, and eco-conservation initiatives."
-    },
-
-    // Departmental Faculty Advisors
-    advisors: [
-      {
-        id: "fac-cse",
-        name: "Dr. Faculty Advisor (CSE)",
-        role: "Faculty Advisor - Digital & STEM Wing",
-        department: "Computer Science and Engineering",
-        email: "advisor.cse@iiitk.ac.in",
-        cabin: "Academic Block-2, Cabin 205",
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80",
-        focus: "Digital Literacy, Coding in Rural Schools, Tech for Social Good"
-      },
-      {
-        id: "fac-ece",
-        name: "Dr. Faculty Advisor (ECE)",
-        role: "Faculty Advisor - Health & Blood Drive Wing",
-        department: "Electronics and Communication Engineering",
-        email: "advisor.ece@iiitk.ac.in",
-        cabin: "Academic Block-2, Cabin 312",
-        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80",
-        focus: "Blood Donation Drives, Red Cross Liaison, Medical Camps"
-      },
-      {
-        id: "fac-mech",
-        name: "Dr. Faculty Advisor (ME)",
-        role: "Faculty Advisor - Swachhata & Environment Wing",
-        department: "Mechanical Engineering",
-        email: "advisor.me@iiitk.ac.in",
-        cabin: "Workshop Complex, Faculty Cabin 102",
-        image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80",
-        focus: "Campus Greening, Water Harvesting, Solar & Waste Management"
-      },
-      {
-        id: "fac-sciences",
-        name: "Dr. Faculty Advisor (Sciences)",
-        role: "Faculty Advisor - Rural Engagement & Surveys",
-        department: "Department of Sciences & Humanities",
-        email: "advisor.sciences@iiitk.ac.in",
-        cabin: "Academic Block-1, Cabin 118",
-        image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80",
-        focus: "Village Socio-economic Surveys, Mental Health Workshops, Gender Equality"
-      }
-    ]
+    }
   },
 
   // ----------------------------------------------------------------------------
@@ -605,11 +561,20 @@ window.NSS_DATA = {
       academicYear: "2025–2026",
       faculty: [
         {
-          name: "Dr. Faculty-in-Charge, NSS",
-          designation: "Associate Professor",
-          department: "Mechanical Engineering",
-          role: "NSS Programme Officer & Coordinator",
-          photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80"
+          name: "Dr. Somnath Dey",
+          designation: "Assistant Professor",
+          department: "Dept. of ME",
+          email: "sdey@iiitk.ac.in",
+          role: "Faculty-in-Charge, NSS",
+          photo: "./assets/images/nss-team/sdey.jpg"
+        },
+        {
+          name: "Dr. K. Elangovan",
+          designation: "Assistant Professor",
+          department: "Dept. of ECE",
+          email: "elango.k@iiitk.ac.in",
+          role: "Faculty-in-Charge, NSS",
+          photo: "./assets/images/nss-team/elangovan.jpg"
         }
       ],
       students: [
