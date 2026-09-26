@@ -48,6 +48,7 @@
   async function init() {
     await loadHeader();
     await loadNssTeamSection();
+    renderNssTeamData();
     setupFilters();
     checkUrlParameters();
     filterEvents();
@@ -102,14 +103,16 @@
         <div id="currentStudentsGrid" class="nss-team-grid nss-student-grid"></div>
       </div>
     </div>
-    <div class="nss-team-block nss-past-teams-block">
-      <div class="nss-team-block-header">
-        <div>
-          <h3 class="nss-team-block-title">Past Year Teams</h3>
-          <p class="nss-team-block-subtitle">Honoring former faculty advisors and student coordinators whose dedicated leadership established and grew the NSS cell.</p>
-        </div>
+    <div class="nss-past-teams-cta-box">
+      <div class="nss-past-teams-cta-content">
+        <h4 class="nss-past-teams-cta-title">Looking for Past Year Teams?</h4>
+        <p class="nss-past-teams-cta-desc">
+          Explore past executive committees, student coordinators, and faculty advisors across previous academic tenures.
+        </p>
       </div>
-      <div id="pastTeamsContainer"></div>
+      <a href="team.html#past-teams" class="btn btn-outline-primary nss-past-teams-cta-btn">
+        View Past Year Teams &rarr;
+      </a>
     </div>
   </div>
 </section>
@@ -117,86 +120,175 @@
   }
 
   function renderNssTeamData() {
-    const teamData = (window.NSS_DATA && window.NSS_DATA.nssTeam) || null;
-    if (!teamData) return;
+    const nssData = window.NSS_DATA || {};
+    const teamData = nssData.nssTeam || null;
 
-    // 1. Current Faculty
+    // 1. Current Faculty (Homepage)
     const currFacGrid = document.getElementById('currentFacultyGrid');
-    if (currFacGrid && teamData.current && Array.isArray(teamData.current.faculty)) {
-      currFacGrid.innerHTML = teamData.current.faculty.map(f => `
+    if (currFacGrid && teamData && teamData.current && Array.isArray(teamData.current.faculty)) {
+      currFacGrid.innerHTML = teamData.current.faculty.map(f => {
+        const photo = f.photo || f.image || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80';
+        return `
         <div class="nss-member-card">
           <div class="nss-member-photo-wrap">
-            <img src="${f.photo}" alt="${f.name}" class="nss-member-photo" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80'">
+            <img src="${photo}" alt="${f.name || ''}" class="nss-member-photo" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80'">
           </div>
-          <h5 class="nss-member-name">${f.name}</h5>
-          <span class="nss-member-role">${f.role}</span>
-          <div class="nss-member-detail">${f.designation}</div>
-          <div class="nss-member-subdetail">${f.department}</div>
+          <h5 class="nss-member-name">${f.name || ''}</h5>
+          <span class="nss-member-role">${f.role || ''}</span>
+          <div class="nss-member-detail">${f.designation || ''}</div>
+          <div class="nss-member-subdetail">${f.department || ''}</div>
         </div>
-      `).join('');
+      `;
+      }).join('');
     }
 
-    // 2. Current Students
+    // 2. Current Students (Homepage) - Auto-updates from nssTeam.current.students or studentTeam
     const currStuGrid = document.getElementById('currentStudentsGrid');
-    if (currStuGrid && teamData.current && Array.isArray(teamData.current.students)) {
-      currStuGrid.innerHTML = teamData.current.students.map(s => `
-        <div class="nss-member-card">
-          <div class="nss-member-photo-wrap">
-            <img src="${s.photo}" alt="${s.name}" class="nss-member-photo" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80'">
+    if (currStuGrid) {
+      const studentsList = (teamData && teamData.current && Array.isArray(teamData.current.students) && teamData.current.students.length > 0)
+        ? teamData.current.students
+        : (Array.isArray(nssData.studentTeam) ? nssData.studentTeam : []);
+
+      if (studentsList.length > 0) {
+        currStuGrid.innerHTML = studentsList.map(s => {
+          const photo = s.photo || s.image || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80';
+          const academicYear = s.branch || s.year || '';
+          const dept = s.department && s.department !== '--' ? s.department : '';
+          const rollInfo = s.roll ? `<div class="nss-member-subdetail" style="font-weight: 500;">Roll: ${s.roll}</div>` : '';
+
+          return `
+          <div class="nss-member-card">
+            <div class="nss-member-photo-wrap">
+              <img src="${photo}" alt="${s.name || ''}" class="nss-member-photo" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80'">
+            </div>
+            <h5 class="nss-member-name">${s.name || ''}</h5>
+            <span class="nss-member-role">${s.role || ''}</span>
+            <div class="nss-member-detail">${academicYear}${dept ? ` • ${dept}` : ''}</div>
+            ${rollInfo}
           </div>
-          <h5 class="nss-member-name">${s.name}</h5>
-          <span class="nss-member-role">${s.role}</span>
-          <div class="nss-member-detail">${s.branch}</div>
-          <div class="nss-member-subdetail">${s.department}</div>
-        </div>
-      `).join('');
+        `;
+        }).join('');
+      }
     }
 
-    // 3. Past Year Teams
-    const pastContainer = document.getElementById('pastTeamsContainer');
-    if (pastContainer && Array.isArray(teamData.pastTeams)) {
-      pastContainer.innerHTML = teamData.pastTeams.map(pt => `
-        <div class="nss-past-year-wrapper">
-          <div class="nss-past-year-header">
-            <h4 class="nss-past-year-title">Academic Year ${pt.year}</h4>
-          </div>
-          <div class="nss-past-year-body">
-            ${Array.isArray(pt.faculty) && pt.faculty.length > 0 ? `
-              <div class="nss-past-year-subheading">Faculty In-Charges</div>
-              <div class="nss-team-grid nss-faculty-grid" style="margin-bottom: 24px;">
-                ${pt.faculty.map(f => `
-                  <div class="nss-member-card">
-                    <div class="nss-member-photo-wrap">
-                      <img src="${f.photo}" alt="${f.name}" class="nss-member-photo" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80'">
-                    </div>
-                    <h5 class="nss-member-name">${f.name}</h5>
-                    <span class="nss-member-role">${f.role}</span>
-                    <div class="nss-member-detail">${f.designation}</div>
-                    <div class="nss-member-subdetail">${f.department}</div>
-                  </div>
-                `).join('')}
-              </div>
-            ` : ''}
+    // 3. Past Teams Accordion (On team.html, one year open at a time)
+    renderPastTeamsAccordion();
+  }
 
-            ${Array.isArray(pt.students) && pt.students.length > 0 ? `
-              <div class="nss-past-year-subheading">Student Coordinators</div>
-              <div class="nss-team-grid nss-student-grid">
-                ${pt.students.map(s => `
-                  <div class="nss-member-card">
-                    <div class="nss-member-photo-wrap">
-                      <img src="${s.photo}" alt="${s.name}" class="nss-member-photo" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80'">
+  /**
+   * Render Past Teams on team.html with strict single-open accordion behavior:
+   * When one year is clicked, that dropdown opens and any previously open dropdown automatically closes.
+   */
+  function renderPastTeamsAccordion() {
+    const accordionContainer = document.getElementById('pastTeamsAccordion');
+    if (!accordionContainer) return;
+
+    const nssData = window.NSS_DATA || {};
+    const pastTeams = (nssData.nssTeam && Array.isArray(nssData.nssTeam.pastTeams)) ? nssData.nssTeam.pastTeams : [];
+
+    if (pastTeams.length === 0) {
+      accordionContainer.innerHTML = '<p style="color: var(--text-muted); font-size: 0.95rem;">No past year teams archived yet.</p>';
+      return;
+    }
+
+    // Render accordion items. First year is open by default.
+    accordionContainer.innerHTML = pastTeams.map((pt, idx) => {
+      const isOpen = idx === 0;
+      return `
+        <div class="nss-accordion-item ${isOpen ? 'active' : ''}" data-year="${pt.year}">
+          <button type="button" class="nss-accordion-header" aria-expanded="${isOpen ? 'true' : 'false'}">
+            <span class="nss-accordion-year">Academic Year ${pt.year}</span>
+            <span class="nss-accordion-indicator">${isOpen ? '−' : '+'}</span>
+          </button>
+          <div class="nss-accordion-content" style="${isOpen ? 'display: block;' : 'display: none;'}">
+            <div class="nss-accordion-inner">
+              ${Array.isArray(pt.faculty) && pt.faculty.length > 0 ? `
+                <div class="nss-past-year-subheading">Faculty In-Charges & Advisors</div>
+                <div class="nss-team-grid nss-faculty-grid" style="margin-bottom: 28px;">
+                  ${pt.faculty.map(f => {
+                    const photo = f.photo || f.image || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80';
+                    return `
+                    <div class="nss-member-card">
+                      <div class="nss-member-photo-wrap">
+                        <img src="${photo}" alt="${f.name || ''}" class="nss-member-photo" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80'">
+                      </div>
+                      <h5 class="nss-member-name">${f.name || ''}</h5>
+                      <span class="nss-member-role">${f.role || ''}</span>
+                      <div class="nss-member-detail">${f.designation || ''}</div>
+                      <div class="nss-member-subdetail">${f.department || ''}</div>
                     </div>
-                    <h5 class="nss-member-name">${s.name}</h5>
-                    <span class="nss-member-role">${s.role}</span>
-                    <div class="nss-member-detail">${s.branch}</div>
-                    <div class="nss-member-subdetail">${s.department}</div>
-                  </div>
-                `).join('')}
-              </div>
-            ` : ''}
+                  `;
+                  }).join('')}
+                </div>
+              ` : ''}
+
+              ${Array.isArray(pt.students) && pt.students.length > 0 ? `
+                <div class="nss-past-year-subheading">Student Office Bearers & Leads</div>
+                <div class="nss-team-grid nss-student-grid">
+                  ${pt.students.map(s => {
+                    const photo = s.photo || s.image || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80';
+                    const academicYear = s.branch || s.year || '';
+                    const dept = s.department && s.department !== '--' ? s.department : '';
+                    return `
+                    <div class="nss-member-card">
+                      <div class="nss-member-photo-wrap">
+                        <img src="${photo}" alt="${s.name || ''}" class="nss-member-photo" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80'">
+                      </div>
+                      <h5 class="nss-member-name">${s.name || ''}</h5>
+                      <span class="nss-member-role">${s.role || ''}</span>
+                      <div class="nss-member-detail">${academicYear}</div>
+                      <div class="nss-member-subdetail">${dept}</div>
+                    </div>
+                  `;
+                  }).join('')}
+                </div>
+              ` : ''}
+            </div>
           </div>
         </div>
-      `).join('');
+      `;
+    }).join('');
+
+    // Attach exclusive single-dropdown toggle behavior
+    const allItems = accordionContainer.querySelectorAll('.nss-accordion-item');
+    allItems.forEach(item => {
+      const headerBtn = item.querySelector('.nss-accordion-header');
+      if (!headerBtn) return;
+
+      headerBtn.addEventListener('click', () => {
+        const isCurrentlyActive = item.classList.contains('active');
+
+        // Close ALL items first (Exclusive behavior: only one open at a time)
+        allItems.forEach(otherItem => {
+          otherItem.classList.remove('active');
+          const otherBtn = otherItem.querySelector('.nss-accordion-header');
+          const otherContent = otherItem.querySelector('.nss-accordion-content');
+          const otherInd = otherItem.querySelector('.nss-accordion-indicator');
+          if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+          if (otherContent) otherContent.style.display = 'none';
+          if (otherInd) otherInd.textContent = '+';
+        });
+
+        // If it wasn't already active, open it now
+        if (!isCurrentlyActive) {
+          item.classList.add('active');
+          headerBtn.setAttribute('aria-expanded', 'true');
+          const content = item.querySelector('.nss-accordion-content');
+          const ind = item.querySelector('.nss-accordion-indicator');
+          if (content) content.style.display = 'block';
+          if (ind) ind.textContent = '−';
+        }
+      });
+    });
+
+    // Check if URL has #past-teams or past year parameter and smooth scroll
+    if (window.location.hash === '#past-teams') {
+      setTimeout(() => {
+        const pastSection = document.getElementById('past-teams');
+        if (pastSection) {
+          pastSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 200);
     }
   }
 

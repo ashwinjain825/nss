@@ -607,9 +607,9 @@ window.NSS_DATA = {
       role: "President",
       roll: "125AD0039",
       year: "3rd Year B.Tech",
-      department: "--",
+      department: "AD",
       email: "nss.head@iiitk.ac.in",
-      image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80"
+      image: "./assets/images/nss-team/125AD0039.jpg"
     },
     {
       name: "Billa Saikrishna",
@@ -623,11 +623,11 @@ window.NSS_DATA = {
     {
       name: "Hasini Kolluri",
       role: "Vice President",
-      roll: "125AD0039",
+      roll: "124AD0048",
       year: "3rd Year B.Tech",
       department: "Mechanical",
       email: "nss.health@iiitk.ac.in",
-      image: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&w=400&q=80"
+      image: "./assets/images/nss-team/124AD0048.jpg"
     },
     {
       name: "Priya Deepika",
@@ -687,46 +687,44 @@ window.NSS_DATA = {
       ],
       students: [
         {
-          name: "Aarav Sharma",
+          name: "Pranith",
           role: "President",
-          branch: "B.Tech Final Year",
-          department: "Computer Science and Engineering",
-          photo: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80"
+          roll: "125AD0039",
+          branch: "3rd Year B.Tech",
+          department: "AD",
+          photo: "./assets/images/nss-team/125AD0039.jpg"
         },
         {
-          name: "Pooja Reddy",
-          role: "Vice President",
-          branch: "B.Tech Final Year",
-          department: "Electronics and Communication Engineering",
-          photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80"
-        },
-        {
-          name: "Rohan Varma",
-          role: "Treasurer",
-          branch: "B.Tech Pre-Final Year",
-          department: "Mechanical Engineering",
-          photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80"
-        },
-        {
-          name: "Ananya Iyer",
-          role: "General Secretary",
-          branch: "B.Tech Pre-Final Year",
-          department: "Computer Science and Engineering",
+          name: "Billa Saikrishna",
+          role: "Vice-President",
+          roll: "524ME0013",
+          branch: "3rd Year B.Tech",
+          department: "ECE",
           photo: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80"
         },
         {
-          name: "Karthik Nair",
-          role: "Health Wing Lead",
-          branch: "B.Tech Third Year",
-          department: "Mechanical Engineering",
-          photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80"
+          name: "Hasini Kolluri",
+          role: "Vice President",
+          roll: "124AD0048",
+          branch: "3rd Year B.Tech",
+          department: "Mechanical",
+          photo: "./assets/images/nss-team/124AD0048.jpg"
         },
         {
-          name: "Sneha Patel",
-          role: "Environment Wing Lead",
-          branch: "B.Tech Third Year",
-          department: "Computer Science and Engineering",
-          photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80"
+          name: "Priya Deepika",
+          role: "Treasurer",
+          roll: "124AD0002",
+          branch: "3rd Year B.Tech",
+          department: "CSE",
+          photo: "./assets/images/nss-team/124AD0002.jpg"
+        },
+        {
+          name: "Duvva Sai Vivek",
+          role: "Treasurer",
+          roll: "125AD0039",
+          branch: "Third Year B.Tech",
+          department: "CSE",
+          photo: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&q=80"
         }
       ]
     },

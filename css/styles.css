@@ -1946,33 +1946,128 @@ img {
   line-height: 1.35;
 }
 
-/* Past Year Accordion / Year Containers */
-.nss-past-year-wrapper {
-  background: var(--bg-main);
+/* Past Year CTA Box (Homepage) */
+.nss-past-teams-cta-box {
+  background: var(--bg-alt);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
-  margin-bottom: 20px;
-  overflow: hidden;
-}
-
-.nss-past-year-header {
-  padding: 14px 20px;
-  background: var(--bg-alt);
-  border-bottom: 1px solid var(--border-light);
+  padding: 24px 28px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 40px;
 }
 
-.nss-past-year-title {
-  font-size: 1.05rem;
+.nss-past-teams-cta-title {
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--primary-900);
-  margin: 0;
+  margin-bottom: 6px;
 }
 
-.nss-past-year-body {
-  padding: 20px;
+.nss-past-teams-cta-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+.nss-past-teams-cta-btn {
+  white-space: nowrap;
+  font-weight: 600;
+  padding: 10px 22px;
+  font-size: 0.9rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--primary-700);
+  color: var(--primary-700);
+  background: #ffffff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition-fast);
+}
+
+.nss-past-teams-cta-btn:hover {
+  background: var(--primary-900);
+  color: #ffffff;
+  border-color: var(--primary-900);
+}
+
+/* Past Year Teams Section (team.html) */
+.past-teams-page-section {
+  padding: 60px 0 80px 0;
+  background-color: #fafbfc;
+  border-top: 1px solid var(--border-light);
+}
+
+/* Accordion Component (Exclusive Single-Open Dropdown) */
+.nss-accordion-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 100%;
+}
+
+.nss-accordion-item {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.nss-accordion-item.active {
+  border-color: var(--primary-700);
+  box-shadow: 0 4px 14px rgba(26, 62, 111, 0.08);
+}
+
+.nss-accordion-header {
+  width: 100%;
+  background: #ffffff;
+  border: none;
+  padding: 18px 24px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: inherit;
+  transition: background-color var(--transition-fast);
+}
+
+.nss-accordion-item.active .nss-accordion-header {
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.nss-accordion-header:hover {
+  background: var(--bg-alt);
+}
+
+.nss-accordion-year {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary-900);
+}
+
+.nss-accordion-indicator {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--primary-800);
+  line-height: 1;
+}
+
+.nss-accordion-content {
+  background: #ffffff;
+}
+
+.nss-accordion-inner {
+  padding: 28px 24px;
 }
 
 .nss-past-year-subheading {
@@ -1980,8 +2075,10 @@ img {
   font-weight: 700;
   color: var(--text-secondary);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 14px;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+  border-left: 3px solid var(--accent-crimson);
+  padding-left: 10px;
 }
 
 @media (max-width: 768px) {
@@ -1994,6 +2091,17 @@ img {
   .nss-faculty-grid, .nss-student-grid {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 16px;
+  }
+  .nss-past-teams-cta-box {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  .nss-accordion-header {
+    padding: 14px 18px;
+  }
+  .nss-accordion-inner {
+    padding: 20px 16px;
   }
 }
 
