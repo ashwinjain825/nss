@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Past Year Teams | NSS IIITDM Kurnool</title>
+  <meta name="description" content="Past year NSS teams, executive committees, faculty in-charges, and student office bearers across previous tenures at IIITDM Kurnool.">
+  <link rel="icon" href="../assets/images/iiitdmk-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+  <!-- Shared Header Component (loaded dynamically from header.html) -->
+  <div id="site-header"></div>
+
+  <!-- ========================================================================
+       PAST YEAR TEAMS (ACCORDION / DROPDOWN - ONE YEAR OPEN AT A TIME)
+       ======================================================================== -->
+  <main class="past-teams-page-section" style="min-height: calc(100vh - 320px);">
+    <div class="container">
+      
+      <!-- Back Navigation Link -->
+      <div style="margin-bottom: 24px;">
+        <a href="index.html" class="news-back-link" title="Return to NSS Team Page">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Back to Full NSS Team Directory</span>
+        </a>
+      </div>
+
+      <div class="section-header" style="text-align: left; margin-bottom: 32px;">
+        <div class="section-pretitle">ARCHIVE & LEGACY</div>
+        <h1 class="section-title">Past Year NSS Teams</h1>
+        <p class="section-subtitle" style="margin: 0; max-width: 820px;">
+          Honoring former faculty advisors and student office bearers who laid the foundation and carried forward the mission of NSS at IIITDM Kurnool. Click on any academic year below to expand its team roster.
+        </p>
+      </div>
+
+      <!-- Year-wise Accordion Container (Populated dynamically from js/data.js) -->
+      <div id="pastTeamsAccordion" class="nss-accordion-wrapper" aria-live="polite">
+        <!-- Rendered dynamically from data.js -->
+      </div>
+
+      <!-- Current Team Quick Link -->
+      <div class="nss-past-teams-cta-box" style="margin-top: 48px;">
+        <div class="nss-past-teams-cta-content">
+          <h4 class="nss-past-teams-cta-title">Looking for the Current NSS Team?</h4>
+          <p class="nss-past-teams-cta-desc">
+            View the active tenure faculty advisors and student coordinators currently leading NSS operations.
+          </p>
+        </div>
+        <a href="index.html" class="btn btn-outline-primary nss-past-teams-cta-btn">
+          View Current Team &rarr;
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Shared Footer Component (dynamically loaded from footer.html) -->
+  <div id="site-footer"></div>
+
+  <!-- Scripts -->
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/editor.js"></script>
+</body>
+</html>

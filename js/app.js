@@ -66,7 +66,10 @@
     if (!teamContainer) return; // Only exists on index.html
 
     try {
-      const response = await fetch('nss-team-section.html');
+      let response = await fetch('current-team.html');
+      if (!response.ok) {
+        response = await fetch('team/current-team.html');
+      }
       if (!response.ok) throw new Error(`HTTP error ${response.status}`);
       const html = await response.text();
       teamContainer.innerHTML = html;
@@ -116,7 +119,7 @@
     </div>
     <div class="nss-team-block">
       <div class="nss-team-block-header">
-        <h3 class="nss-team-block-title">Current Team (2026–2027)</h3>
+        <h3 class="nss-team-block-title" id="currentTeamTitle">Current Team (2026–2027)</h3>
         <span class="nss-team-block-tag">Active Tenure</span>
       </div>
       <div class="nss-team-group">
@@ -135,7 +138,7 @@
           Explore past executive committees, student coordinators, and faculty advisors across previous academic tenures.
         </p>
       </div>
-      <a href="team.html#past-teams" class="btn btn-outline-primary nss-past-teams-cta-btn">
+      <a href="past-team.html" class="btn btn-outline-primary nss-past-teams-cta-btn">
         View Past Year Teams &rarr;
       </a>
     </div>
@@ -148,11 +151,39 @@
     const nssData = window.NSS_DATA || {};
     const teamData = nssData.nssTeam || null;
 
-    // 1. Current Faculty (Homepage)
+    const isSubfolder = window.location.pathname.includes('/team/') || 
+                        window.location.pathname.includes('\\team\\') || 
+                        window.location.pathname.includes('/nss-in-news/') || 
+                        window.location.pathname.includes('\\nss-in-news\\');
+
+    // Helper to resolve image paths correctly whether loaded from root or subfolder
+    function resolveImgPath(pathStr) {
+      if (!pathStr) return pathStr;
+      if (pathStr.startsWith('http://') || pathStr.startsWith('https://') || pathStr.startsWith('data:')) {
+        return pathStr;
+      }
+      if (isSubfolder) {
+        if (pathStr.startsWith('./assets/')) {
+          return '../' + pathStr.slice(2);
+        } else if (pathStr.startsWith('assets/')) {
+          return '../' + pathStr;
+        }
+      }
+      return pathStr;
+    }
+
+    // Academic Year Title update if present
+    const teamTitleEl = document.getElementById('currentTeamTitle');
+    if (teamTitleEl && teamData && teamData.current && teamData.current.academicYear) {
+      teamTitleEl.textContent = `Current Team (${teamData.current.academicYear})`;
+    }
+
+    // 1. Current Faculty (Homepage & team.html)
     const currFacGrid = document.getElementById('currentFacultyGrid');
     if (currFacGrid && teamData && teamData.current && Array.isArray(teamData.current.faculty)) {
       currFacGrid.innerHTML = teamData.current.faculty.map(f => {
-        const photo = f.photo || f.image || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80';
+        const rawPhoto = f.photo || f.image || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80';
+        const photo = resolveImgPath(rawPhoto);
         return `
         <div class="nss-member-card">
           <div class="nss-member-photo-wrap">
@@ -167,7 +198,7 @@
       }).join('');
     }
 
-    // 2. Current Students (Homepage) - Auto-updates from nssTeam.current.students or studentTeam
+    // 2. Current Students (Homepage & team.html) - Auto-updates from nssTeam.current.students or studentTeam
     const currStuGrid = document.getElementById('currentStudentsGrid');
     if (currStuGrid) {
       const studentsList = (teamData && teamData.current && Array.isArray(teamData.current.students) && teamData.current.students.length > 0)
@@ -176,7 +207,8 @@
 
       if (studentsList.length > 0) {
         currStuGrid.innerHTML = studentsList.map(s => {
-          const photo = s.photo || s.image || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80';
+          const rawPhoto = s.photo || s.image || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80';
+          const photo = resolveImgPath(rawPhoto);
           const academicYear = s.branch || s.year || '';
           const dept = s.department && s.department !== '--' ? s.department : '';
           const rollInfo = s.roll ? `<div class="nss-member-subdetail" style="font-weight: 500;">Roll: ${s.roll}</div>` : '';
@@ -196,7 +228,7 @@
       }
     }
 
-    // 3. Past Teams Accordion (On team.html, one year open at a time)
+    // 3. Past Teams Accordion (On team.html & past-team.html, one year open at a time)
     renderPastTeamsAccordion();
   }
 
@@ -216,6 +248,27 @@
       return;
     }
 
+    // Helper to resolve image paths correctly whether loaded from root or subfolder
+    const isSubfolder = window.location.pathname.includes('/team/') || 
+                        window.location.pathname.includes('\\team\\') || 
+                        window.location.pathname.includes('/nss-in-news/') || 
+                        window.location.pathname.includes('\\nss-in-news\\');
+
+    function resolveImgPath(pathStr) {
+      if (!pathStr) return pathStr;
+      if (pathStr.startsWith('http://') || pathStr.startsWith('https://') || pathStr.startsWith('data:')) {
+        return pathStr;
+      }
+      if (isSubfolder) {
+        if (pathStr.startsWith('./assets/')) {
+          return '../' + pathStr.slice(2);
+        } else if (pathStr.startsWith('assets/')) {
+          return '../' + pathStr;
+        }
+      }
+      return pathStr;
+    }
+
     // Render accordion items. First year is open by default.
     accordionContainer.innerHTML = pastTeams.map((pt, idx) => {
       const isOpen = idx === 0;
@@ -231,7 +284,8 @@
                 <div class="nss-past-year-subheading">Faculty In-Charges & Advisors</div>
                 <div class="nss-team-grid nss-faculty-grid" style="margin-bottom: 28px;">
                   ${pt.faculty.map(f => {
-                    const photo = f.photo || f.image || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80';
+                    const rawPhoto = f.photo || f.image || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80';
+                    const photo = resolveImgPath(rawPhoto);
                     return `
                     <div class="nss-member-card">
                       <div class="nss-member-photo-wrap">
@@ -251,7 +305,8 @@
                 <div class="nss-past-year-subheading">Student Office Bearers & Leads</div>
                 <div class="nss-team-grid nss-student-grid">
                   ${pt.students.map(s => {
-                    const photo = s.photo || s.image || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80';
+                    const rawPhoto = s.photo || s.image || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80';
+                    const photo = resolveImgPath(rawPhoto);
                     const academicYear = s.branch || s.year || '';
                     const dept = s.department && s.department !== '--' ? s.department : '';
                     return `
@@ -369,12 +424,42 @@
     if (!headerContainer) return;
 
     try {
-      const response = await fetch('header.html');
+      const isSubfolder = window.location.pathname.includes('/team/') || 
+                          window.location.pathname.includes('\\team\\') || 
+                          window.location.pathname.includes('/nss-in-news/') || 
+                          window.location.pathname.includes('\\nss-in-news\\');
+      const headerPath = isSubfolder ? '../header.html' : 'header.html';
+      const menuPath = isSubfolder ? '../menubar.html' : 'menubar.html';
+
+      const response = await fetch(headerPath);
       if (!response.ok) throw new Error(`HTTP error ${response.status}`);
-      const html = await response.text();
+      let html = await response.text();
       
-      const responseMenu = await fetch('menubar.html');
-      const menuHtml = responseMenu.ok ? await responseMenu.text() : '';
+      const responseMenu = await fetch(menuPath);
+      let menuHtml = responseMenu.ok ? await responseMenu.text() : '';
+
+      // If in subfolder, adjust root relative links and images in header & menubar
+      if (isSubfolder) {
+        // Adjust logo images in header
+        html = html.replace(/src="assets\//g, 'src="../assets/');
+        // Adjust navigation links
+        menuHtml = menuHtml
+          .replace(/href="index\.html/g, 'href="../index.html')
+          .replace(/href="events\.html/g, 'href="../events.html')
+          .replace(/href="gallery\.html/g, 'href="../gallery.html')
+          .replace(/href="existing-website\.html/g, 'href="../existing-website.html')
+          .replace(/href="contact\.html/g, 'href="../contact.html')
+          .replace(/href="team\/index\.html/g, 'href="../team/index.html')
+          .replace(/href="team\/past-team\.html/g, 'href="../team/past-team.html')
+          .replace(/href="nss-in-news\/index\.html/g, 'href="../nss-in-news/index.html');
+
+        // If inside /team/, links pointing to team/index.html or team/past-team.html can just point to index.html or past-team.html
+        if (window.location.pathname.includes('/team/') || window.location.pathname.includes('\\team\\')) {
+          menuHtml = menuHtml
+            .replace(/href="\.\.\/team\/index\.html/g, 'href="index.html')
+            .replace(/href="\.\.\/team\/past-team\.html/g, 'href="past-team.html');
+        }
+      }
 
       headerContainer.innerHTML = html + menuHtml;
     } catch (err) {
@@ -399,7 +484,7 @@
 
     if (path.includes('events.html')) {
       currentNav = 'events';
-    } else if (path.includes('team.html')) {
+    } else if (path.includes('team') || path.includes('team.html')) {
       currentNav = 'team';
     } else if (path.includes('gallery.html')) {
       currentNav = 'gallery';
@@ -408,7 +493,11 @@
     } else if (path.includes('contact.html')) {
       currentNav = 'contact';
     } else if (path.endsWith('/') || path.endsWith('index.html') || !path.includes('.html')) {
-      currentNav = 'index';
+      if (path.includes('team')) {
+        currentNav = 'team';
+      } else {
+        currentNav = 'index';
+      }
     }
 
     const item = document.querySelector(`[data-nav="${currentNav}"]`);
@@ -458,13 +547,14 @@
         </ul>
       </li>
       <li class="nav-item-dropdown" data-nav="team">
-        <a href="index.html#nss-team" id="nssTeamNavLink" class="nav-link nav-dropdown-toggle">NSS Team</a>
+        <a href="team.html" id="nssTeamNavLink" class="nav-link nav-dropdown-toggle">NSS Team</a>
         <ul class="nav-dropdown-menu">
-          <li class="nav-dropdown-item"><a href="index.html#nss-team" class="nav-dropdown-link">NSS Team (Current & Past)</a></li>
+          <li class="nav-dropdown-item"><a href="team.html#team" class="nav-dropdown-link">Current NSS Team</a></li>
+          <li class="nav-dropdown-item"><a href="past-team.html" class="nav-dropdown-link">Past Year Teams Archive</a></li>
           <li class="nav-dropdown-item"><a href="team.html" class="nav-dropdown-link">Full NSS Team Directory</a></li>
           <li class="nav-dropdown-item"><a href="team.html#patronSection" class="nav-dropdown-link">Chief Patron (Director)</a></li>
-          <li class="nav-dropdown-item"><a href="team.html#facultyGrid" class="nav-dropdown-link">Programme Officer</a></li>
-          <li class="nav-dropdown-item"><a href="team.html#facultyGrid" class="nav-dropdown-link">Departmental Advisors</a></li>
+          <li class="nav-dropdown-item"><a href="team.html#currentFacultyGrid" class="nav-dropdown-link">Faculty In-Charges & Advisors</a></li>
+          <li class="nav-dropdown-item"><a href="team.html#currentStudentsGrid" class="nav-dropdown-link">Student Office Bearers</a></li>
         </ul>
       </li>
       <li class="nav-item-dropdown" data-nav="gallery">
@@ -505,11 +595,34 @@
     if (!footerContainer) return;
 
     try {
-      const isSubfolder = window.location.pathname.includes('/nss-in-news/') || window.location.pathname.includes('\\nss-in-news\\');
+      const isSubfolder = window.location.pathname.includes('/team/') || 
+                          window.location.pathname.includes('\\team\\') || 
+                          window.location.pathname.includes('/nss-in-news/') || 
+                          window.location.pathname.includes('\\nss-in-news\\');
       const footerPath = isSubfolder ? '../footer.html' : 'footer.html';
       const response = await fetch(footerPath);
       if (!response.ok) throw new Error(`HTTP error ${response.status}`);
-      const html = await response.text();
+      let html = await response.text();
+
+      // If in subfolder, adjust root relative links in footer
+      if (isSubfolder) {
+        html = html
+          .replace(/href="index\.html/g, 'href="../index.html')
+          .replace(/href="events\.html/g, 'href="../events.html')
+          .replace(/href="gallery\.html/g, 'href="../gallery.html')
+          .replace(/href="existing-website\.html/g, 'href="../existing-website.html')
+          .replace(/href="contact\.html/g, 'href="../contact.html')
+          .replace(/href="team\/index\.html/g, 'href="../team/index.html')
+          .replace(/href="team\/past-team\.html/g, 'href="../team/past-team.html')
+          .replace(/href="nss-in-news\/index\.html/g, 'href="../nss-in-news/index.html');
+
+        if (window.location.pathname.includes('/team/') || window.location.pathname.includes('\\team\\')) {
+          html = html
+            .replace(/href="\.\.\/team\/index\.html/g, 'href="index.html')
+            .replace(/href="\.\.\/team\/past-team\.html/g, 'href="past-team.html');
+        }
+      }
+
       footerContainer.innerHTML = html;
     } catch (err) {
       console.warn('Loading fallback footer component (useful for local file:// mode):', err);
