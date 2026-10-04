@@ -1307,7 +1307,7 @@ img {
    9. IIT BOMBAY STYLE OFFICIAL FOOTER COMPONENT
    Pure Deep Black (#000000), 3-Column Grid, Rust/Orange Highlights, Map Embed
    -------------------------------------------------------------------------- */
-.iitb-footer {
+.iiitk-footer {
   background-color: #000000;
   color: #d1d5db;
   padding: 64px 0 0 0;
@@ -1316,13 +1316,13 @@ img {
   font-family: inherit;
 }
 
-.iitb-footer-container {
+.iiitk-footer-container {
   max-width: 1240px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
-.iitb-footer-grid {
+.iiitk-footer-grid {
   display: grid;
   grid-template-columns: 1.25fr 1fr 1fr;
   gap: 48px;
@@ -1331,7 +1331,7 @@ img {
 }
 
 /* Col 1: Brand & Purpose */
-.iitb-footer-brand-title {
+.iiitk-footer-brand-title {
   font-size: 1.45rem;
   font-weight: 800;
   color: #ffffff;
@@ -1339,7 +1339,7 @@ img {
   margin-bottom: 18px;
 }
 
-.iitb-footer-desc {
+.iiitk-footer-desc {
   font-size: 0.88rem;
   line-height: 1.65;
   color: #9ca3af;
@@ -1347,13 +1347,13 @@ img {
   max-width: 380px;
 }
 
-.iitb-footer-socials {
+.iiitk-footer-socials {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.iitb-social-link {
+.iiitk-social-link {
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -1367,14 +1367,14 @@ img {
   text-decoration: none;
 }
 
-.iitb-social-link:hover {
+.iiitk-social-link:hover {
   background: #ea580c;
   color: #ffffff;
   transform: translateY(-2px);
 }
 
 /* Headings with Rust/Orange Accent */
-.iitb-footer-heading {
+.iiitk-footer-heading {
   font-size: 1.25rem;
   font-weight: 800;
   color: #ffffff;
@@ -1382,25 +1382,25 @@ img {
   letter-spacing: -0.01em;
 }
 
-.iitb-accent-mark {
+.iiitk-accent-mark {
   color: #ea580c;
   font-weight: 800;
 }
 
 /* Col 2: Have a question? */
-.iitb-contact-list {
+.iiitk-contact-list {
   display: flex;
   flex-direction: column;
   gap: 18px;
 }
 
-.iitb-contact-item {
+.iiitk-contact-item {
   display: flex;
   align-items: flex-start;
   gap: 12px;
 }
 
-.iitb-contact-icon {
+.iiitk-contact-icon {
   color: #ea580c;
   font-size: 0.95rem;
   margin-top: 3px;
@@ -1409,24 +1409,24 @@ img {
   text-align: center;
 }
 
-.iitb-contact-text {
+.iiitk-contact-text {
   font-size: 0.86rem;
   line-height: 1.6;
   color: #d1d5db;
 }
 
-.iitb-contact-text a {
+.iiitk-contact-text a {
   color: #d1d5db;
   text-decoration: none;
   transition: var(--transition-fast);
 }
 
-.iitb-contact-text a:hover {
+.iiitk-contact-text a:hover {
   color: #ea580c;
 }
 
 /* Col 3: Locate Us */
-.iitb-map-frame-wrapper {
+.iiitk-map-frame-wrapper {
   width: 100%;
   border-radius: 12px;
   overflow: hidden;
@@ -1435,19 +1435,19 @@ img {
   background: #111827;
 }
 
-.iitb-map-frame-wrapper iframe {
+.iiitk-map-frame-wrapper iframe {
   display: block;
   width: 100%;
   height: 175px;
 }
 
 /* Bottom Wave & Ribbon */
-.iitb-footer-bottom {
+.iiitk-footer-bottom {
   position: relative;
   background-color: #0b1120;
 }
 
-.iitb-footer-wave {
+.iiitk-footer-wave {
   position: absolute;
   top: -38px;
   left: 0;
@@ -1458,18 +1458,18 @@ img {
   pointer-events: none;
 }
 
-.iitb-footer-wave svg {
+.iiitk-footer-wave svg {
   display: block;
   width: 100%;
   height: 100%;
 }
 
-.iitb-copyright-container {
+.iiitk-copyright-container {
   padding: 24px 24px;
   text-align: center;
 }
 
-.iitb-copyright-text {
+.iiitk-copyright-text {
   font-size: 0.82rem;
   color: #94a3b8;
   margin: 0;
@@ -1478,25 +1478,25 @@ img {
 
 /* Responsive Breakpoints */
 @media (max-width: 992px) {
-  .iitb-footer-grid {
+  .iiitk-footer-grid {
     grid-template-columns: 1fr 1fr;
     gap: 36px;
   }
-  .iitb-footer-map-col {
+  .iiitk-footer-map-col {
     grid-column: span 2;
   }
 }
 
 @media (max-width: 640px) {
-  .iitb-footer {
+  .iiitk-footer {
     padding-top: 48px;
   }
-  .iitb-footer-grid {
+  .iiitk-footer-grid {
     grid-template-columns: 1fr;
     gap: 32px;
     padding-bottom: 40px;
   }
-  .iitb-footer-map-col {
+  .iiitk-footer-map-col {
     grid-column: span 1;
   }
 }
