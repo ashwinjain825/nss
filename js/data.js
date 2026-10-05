@@ -169,11 +169,9 @@ window.NSS_DATA = {
   ],
 
   // ----------------------------------------------------------------------------
-  // 6. MASTER EVENT REPOSITORY
+  // 6. MASTER EVENT REPOSITORY (2 EXAMPLE EVENTS)
   // ----------------------------------------------------------------------------
-  // Contains both historical events from the existing website and modern entries.
   events: [
-    // --- Current Year: 2025-2026 ---
     {
       id: "ev-2026-blood-camp",
       title: "Annual Mega Blood Donation Drive 2026",
@@ -191,11 +189,9 @@ window.NSS_DATA = {
         { label: "Student Volunteers", value: "45" }
       ],
       coordinator: "NSS Faculty In-Charge & Student Core Team",
-      image: "https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&w=1000&q=80",
+      image: "assets/images/events/mega-blood-donation-2026.jpg",
       gallery: [
-        "https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&w=1000&q=80",
-        "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1000&q=80",
-        "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1000&q=80"
+        "assets/images/events/mega-blood-donation-2026.jpg"
       ],
       reportUrl: "#",
       featured: true
@@ -217,310 +213,11 @@ window.NSS_DATA = {
         { label: "Area Covered", value: "3 Acres" }
       ],
       coordinator: "Faculty Advisor (Environment Wing)",
-      image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1000&q=80",
+      image: "assets/images/events/sapling-care-jagannathagattu.jpg",
       gallery: [
-        "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1000&q=80",
-        "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1000&q=80"
+        "assets/images/events/sapling-care-jagannathagattu.jpg"
       ],
       reportUrl: "#",
-      featured: true
-    },
-    {
-      id: "ev-2026-stem-school",
-      title: "Rural STEM & Coding Literacy Workshop",
-      year: "2025-2026",
-      date: "January 18, 2026",
-      category: "education",
-      status: "Completed",
-      venue: "Zilla Parishad High School, Dinnedevarapadu Village",
-      partner: "Department of Computer Science & NSS Outreach Cell",
-      summary: "Interactive hands-on session introducing 8th and 9th grade rural students to visual block programming (Scratch), robotics basics, and internet safety.",
-      fullDescription: "Student volunteers traveled to Zilla Parishad High School in Dinnedevarapadu. They demonstrated simple robotic kits, explained basic scientific principles through fun experiments, and coached over 120 rural pupils on basic computer operations, cyber safety, and digital learning opportunities.",
-      metrics: [
-        { label: "School Students", value: "120" },
-        { label: "Student Mentors", value: "22" },
-        { label: "Computers Setup", value: "15" }
-      ],
-      coordinator: "Faculty Advisor (Education Wing)",
-      image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=80",
-      gallery: [
-        "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=80",
-        "https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1000&q=80"
-      ],
-      reportUrl: "#",
-      featured: false
-    },
-    {
-      id: "ev-2026-upcoming-camp",
-      title: "Special 7-Day Rural Residential Camp 2026",
-      year: "2025-2026",
-      date: "April 05 - 11, 2026",
-      category: "community",
-      status: "Upcoming",
-      venue: "Adopted Village (Jagannathagattu Rural Cluster)",
-      partner: "District Administration & Local Gram Panchayat",
-      summary: "Annual flagship residential camp focusing on health awareness, village socio-economic survey, solar lamp maintenance, and school infrastructure revitalization.",
-      fullDescription: "A contingent of 50 selected NSS volunteers will reside in the adopted village for 7 days, conducting Swachhata rallies, street plays on social issues, free medical checkups, career guidance for village youth, and tree plantation along village roads.",
-      metrics: [
-        { label: "Camp Duration", value: "7 Days" },
-        { label: "Expected Volunteers", value: "50" },
-        { label: "Target Households", value: "350" }
-      ],
-      coordinator: "NSS Programme Officer & Faculty Advisors",
-      image: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1000&q=80",
-      gallery: [
-        "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1000&q=80"
-      ],
-      reportUrl: "#",
-      featured: true
-    },
-
-    // --- Academic Year: 2024-2025 ---
-    {
-      id: "ev-2024-youth-day",
-      title: "National Youth Day & Run for Unity 2025",
-      year: "2024-2025",
-      date: "January 12, 2025",
-      category: "community",
-      status: "Completed",
-      venue: "Main Administrative Quadrangle, IIITDM Kurnool",
-      partner: "Ministry of Youth Affairs and Sports",
-      summary: "Commemorating the birth anniversary of Swami Vivekananda with a 5K Run for Unity, youth symposium, and essay competition on nation-building.",
-      fullDescription: "Celebrated enthusiastically across the institute. Over 250 students and faculty joined the morning 5-km mini-marathon across the scenic Jagannathagattu campus. The run was followed by a symposium on 'Role of Technology in Rural Transformation'.",
-      metrics: [
-        { label: "Run Participants", value: "250+" },
-        { label: "Essay Entries", value: "65" },
-        { label: "Medals Awarded", value: "12" }
-      ],
-      coordinator: "NSS Faculty Advisor & Sports Council",
-      image: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=1000&q=80",
-      gallery: [
-        "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=1000&q=80"
-      ],
-      reportUrl: "#",
-      featured: false
-    },
-    {
-      id: "ev-2024-dental-health",
-      title: "Free Dental Screening & Oral Hygiene Camp 2024",
-      year: "2024-2025",
-      date: "November 08, 2024",
-      category: "blood-health",
-      status: "Completed",
-      venue: "Institute Medical Center & SAC Hall",
-      partner: "G. Pulla Reddy Dental College & Hospital, Kurnool",
-      summary: "Comprehensive dental checkups, cavity detection, and dental hygiene awareness sessions for students, housekeeping staff, and security personnel.",
-      fullDescription: "A specialized team of 8 dental surgeons and postgraduates from G. Pulla Reddy Dental College examined more than 210 individuals. Free dental kits (toothbrush, toothpaste, and dental hygiene guides) were distributed to campus staff and workers.",
-      metrics: [
-        { label: "Individuals Examined", value: "215" },
-        { label: "Dental Surgeons", value: "8" },
-        { label: "Kits Distributed", value: "200+" }
-      ],
-      coordinator: "Faculty In-Charge (Health Activities)",
-      image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1000&q=80",
-      gallery: [
-        "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1000&q=80"
-      ],
-      reportUrl: "#",
-      featured: false
-    },
-    {
-      id: "ev-2024-cloth-drive",
-      title: "Joy of Giving: Winter Cloth & Stationery Drive",
-      year: "2024-2025",
-      date: "December 15, 2024",
-      category: "community",
-      status: "Completed",
-      venue: "Hostel Blocks & Surrounding Construction Worker Settlements",
-      partner: "Local Child Welfare NGO, Kurnool",
-      summary: "Collection and distribution of warm clothes, blankets, notebooks, and school bags for children of daily-wage workers and underprivileged communities.",
-      fullDescription: "Organized under the 'Daan Utsav' initiative. Students and faculty generously contributed over 400 clean garments, 80 blankets, and 300 sets of notebooks and stationery items, which were neatly packed and handed over to families in need.",
-      metrics: [
-        { label: "Garments Donated", value: "420" },
-        { label: "Blankets", value: "85" },
-        { label: "Families Supported", value: "70+" }
-      ],
-      coordinator: "NSS Student Executive Committee",
-      image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80",
-      gallery: [
-        "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1000&q=80"
-      ],
-      reportUrl: "#",
-      featured: false
-    },
-
-    // --- Academic Year: 2023-2024 ---
-    {
-      id: "ev-2023-swachhata-hi-seva",
-      title: "Swachhata Hi Seva: Cleanliness Drive & Shramdaan",
-      year: "2023-2024",
-      date: "October 02, 2023",
-      category: "environment",
-      status: "Completed",
-      venue: "IIITDM Kurnool Campus & Jagannathagattu Approach Road",
-      partner: "Swachh Bharat Mission & Ministry of Education",
-      summary: "One-hour intensive Shramdaan for cleanliness on Gandhi Jayanti. Over 200 kg of single-use plastic and litter was segregated and cleared.",
-      fullDescription: "Led by institute authorities and NSS volunteers, the drive covered the entire academic zone, library surroundings, and 2 km of the approach road. Plastic debris was collected and sent for responsible recycling.",
-      metrics: [
-        { label: "Plastic Cleared", value: "210 kg" },
-        { label: "Road Cleared", value: "2.5 km" },
-        { label: "Volunteers Joined", value: "190" }
-      ],
-      coordinator: "NSS Coordinator & Estate Section",
-      image: "https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?auto=format&fit=crop&w=1000&q=80",
-      gallery: [
-        "https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?auto=format&fit=crop&w=1000&q=80"
-      ],
-      reportUrl: "#",
-      featured: false
-    },
-    {
-      id: "ev-2023-cyber-safety",
-      title: "Cyber Security & UPI Fraud Awareness Campaign",
-      year: "2023-2024",
-      date: "February 10, 2024",
-      category: "education",
-      status: "Completed",
-      venue: "Panchayat Hall, Dinnedevarapadu Village",
-      partner: "Department of CSE & Kurnool District Police Cyber Cell",
-      summary: "Awareness session for local shopkeepers, farmers, and village elders about safeguarding against financial phishing and mobile OTP scams.",
-      fullDescription: "Engineering students created simple Telugu posters and skits illustrating common scam tactics (fake electricity bill alerts, prize lottery calls, suspicious QR codes). They guided over 80 attendees on enabling biometric locking on UPI apps.",
-      metrics: [
-        { label: "Villagers Attended", value: "85" },
-        { label: "Pamphlets Distributed", value: "250" },
-        { label: "Student Speakers", value: "14" }
-      ],
-      coordinator: "Faculty Advisor (Computer Science)",
-      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1000&q=80",
-      gallery: [
-        "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1000&q=80"
-      ],
-      reportUrl: "#",
-      featured: false
-    },
-
-    // --- Academic Year: 2022-2023 (Actual Event from Existing Website) ---
-    {
-      id: "ev-2022-stress-session",
-      title: "Emotional StressHandling & Mental Wellness Session",
-      year: "2022-2023",
-      date: "April 01, 2022",
-      category: "mental-health",
-      status: "Completed",
-      venue: "Institute Auditorium, IIITDM Kurnool",
-      partner: "Expert Lecture by Prof. V. Sarma",
-      summary: "An illuminating expert lecture on 'Emotional Stress Coping Strategies' delivered by Prof. V. Sarma, focusing on academic pressure and emotional well-being.",
-      fullDescription: "As documented on the official IIITDM Kurnool portal, the National Service Scheme Unit of IIITDM Kurnool organized an expert talk on 'Emotional Stress Coping Strategies' on 1st April 2022. Prof. V. Sarma explained the importance of mental health on one's thinking, feelings, and actions. He also discussed various biological, psychological, and environmental factors contributing to stress and guided students with actionable mindfulness techniques.",
-      metrics: [
-        { label: "Attendees", value: "220+" },
-        { label: "Guest Speaker", value: "Prof. V. Sarma" },
-        { label: "Session Duration", value: "2.5 Hours" }
-      ],
-      coordinator: "NSS Unit IIITDM Kurnool",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1000&q=80",
-      gallery: [
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1000&q=80"
-      ],
-      reportUrl: "https://iiitk.ac.in/Activities/Social-Service-Group/page",
-      featured: true
-    },
-    {
-      id: "ev-2022-blood-donation",
-      title: "Post-Pandemic Blood Donation Drive 2022",
-      year: "2022-2023",
-      date: "September 17, 2022",
-      category: "blood-health",
-      status: "Completed",
-      venue: "Old Academic Block, Ground Floor",
-      partner: "Indian Red Cross Society, Kurnool",
-      summary: "First major voluntary blood donation drive organized post-lockdown, witnessing enthusiastic response from returning students and staff.",
-      fullDescription: "Organized to replenish local blood bank reserves. Pre-donation health checks, hemoglobin level screenings, and sanitization protocols were thoroughly maintained. 62 units of blood were safely collected.",
-      metrics: [
-        { label: "Units Donated", value: "62" },
-        { label: "Student Volunteers", value: "35" }
-      ],
-      coordinator: "NSS Coordinator",
-      image: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1000&q=80",
-      gallery: [
-        "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1000&q=80"
-      ],
-      reportUrl: "https://iiitk.ac.in/Activities/Social-Service-Group/page",
-      featured: false
-    },
-
-    // --- Legacy Archive: 2019-2018 (Directly from Existing IIITDMK Website!) ---
-    {
-      id: "ev-2019-tree-plantation",
-      title: "Institute Tree Plantation Drive 2019",
-      year: "2019-2018 Archive",
-      date: "May 11, 2019",
-      category: "environment",
-      status: "Completed",
-      venue: "Paver Block Pathway & Institute Campus Grounds",
-      partner: "Andhra Pradesh Forest Department & Building Works Committee",
-      summary: "Social Service Group (SSG) of IIITDM Kurnool organized a grand tree plantation drive with BWC members, Guest Speakers, and FDP participants.",
-      fullDescription: "From the official IIITDM Kurnool records: 'Social Service Group (SSG) of IIITDM Kurnool organized a tree plantation drive on 11th May 2019. It was conducted second time in the academic year 2018-2019 after conducting once at the time of Institute reopening. The event was a huge success and saw active participation from BWC members, Guest Speakers, and participants of the Faculty Development Program. The participants planted saplings in designated spots along the paver block pathway in coordination with the Andhra Pradesh Forest Department.'",
-      metrics: [
-        { label: "Event Type", value: "Campus Greening" },
-        { label: "Key Dignitaries", value: "BWC Members & Guest Speakers" },
-        { label: "Location", value: "Paver Pathway" }
-      ],
-      coordinator: "Social Service Group (SSG) IIITDM Kurnool",
-      image: "https://i.imgur.com/nwTiQYE.jpg", // Original image from existing website
-      gallery: [
-        "https://i.imgur.com/nwTiQYE.jpg",
-        "https://i.imgur.com/HAYQWcF.png",
-        "https://i.imgur.com/B5kTSRr.jpg",
-        "https://i.imgur.com/awnpNvD.jpg"
-      ],
-      reportUrl: "https://iiitk.ac.in/Activities/Social-Service-Group/page",
-      featured: true
-    },
-    {
-      id: "ev-2019-blood-camp",
-      title: "Voluntary Blood Donation Camp 2019",
-      year: "2019-2018 Archive",
-      date: "March 19, 2019",
-      category: "blood-health",
-      status: "Completed",
-      venue: "IIITDM Kurnool Campus Hall",
-      partner: "Indian Red Cross Society",
-      summary: "Organized by the Social Service Group in association with Indian Red Cross Society. Exactly 53 units of blood were collected from 53 willing donors.",
-      fullDescription: "From official records: 'The Social Service Group of IIITDM Kurnool organized a blood donation camp in association with Indian Red Cross Society on 19th of March, 2019 (Tuesday). The healthy participation by students, staff, and faculty in the event is highly appreciated. During the camp, the total 53 donors reported for blood donation and 53 units of blood was collected.'",
-      metrics: [
-        { label: "Donors Reported", value: "53" },
-        { label: "Units Collected", value: "53" },
-        { label: "Partner", value: "Indian Red Cross Society" }
-      ],
-      coordinator: "Social Service Group (SSG) IIITDM Kurnool",
-      image: "https://i.imgur.com/9yKoPiK.png", // Original image from existing website
-      gallery: [
-        "https://i.imgur.com/9yKoPiK.png"
-      ],
-      reportUrl: "https://iiitk.ac.in/Activities/Social-Service-Group/page",
-      featured: true
-    },
-    {
-      id: "ev-2018-dental-camp",
-      title: "Free Dental Health Checkup Camp 2018",
-      year: "2019-2018 Archive",
-      date: "August 30, 2018",
-      category: "blood-health",
-      status: "Completed",
-      venue: "IIITDM Kurnool Campus",
-      partner: "G Pulla Reddy Dental College and Hospital, Kurnool",
-      summary: "First major healthcare checkup camp organized on campus in collaboration with G Pulla Reddy Dental College and Hospital.",
-      fullDescription: "From official records: 'The Social Service Group (SSG) of IIITDM Kurnool in association with G Pulla Reddy Dental College and Hospital conducted a free dental health checkup camp on our campus on 30th of August, 2018 (Thursday).' Doctors provided oral examinations, tooth cleaning guidance, and prescribed treatments.",
-      metrics: [
-        { label: "Camp Type", value: "Free Checkup" },
-        { label: "Partner", value: "G Pulla Reddy Dental College" }
-      ],
-      coordinator: "Social Service Group (SSG) IIITDM Kurnool",
-      image: "https://i.imgur.com/zBKpwdF.png", // Original image from existing website
-      gallery: [
-        "https://i.imgur.com/zBKpwdF.png"
-      ],
-      reportUrl: "https://iiitk.ac.in/Activities/Social-Service-Group/page",
       featured: true
     }
   ],
@@ -614,9 +311,113 @@ window.NSS_DATA = {
           name: "Duvva Sai Vivek",
           role: "Treasurer",
           roll: "124AD0048",
-          branch: "Third Year B.Tech",
+          branch: "3rd Year B.Tech",
           department: "AIDS",
           photo: "./assets/images/nss-team/124AD0048.jpg"
+        },
+        {
+          name: "Ashwin Jain",
+          role: "Member",
+          roll: "125AD0039",
+          branch: "2nd Year B.Tech",
+          department: "AIDS",
+          photo: "./assets/images/nss-team/125AD0039.jpg"
+        },
+        {
+          name: "Prachi Arya",
+          role: "Member",
+          roll: "125ME0005",
+          branch: "2nd Year B.Tech",
+          department: "ME",
+          photo: "./assets/images/nss-team/125ME0005.jpg"
+        },
+        {
+          name: "Samyak Prakash",
+          role: "Member",
+          roll: "125CS0066",
+          branch: "2nd Year B.Tech",
+          department: "CS",
+          photo: "./assets/images/nss-team/125CS0066.jpg"
+        },
+        {
+          name: "Animesh",
+          role: "Member",
+          roll: "125ME0039",
+          branch: "2nd Year B.Tech",
+          department: "ME",
+          photo: "./assets/images/nss-team/125ME0039.jpg"
+        },
+        {
+          name: "Satyam Kumar",
+          role: "Member",
+          roll: "125ME0047",
+          branch: "2nd Year B.Tech",
+          department: "ME",
+          photo: "./assets/images/nss-team/125ME0047.jpg"
+        },
+        {
+          name: "Gorla Srujan",
+          role: "Member",
+          roll: "125ME0033",
+          branch: "2nd Year B.Tech",
+          department: "ME",
+          photo: "./assets/images/nss-team/125ME0033.jpg"
+        },
+        {
+          name: "Ram Charan",
+          role: "Member",
+          roll: "125CS0007",
+          branch: "2nd Year B.Tech",
+          department: "CSE",
+          photo: "./assets/images/nss-team/125CS0007.jpg"
+        },
+        {
+          name: "Charitha",
+          role: "Member",
+          roll: "125CS0015",
+          branch: "2nd Year B.Tech",
+          department: "CSE",
+          photo: "./assets/images/nss-team/125CS0015.jpg"
+        },
+        {
+          name: "Ekshitha Royal",
+          role: "Member",
+          roll: "125EC0014",
+          branch: "2nd Year B.Tech",
+          department: "ECE",
+          photo: "./assets/images/nss-team/125EC0014.jpg"
+        },
+        {
+          name: "Lekana Akshaya",
+          role: "Member",
+          roll: "525CS0011",
+          branch: "2nd Year B.Tech",
+          department: "CSE",
+          photo: "./assets/images/nss-team/525CS0011.jpg"
+        },
+        {
+          name: "Rahul P",
+          role: "Member",
+          roll: "525ME0008",
+          branch: "2nd Year B.Tech",
+          department: "ME",
+          photo: "./assets/images/nss-team/525ME0008.jpg"
+        },
+        {
+          name: "Sandeep V",
+          role: "Member",
+          roll: "525ME0001",
+          branch: "2nd Year B.Tech",
+          department: "ME",
+          photo: "./assets/images/nss-team/525ME0001.jpg"
+        },
+        {
+          name: "Jaswanth",
+          role: "Member",
+          roll: "525EC0003",
+          branch: "2nd Year B.Tech",
+          department: "ECE",
+          photo: "./assets/images/nss-team/525EC0003.jpg"
         }
       ]
     },

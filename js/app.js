@@ -426,6 +426,8 @@
     try {
       const isSubfolder = window.location.pathname.includes('/team/') || 
                           window.location.pathname.includes('\\team\\') || 
+                          window.location.pathname.includes('/events/') || 
+                          window.location.pathname.includes('\\events\\') || 
                           window.location.pathname.includes('/nss-in-news/') || 
                           window.location.pathname.includes('\\nss-in-news\\');
       const headerPath = isSubfolder ? '../header.html' : 'header.html';
@@ -445,7 +447,8 @@
         // Adjust navigation links
         menuHtml = menuHtml
           .replace(/href="index\.html/g, 'href="../index.html')
-          .replace(/href="events\.html/g, 'href="../events.html')
+          .replace(/href="events\/index\.html/g, 'href="../events/index.html')
+          .replace(/href="events\.html/g, 'href="../events/index.html')
           .replace(/href="gallery\.html/g, 'href="../gallery.html')
           .replace(/href="existing-website\.html/g, 'href="../existing-website.html')
           .replace(/href="contact\.html/g, 'href="../contact.html')
@@ -458,6 +461,12 @@
           menuHtml = menuHtml
             .replace(/href="\.\.\/team\/index\.html/g, 'href="index.html')
             .replace(/href="\.\.\/team\/past-team\.html/g, 'href="past-team.html');
+        }
+
+        // If inside /events/, links pointing to events/index.html can just point to index.html
+        if (window.location.pathname.includes('/events/') || window.location.pathname.includes('\\events\\')) {
+          menuHtml = menuHtml
+            .replace(/href="\.\.\/events\/index\.html/g, 'href="index.html');
         }
       }
 
@@ -482,7 +491,7 @@
     const path = window.location.pathname.toLowerCase();
     let currentNav = 'index';
 
-    if (path.includes('events.html')) {
+    if (path.includes('events.html') || path.includes('/events/') || path.includes('\\events\\')) {
       currentNav = 'events';
     } else if (path.includes('team') || path.includes('team.html')) {
       currentNav = 'team';
@@ -495,6 +504,8 @@
     } else if (path.endsWith('/') || path.endsWith('index.html') || !path.includes('.html')) {
       if (path.includes('team')) {
         currentNav = 'team';
+      } else if (path.includes('events')) {
+        currentNav = 'events';
       } else {
         currentNav = 'index';
       }
@@ -597,6 +608,8 @@
     try {
       const isSubfolder = window.location.pathname.includes('/team/') || 
                           window.location.pathname.includes('\\team\\') || 
+                          window.location.pathname.includes('/events/') || 
+                          window.location.pathname.includes('\\events\\') || 
                           window.location.pathname.includes('/nss-in-news/') || 
                           window.location.pathname.includes('\\nss-in-news\\');
       const footerPath = isSubfolder ? '../footer.html' : 'footer.html';
@@ -608,7 +621,8 @@
       if (isSubfolder) {
         html = html
           .replace(/href="index\.html/g, 'href="../index.html')
-          .replace(/href="events\.html/g, 'href="../events.html')
+          .replace(/href="events\/index\.html/g, 'href="../events/index.html')
+          .replace(/href="events\.html/g, 'href="../events/index.html')
           .replace(/href="gallery\.html/g, 'href="../gallery.html')
           .replace(/href="existing-website\.html/g, 'href="../existing-website.html')
           .replace(/href="contact\.html/g, 'href="../contact.html')
@@ -620,6 +634,11 @@
           html = html
             .replace(/href="\.\.\/team\/index\.html/g, 'href="index.html')
             .replace(/href="\.\.\/team\/past-team\.html/g, 'href="past-team.html');
+        }
+
+        if (window.location.pathname.includes('/events/') || window.location.pathname.includes('\\events\\')) {
+          html = html
+            .replace(/href="\.\.\/events\/index\.html/g, 'href="index.html');
         }
       }
 
