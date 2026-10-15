@@ -169,58 +169,80 @@ window.NSS_DATA = {
   ],
 
   // ----------------------------------------------------------------------------
-  // 6. MASTER EVENT REPOSITORY (2 EXAMPLE EVENTS)
+  // 6. MASTER EVENT REPOSITORY (ALL EVENTS - SORTED NEWEST FIRST)
   // ----------------------------------------------------------------------------
   events: [
     {
-      id: "ev-2026-blood-camp",
-      title: "Annual Mega Blood Donation Drive 2026",
-      year: "2025-2026",
-      date: "February 24, 2026",
-      category: "blood-health",
-      status: "Completed",
-      venue: "Student Activity Center (SAC), IIITDM Kurnool Campus",
-      partner: "Indian Red Cross Society, Kurnool Chapter & Govt General Hospital",
-      summary: "A high-impact blood donation camp organized with great enthusiasm. Students, research scholars, and faculty participated selflessly to donate blood for patients with Thalassemia and emergency needs.",
-      fullDescription: "Continuing its proud tradition of community health support, the NSS unit of IIITDM Kurnool conducted its Annual Blood Donation Camp in association with the Indian Red Cross Society. Over 110 volunteers registered, and 86 healthy units of blood were safely collected after stringent medical screenings. Refreshments and donor certificates were distributed to all participants.",
-      metrics: [
-        { label: "Donors Screened", value: "115" },
-        { label: "Units Collected", value: "86" },
-        { label: "Student Volunteers", value: "45" }
-      ],
-      coordinator: "NSS Faculty In-Charge & Student Core Team",
-      image: "assets/images/events/mega-blood-donation-2026.jpg",
-      gallery: [
-        "assets/images/events/mega-blood-donation-2026.jpg"
-      ],
-      reportUrl: "#",
-      featured: true
+        "id": "ev-2026-upcoming-camp",
+        "title": "Special 7-Day Rural Residential Camp 2026",
+        "year": "2025-2026",
+        "date": "April 05 - 11, 2026",
+        "category": "community",
+        "status": "Upcoming",
+        "venue": "Adopted Village (Jagannathagattu Rural Cluster)",
+        "partner": "District Administration & Local Gram Panchayat",
+        "summary": "Annual flagship residential camp focusing on health awareness, village socio-economic survey, solar lamp maintenance, and school infrastructure revitalization.",
+        "fullDescription": "A contingent of 50 selected NSS volunteers will reside in the adopted village for 7 days, conducting Swachhata rallies, street plays on social issues, free medical checkups, career guidance for village youth, and tree plantation along village roads.",
+        "metrics": [
+            {
+                "label": "Camp Duration",
+                "value": "7 Days"
+            },
+            {
+                "label": "Expected Volunteers",
+                "value": "50"
+            },
+            {
+                "label": "Target Households",
+                "value": "350"
+            }
+        ],
+        "coordinator": "NSS Programme Officer & Faculty Advisors",
+        "image": "assets/images/events/rural-residential-camp.jpg",
+        "gallery": [
+            "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1000&q=80"
+        ],
+        "reportUrl": "#",
+        "featured": true,
+        "pageUrl": "events/event0001.html"
     },
     {
-      id: "ev-2025-hillock-plantation",
-      title: "Green Jagannathagattu Campus Plantation Drive Phase-V",
-      year: "2025-2026",
-      date: "October 14, 2025",
-      category: "environment",
-      status: "Completed",
-      venue: "Campus Ring Road & East Academic Block Perimeter",
-      partner: "Andhra Pradesh Forest Department, Kurnool Division",
-      summary: "Massive afforestation drive planting over 300 drought-tolerant native saplings across the rocky terrain of Jagannathagattu to increase green cover.",
-      fullDescription: "As part of the nationwide 'Ek Ped Maa Ke Naam' and Swachhata campaign, the NSS team of IIITDM Kurnool collaborated with the AP Forest Department. The Director, Deans, faculty members, and first-year B.Tech students planted saplings including Neem, Peepal, Pongamia, and Gulmohar. Drip watering networks were also set up by student volunteers.",
-      metrics: [
-        { label: "Saplings Planted", value: "320" },
-        { label: "Participants", value: "180+" },
-        { label: "Area Covered", value: "3 Acres" }
-      ],
-      coordinator: "Faculty Advisor (Environment Wing)",
-      image: "assets/images/events/sapling-care-jagannathagattu.jpg",
-      gallery: [
-        "assets/images/events/sapling-care-jagannathagattu.jpg"
-      ],
-      reportUrl: "#",
-      featured: true
+        "id": "ev-2026-blood-camp",
+        "title": "Annual Mega Blood Donation Drive 2026",
+        "year": "2025-2026",
+        "date": "February 24, 2026",
+        "category": "blood-health",
+        "status": "Completed",
+        "venue": "Student Activity Center (SAC), IIITDM Kurnool Campus",
+        "partner": "Indian Red Cross Society, Kurnool Chapter & Govt General Hospital",
+        "summary": "A high-impact blood donation camp organized with great enthusiasm. Students, research scholars, and faculty participated selflessly to donate blood for patients with Thalassemia and emergency needs.",
+        "fullDescription": "Continuing its proud tradition of community health support, the NSS unit of IIITDM Kurnool conducted its Annual Blood Donation Camp in association with the Indian Red Cross Society. Over 110 volunteers registered, and 86 healthy units of blood were safely collected after stringent medical screenings. Refreshments and donor certificates were distributed to all participants.",
+        "metrics": [
+            {
+                "label": "Donors Screened",
+                "value": "115"
+            },
+            {
+                "label": "Units Collected",
+                "value": "86"
+            },
+            {
+                "label": "Student Volunteers",
+                "value": "45"
+            }
+        ],
+        "coordinator": "NSS Faculty In-Charge & Student Core Team",
+        "image": "assets/images/events/mega-blood-donation-2026.jpg",
+        "gallery": [
+            "https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&w=1000&q=80",
+            "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1000&q=80",
+            "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1000&q=80"
+        ],
+        "reportUrl": "#",
+        "featured": true,
+        "pageUrl": "events/event0002.html"
     }
-  ],
+],
 
   // ----------------------------------------------------------------------------
   // 7. FACULTY ADVISORS & LEADERSHIP (Customizable by Professors)

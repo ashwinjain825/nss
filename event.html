@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events &amp; Community Drives | NSS IIITDM Kurnool</title>
+  <meta name="description" content="Chronological repository of social activities, health drives, community outreach, and institutional archives organized by the NSS Unit at IIITDM Kurnool.">
+  <link rel="icon" href="assets/images/iiitdmk-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="institutional-page">
+
+  <!-- Shared Header Component (loaded dynamically from header.html) -->
+  <div id="site-header"></div>
+
+  <!-- ========================================================================
+       EVENTS REPOSITORY (CLEAN INSTITUTIONAL ARCHIVE)
+       ======================================================================== -->
+  <main class="events-section">
+    <div class="container">
+      
+      <header class="section-header" style="text-align: left; margin-bottom: 28px;">
+        <h1 class="section-title" style="margin-bottom: 8px;">Events &amp; Community Activities</h1>
+        <p class="section-subtitle" style="margin: 0; max-width: 820px; font-size: 0.95rem; color: var(--text-secondary);">
+          Official activity reports, service camps, healthcare initiatives, and historical archives conducted by the National Service Scheme (NSS) at IIITDM Kurnool. Select an academic year to filter activities.
+        </p>
+      </header>
+
+      <!-- Year Filter Tabs -->
+      <nav id="yearTabsContainer" class="year-tabs-container" aria-label="Filter events by academic year">
+        <button type="button" class="year-tab-btn active" data-year="all">All Years</button>
+        <button type="button" class="year-tab-btn" data-year="2025-2026">Current Year (2025-26)</button>
+        <button type="button" class="year-tab-btn" data-year="2024-2025">2024-2025</button>
+        <button type="button" class="year-tab-btn" data-year="2023-2024">2023-2024</button>
+        <button type="button" class="year-tab-btn" data-year="2022-2023">2022-2023</button>
+        <button type="button" class="year-tab-btn" data-year="2019-2018 Archive">2018-19 Archive</button>
+      </nav>
+
+      <!-- Live Search & Count -->
+      <div class="filter-controls-row">
+        <div class="search-input-wrapper">
+          <input type="text" id="eventSearchInput" class="search-input" placeholder="Filter events by keyword, venue, or title..." aria-label="Search events">
+        </div>
+        <div class="filter-count-wrap">
+          <span id="eventsCountDisplay" style="font-size: 0.88rem; font-weight: 500; color: var(--text-secondary);">
+            Loading events...
+          </span>
+        </div>
+      </div>
+
+      <!-- Events Grid: Rendered dynamically from js/data.js sorted newest first -->
+      <div id="eventsGrid" class="events-grid">
+        <!-- Rendered by js/app.js renderEventsGrid() -->
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Shared Footer Component (dynamically loaded from footer.html) -->
+  <div id="site-footer"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -50,12 +50,14 @@
     await loadNssTeamSection();
     await loadFooter();
     renderNssTeamData();
+    renderEventsGrid();
     setupFilters();
     checkUrlParameters();
     filterEvents();
     setupDropdowns();
     setupEventListeners();
     setupToast();
+    loadEventPageMedia();
   }
 
   /**
@@ -447,8 +449,9 @@
         // Adjust navigation links
         menuHtml = menuHtml
           .replace(/href="index\.html/g, 'href="../index.html')
-          .replace(/href="events\/index\.html/g, 'href="../events/index.html')
-          .replace(/href="events\.html/g, 'href="../events/index.html')
+          .replace(/href="event\.html/g, 'href="../event.html')
+          .replace(/href="events\/index\.html/g, 'href="../event.html')
+          .replace(/href="events\.html/g, 'href="../event.html')
           .replace(/href="gallery\.html/g, 'href="../gallery.html')
           .replace(/href="existing-website\.html/g, 'href="../existing-website.html')
           .replace(/href="contact\.html/g, 'href="../contact.html')
@@ -463,10 +466,10 @@
             .replace(/href="\.\.\/team\/past-team\.html/g, 'href="past-team.html');
         }
 
-        // If inside /events/, links pointing to events/index.html can just point to index.html
+        // If inside /events/, links pointing to event.html can point to ../event.html
         if (window.location.pathname.includes('/events/') || window.location.pathname.includes('\\events\\')) {
           menuHtml = menuHtml
-            .replace(/href="\.\.\/events\/index\.html/g, 'href="index.html');
+            .replace(/href="event\.html/g, 'href="../event.html');
         }
       }
 
@@ -491,7 +494,7 @@
     const path = window.location.pathname.toLowerCase();
     let currentNav = 'index';
 
-    if (path.includes('events.html') || path.includes('/events/') || path.includes('\\events\\')) {
+    if (path.includes('event.html') || path.includes('events.html') || path.includes('/events/') || path.includes('\\events\\')) {
       currentNav = 'events';
     } else if (path.includes('team') || path.includes('team.html')) {
       currentNav = 'team';
@@ -546,15 +549,15 @@
     <ul id="navMenu" class="nav-menu">
       <li><a href="index.html" class="nav-link" data-nav="index">Home</a></li>
       <li class="nav-item-dropdown" data-nav="events">
-        <a href="events.html" class="nav-link nav-dropdown-toggle">Events</a>
+        <a href="event.html" class="nav-link nav-dropdown-toggle">Events</a>
         <ul class="nav-dropdown-menu">
-          <li class="nav-dropdown-item"><a href="events.html" class="nav-dropdown-link">All Events</a></li>
-          <li class="nav-dropdown-item"><a href="events.html?year=2025-2026" class="nav-dropdown-link">Current Year (2025-26)</a></li>
-          <li class="nav-dropdown-item"><a href="events.html?year=2024-2025" class="nav-dropdown-link">2024-2025</a></li>
-          <li class="nav-dropdown-item"><a href="events.html?year=2023-2024" class="nav-dropdown-link">2023-2024</a></li>
-          <li class="nav-dropdown-item"><a href="events.html?year=2022-2023" class="nav-dropdown-link">2022-2023</a></li>
+          <li class="nav-dropdown-item"><a href="event.html" class="nav-dropdown-link">All Events</a></li>
+          <li class="nav-dropdown-item"><a href="event.html?year=2025-2026" class="nav-dropdown-link">Current Year (2025-26)</a></li>
+          <li class="nav-dropdown-item"><a href="event.html?year=2024-2025" class="nav-dropdown-link">2024-2025</a></li>
+          <li class="nav-dropdown-item"><a href="event.html?year=2023-2024" class="nav-dropdown-link">2023-2024</a></li>
+          <li class="nav-dropdown-item"><a href="event.html?year=2022-2023" class="nav-dropdown-link">2022-2023</a></li>
           <li class="nav-dropdown-divider"></li>
-          <li class="nav-dropdown-item"><a href="events.html?year=2019-2018 Archive" class="nav-dropdown-link">2018-19 Historical Archive</a></li>
+          <li class="nav-dropdown-item"><a href="event.html?year=2019-2018 Archive" class="nav-dropdown-link">2018-19 Historical Archive</a></li>
         </ul>
       </li>
       <li class="nav-item-dropdown" data-nav="team">
@@ -621,8 +624,9 @@
       if (isSubfolder) {
         html = html
           .replace(/href="index\.html/g, 'href="../index.html')
-          .replace(/href="events\/index\.html/g, 'href="../events/index.html')
-          .replace(/href="events\.html/g, 'href="../events/index.html')
+          .replace(/href="event\.html/g, 'href="../event.html')
+          .replace(/href="events\/index\.html/g, 'href="../event.html')
+          .replace(/href="events\.html/g, 'href="../event.html')
           .replace(/href="gallery\.html/g, 'href="../gallery.html')
           .replace(/href="existing-website\.html/g, 'href="../existing-website.html')
           .replace(/href="contact\.html/g, 'href="../contact.html')
@@ -638,7 +642,7 @@
 
         if (window.location.pathname.includes('/events/') || window.location.pathname.includes('\\events\\')) {
           html = html
-            .replace(/href="\.\.\/events\/index\.html/g, 'href="index.html');
+            .replace(/href="event\.html/g, 'href="../event.html');
         }
       }
 
@@ -774,7 +778,95 @@
   }
 
   /**
-   * 3. Filter Hardcoded Events by Year and Search Query
+   * Helper to parse date strings for reverse-chronological sorting (newest first)
+   */
+  function parseEventDate(dStr) {
+    if (!dStr) return 0;
+    const cleaned = dStr.replace(/ - \d+/, '');
+    const ts = Date.parse(cleaned);
+    return isNaN(ts) ? 0 : ts;
+  }
+
+  /**
+   * 2B. Render Events Grid dynamically from data.js
+   * Keeps HTML clean without hardcoded event data.
+   */
+  function renderEventsGrid() {
+    if (!elements.eventsGrid) return;
+
+    const nssData = window.NSS_DATA || {};
+    const eventsList = Array.isArray(nssData.events) ? [...nssData.events] : [];
+    if (eventsList.length === 0) return;
+
+    // Strict reverse-chronological sort (newest first)
+    eventsList.sort((a, b) => parseEventDate(b.date) - parseEventDate(a.date));
+
+    // Determine current path depth (root vs subfolder)
+    const isSubfolder = window.location.pathname.includes('/events/') ||
+                        window.location.pathname.includes('\\events\\');
+
+    elements.eventsGrid.innerHTML = eventsList.map((ev, idx) => {
+      const statusBadgeClass = ev.status === 'Completed' ? 'badge-completed' : (ev.status === 'Upcoming' ? 'badge-upcoming' : 'badge-ongoing');
+      
+      // Determine link to event detail page
+      let pageHref = ev.pageUrl || '';
+      if (!pageHref) {
+        const fileNum = String(idx + 1).padStart(4, '0');
+        pageHref = `events/event${fileNum}.html`;
+      }
+
+      if (isSubfolder) {
+        if (pageHref.startsWith('events/')) {
+          pageHref = pageHref.replace(/^events\//, '');
+        }
+      } else {
+        if (!pageHref.startsWith('events/') && !pageHref.startsWith('http')) {
+          pageHref = 'events/' + pageHref;
+        }
+      }
+
+      // Determine image source
+      let imgSrc = ev.image || 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80';
+      if (!imgSrc.startsWith('http')) {
+        if (isSubfolder && !imgSrc.startsWith('../')) {
+          imgSrc = '../' + imgSrc;
+        }
+      }
+
+      const venueText = ev.venue || 'IIITDM Kurnool Campus';
+      const partnerText = ev.partner || 'NSS IIITDM Kurnool';
+
+      return `
+        <article class="event-card" data-year="${ev.year || ''}" data-id="${ev.id || ''}">
+          <div class="event-card-img-wrapper">
+            <img src="${imgSrc}" alt="${ev.title || ''}" class="event-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80'">
+            <div class="event-card-badges">
+              <span class="event-year-badge">${ev.year || ''}</span>
+              <span class="event-status-badge ${statusBadgeClass}">${ev.status || ''}</span>
+            </div>
+          </div>
+          <div class="event-card-body">
+            <div class="event-meta-row">
+              <span class="event-meta-item"><i class="fa-regular fa-calendar-check" style="margin-right: 4px;"></i>${ev.date || ''}</span>
+              <span class="event-meta-sep">|</span>
+              <span class="event-meta-item"><i class="fa-solid fa-location-dot" style="margin-right: 4px;"></i>${venueText}</span>
+            </div>
+            <h2 class="event-title">
+              <a href="${pageHref}">${ev.title || ''}</a>
+            </h2>
+            <p class="event-summary">${ev.summary || ''}</p>
+            <div class="event-card-footer">
+              <span class="event-partner-tag">${partnerText}</span>
+              <a href="${pageHref}" class="event-details-btn">Read Report &rarr;</a>
+            </div>
+          </div>
+        </article>
+      `;
+    }).join('');
+  }
+
+  /**
+   * 3. Filter Dynamic Events by Year and Search Query
    */
   function filterEvents() {
     if (!elements.eventsGrid) return;
@@ -1139,6 +1231,124 @@
     document.body.style.overflow = '';
   }
 
+  /**
+   * Automatically detect and render photos & videos from assets/images/events/{eventFolder}/
+   * Works on any individual event page (e.g. event0001.html) or dynamically configured media containers.
+   */
+  async function loadEventPageMedia() {
+    const galleryContainer = document.querySelector('.event-photos-section .event-photo-grid');
+    if (!galleryContainer) return;
+
+    // Detect event identifier from data attribute, body, or current URL filename
+    let eventFolder = galleryContainer.getAttribute('data-event-folder') ||
+                      document.body.getAttribute('data-event-folder');
+
+    if (!eventFolder) {
+      const match = window.location.pathname.match(/(event\d{4})/i) ||
+                    window.location.pathname.match(/(ev-[\w-]+)/i);
+      if (match) {
+        eventFolder = match[1].toLowerCase();
+      }
+    }
+
+    if (!eventFolder) return;
+
+    // Relative path to assets/images/events/{eventFolder}/
+    // In events/eventXXXX.html, assets is at ../assets/images/events/{eventFolder}/
+    const isSubfolder = window.location.pathname.includes('/events/') ||
+                        window.location.pathname.includes('\\events\\');
+    const folderUrl = (isSubfolder ? '../assets/images/events/' : 'assets/images/events/') + eventFolder + '/';
+
+    const imageExtensions = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'avif', 'svg'];
+    const videoExtensions = ['mp4', 'webm', 'ogg', 'mov'];
+    const mediaFiles = [];
+
+    // Strategy 1: Attempt to fetch directory index or Apache listing if available
+    try {
+      const response = await fetch(folderUrl, { method: 'GET' });
+      if (response.ok) {
+        const text = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(text, 'text/html');
+        const links = doc.querySelectorAll('a[href]');
+
+        links.forEach(link => {
+          const rawHref = link.getAttribute('href');
+          if (!rawHref) return;
+          // Decode URL component and strip query params or parent directory links
+          const cleanHref = decodeURIComponent(rawHref.split('?')[0].split('#')[0]);
+          const fileName = cleanHref.split('/').filter(Boolean).pop();
+          if (!fileName || fileName.startsWith('.') || fileName.includes('Parent Directory')) return;
+
+          const ext = (fileName.split('.').pop() || '').toLowerCase();
+          const isImg = imageExtensions.includes(ext);
+          const isVid = videoExtensions.includes(ext);
+
+          if (isImg || isVid) {
+            const fullUrl = cleanHref.startsWith('http') || cleanHref.startsWith('/')
+              ? cleanHref
+              : folderUrl + fileName;
+
+            if (!mediaFiles.some(m => m.url === fullUrl)) {
+              mediaFiles.push({
+                name: fileName,
+                url: fullUrl,
+                type: isVid ? 'video' : 'image'
+              });
+            }
+          }
+        });
+      }
+    } catch (e) {
+      // Directory listing might not be enabled or page opened via local file protocol
+    }
+
+    // Strategy 2: If server directory listing returned valid files, render them dynamically
+    if (mediaFiles.length > 0) {
+      renderMediaGallery(galleryContainer, mediaFiles, eventFolder);
+    }
+  }
+
+  function renderMediaGallery(container, mediaList, eventName) {
+    const heading = document.querySelector('.event-photos-section .event-subheading');
+    if (heading) {
+      heading.textContent = `Event Photographs & Media (${mediaList.length})`;
+    }
+
+    container.innerHTML = mediaList.map((item, idx) => {
+      const downloadName = `${eventName}_${item.name}`;
+
+      if (item.type === 'video') {
+        return `
+          <div class="event-photo-card event-video-card">
+            <div class="event-photo-media-wrap">
+              <video controls preload="metadata" style="width: 100%; height: 100%; object-fit: contain; background: #000;">
+                <source src="${item.url}">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="event-photo-footer">
+              <span class="event-photo-name" title="${item.name}"><i class="fa-solid fa-video" style="margin-right: 5px; color: #1e3a8a;"></i>${item.name}</span>
+              <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="btn-photo-action" download="${downloadName}" title="Download full video"><i class="fa-solid fa-download"></i> Download</a>
+            </div>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="event-photo-card">
+          <div class="event-photo-media-wrap">
+            <img src="${item.url}" alt="${eventName} Photo ${idx + 1}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80'">
+          </div>
+          <div class="event-photo-footer">
+            <span class="event-photo-name" title="${item.name}"><i class="fa-regular fa-image" style="margin-right: 5px; color: #475569;"></i>${item.name}</span>
+            <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="btn-photo-action" download="${downloadName}" title="Download full photo"><i class="fa-solid fa-download"></i> Download</a>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
   function closeAllModals() {
     document.querySelectorAll('.modal-backdrop').forEach(m => m.classList.remove('open'));
     document.body.style.overflow = '';
@@ -1155,7 +1365,8 @@
     downloadImage,
     downloadCurrentImage,
     showToast,
-    renderNssTeamData
+    renderNssTeamData,
+    loadEventPageMedia
   };
 
   // Run on DOM ready
