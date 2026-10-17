@@ -72,7 +72,7 @@ temp/
 
 # Large / User-Uploaded Raw Media Files (Optional / Uncommitted High-Res Uploads)
 # Uncomment the line below if new raw event photo/video dumps should not be pushed to Git:
-# assets/images/events/*/raw/
+assets/images/events/
 # *.mp4
 # *.mov
 # *.avi
