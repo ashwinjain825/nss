@@ -1,0 +1,82 @@
+# ==============================================================================
+# IIITDM KURNOOL - NSS PORTAL .gitignore
+# ==============================================================================
+
+# OS & Filesystem Metadata
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Editor & IDE Directories
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+*.bak
+
+# Environment & Credentials
+.env
+.env.local
+.env.*.local
+*.env
+*.key
+*.pem
+*.cert
+*.crt
+config.local.*
+
+# Server, Runtime & Web Server Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+access.log
+error.log
+
+# Dependency & Cache Directories
+node_modules/
+.npm/
+.yarn/
+vendor/
+.cache/
+.parcel-cache/
+.turbo/
+.eslintcache
+
+# Temporary & Build Outputs
+dist/
+build/
+out/
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Large / User-Uploaded Raw Media Files (Optional / Uncommitted High-Res Uploads)
+# Uncomment the line below if new raw event photo/video dumps should not be pushed to Git:
+# assets/images/events/*/raw/
+# *.mp4
+# *.mov
+# *.avi
+# *.mkv
+# *.zip
+# *.tar.gz
+# *.rar
