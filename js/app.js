@@ -148,6 +148,7 @@
       await loadFooter();
       renderNssTeamData();
       renderLatestInitiatives();
+      renderHomeNewsMedia();
       renderEventsGrid();
       setupFilters();
       checkUrlParameters();
@@ -159,6 +160,74 @@
     } finally {
       dismissPreloader();
     }
+  }
+
+  /**
+   * 0A-2. Render Recent News & Media Coverage on Homepage (Shows latest 4)
+   */
+  function renderHomeNewsMedia() {
+    const newsGrid = document.getElementById('homeNewsMediaGrid');
+    if (!newsGrid) return; // Only exists on index.html
+
+    const nssData = window.NSS_DATA || {};
+    const newsList = Array.isArray(nssData.news) ? [...nssData.news] : [];
+    if (newsList.length === 0) {
+      newsGrid.innerHTML = `
+        <div style="grid-column: 1 / -1; text-align: center; padding: 36px 20px; background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-md);">
+          <p style="color: var(--text-secondary); margin: 0; font-size: 0.95rem;">Media coverage records will be displayed here.</p>
+        </div>
+      `;
+      return;
+    }
+
+    // Sort newest first by date if date exists, otherwise preserve order
+    newsList.sort((a, b) => {
+      const timeA = a.date ? new Date(a.date).getTime() : 0;
+      const timeB = b.date ? new Date(b.date).getTime() : 0;
+      return (timeB || 0) - (timeA || 0);
+    });
+
+    // Top 4 recent news
+    const latest4News = newsList.slice(0, 4);
+
+    newsGrid.innerHTML = latest4News.map((item, idx) => {
+      let imageSrc = item.image || '';
+      if (imageSrc.startsWith('./')) {
+        imageSrc = imageSrc.slice(2);
+      }
+      const fallbackImg = 'https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=800&q=80';
+      const title = item.title || 'NSS IIITDM Kurnool Media Coverage';
+      const source = item.source || 'Media Coverage';
+      const date = item.date || '';
+      const link = item.link || '#';
+
+      return `
+        <article class="home-news-card" onclick="window.open('${encodeURI(link)}', '_blank', 'noopener,noreferrer')" tabindex="0" role="link" aria-label="${title.replace(/"/g, '&quot;')} - Opens in new tab">
+          <div class="home-news-img-box">
+            <img 
+              src="${imageSrc}" 
+              alt="${title.replace(/"/g, '&quot;')}" 
+              class="home-news-img" 
+              loading="lazy"
+              onerror="this.onerror=null; this.src='${fallbackImg}';"
+            >
+          </div>
+          <div class="home-news-body">
+            <div>
+              ${date ? `<div class="home-news-date"><i class="fa-regular fa-calendar-days" style="margin-right: 5px;"></i>${date}</div>` : ''}
+              <h3 class="home-news-title">${title}</h3>
+            </div>
+            <div class="home-news-bottom-row">
+              <span class="home-news-source-tag"><i class="fa-regular fa-newspaper" style="margin-right: 5px;"></i>${source}</span>
+              <div class="home-news-link">
+                <span>Read Coverage</span>
+                <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.72rem;"></i>
+              </div>
+            </div>
+          </div>
+        </article>
+      `;
+    }).join('');
   }
 
   /**

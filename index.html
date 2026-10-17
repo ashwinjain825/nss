@@ -288,6 +288,107 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
+
+    /* Home News & Media Coverage Section */
+    .home-news-section {
+      margin-top: 48px;
+      margin-bottom: 50px;
+    }
+    .home-news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+      margin-top: 20px;
+    }
+    .home-news-card {
+      background: #ffffff;
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      min-height: 400px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      box-shadow: var(--shadow-sm);
+    }
+    .home-news-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-700);
+    }
+    .home-news-img-box {
+      position: relative;
+      width: 100%;
+      height: 250px;
+      background: var(--bg-alt);
+      overflow: hidden;
+    }
+    .home-news-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+    .home-news-body {
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+      border-top: 1px solid var(--border-light);
+    }
+    .home-news-date {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+    }
+    .home-news-title {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--primary-900);
+      margin: 0;
+      line-height: 1.45;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .home-news-bottom-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border-light);
+    }
+    .home-news-source-tag {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--primary-900);
+      background: var(--bg-alt);
+      border: 1px solid var(--border-light);
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+    }
+    .home-news-link {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--primary-700);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+    .home-news-card:hover .home-news-link {
+      color: var(--accent-crimson);
+      transform: translateX(3px);
+    }
   </style>
 </head>
 <body>
@@ -331,7 +432,22 @@
           <!-- Dynamically populated with the latest 4 events from window.NSS_DATA.events -->
         </div>
       </div>
-      
+
+      <!-- NEWS & MEDIA COVERAGE SECTION (DYNAMICALLY LOADED FROM NSS_DATA.news) -->
+      <div class="home-news-section">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 8px;">
+          <div>
+            <div class="section-pretitle" style="margin-bottom: 4px;">PRESS & PUBLIC OUTREACH</div>
+            <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--primary-900); margin: 0;">News & Media Coverage</h3>
+          </div>
+          <a href="nss-in-news/index.html" style="font-size: 0.88rem; font-weight: 600; color: var(--primary-700); display: inline-flex; align-items: center; gap: 6px;">
+            View All Media Coverage &rarr;
+          </a>
+        </div>
+        <div class="home-news-grid" id="homeNewsMediaGrid">
+          <!-- Dynamically populated with top 4 recent news reports from window.NSS_DATA.news -->
+        </div>
+      </div>
       
       <!-- Dynamic NSS Team Component (loaded from current-team.html for homepage only) -->
       <div id="nss-team-container"></div>
