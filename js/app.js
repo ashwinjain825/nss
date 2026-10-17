@@ -344,10 +344,12 @@
           <div class="nss-member-photo-wrap">
             <img src="${photo}" alt="${f.name || ''}" class="nss-member-photo" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80'">
           </div>
-          <h5 class="nss-member-name">${f.name || ''}</h5>
-          <span class="nss-member-role">${f.role || ''}</span>
-          <div class="nss-member-detail">${f.designation || ''}</div>
-          <div class="nss-member-subdetail">${f.department || ''}</div>
+          <div class="nss-member-info">
+            <h5 class="nss-member-name">${f.name || ''}</h5>
+            <span class="nss-member-role">${f.role || ''}</span>
+            <div class="nss-member-detail">${f.designation || ''}</div>
+            <div class="nss-member-subdetail">${f.department || ''}</div>
+          </div>
         </div>
       `;
       }).join('');
@@ -373,10 +375,12 @@
             <div class="nss-member-photo-wrap">
               <img src="${photo}" alt="${s.name || ''}" class="nss-member-photo" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80'">
             </div>
-            <h5 class="nss-member-name">${s.name || ''}</h5>
-            <span class="nss-member-role">${s.role || ''}</span>
-            <div class="nss-member-detail">${academicYear}${dept ? ` • ${dept}` : ''}</div>
-            ${rollInfo}
+            <div class="nss-member-info">
+              <h5 class="nss-member-name">${s.name || ''}</h5>
+              <span class="nss-member-role">${s.role || ''}</span>
+              <div class="nss-member-detail">${academicYear}${dept ? ` • ${dept}` : ''}</div>
+              ${rollInfo}
+            </div>
           </div>
         `;
         }).join('');
@@ -446,10 +450,12 @@
                       <div class="nss-member-photo-wrap">
                         <img src="${photo}" alt="${f.name || ''}" class="nss-member-photo" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80'">
                       </div>
-                      <h5 class="nss-member-name">${f.name || ''}</h5>
-                      <span class="nss-member-role">${f.role || ''}</span>
-                      <div class="nss-member-detail">${f.designation || ''}</div>
-                      <div class="nss-member-subdetail">${f.department || ''}</div>
+                      <div class="nss-member-info">
+                        <h5 class="nss-member-name">${f.name || ''}</h5>
+                        <span class="nss-member-role">${f.role || ''}</span>
+                        <div class="nss-member-detail">${f.designation || ''}</div>
+                        <div class="nss-member-subdetail">${f.department || ''}</div>
+                      </div>
                     </div>
                   `;
                   }).join('')}
@@ -469,10 +475,12 @@
                       <div class="nss-member-photo-wrap">
                         <img src="${photo}" alt="${s.name || ''}" class="nss-member-photo" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80'">
                       </div>
-                      <h5 class="nss-member-name">${s.name || ''}</h5>
-                      <span class="nss-member-role">${s.role || ''}</span>
-                      <div class="nss-member-detail">${academicYear}</div>
-                      <div class="nss-member-subdetail">${dept}</div>
+                      <div class="nss-member-info">
+                        <h5 class="nss-member-name">${s.name || ''}</h5>
+                        <span class="nss-member-role">${s.role || ''}</span>
+                        <div class="nss-member-detail">${academicYear}</div>
+                        <div class="nss-member-subdetail">${dept}</div>
+                      </div>
                     </div>
                   `;
                   }).join('')}
