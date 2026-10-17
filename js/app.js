@@ -16,6 +16,100 @@
 (function () {
   'use strict';
 
+  // ----------------------------------------------------------------------------
+  // GLOBAL DYNAMIC PRELOADER (INJECTED IMMEDIATELY BEFORE RENDERING)
+  // ----------------------------------------------------------------------------
+  const preloaderStartTime = performance.now();
+  let preloaderElement = null;
+
+  function injectPreloader() {
+    const nssData = window.NSS_DATA || {};
+    const config = nssData.preloader || {
+      enabled: true,
+      title: "National Service Scheme",
+      subtitle: "IIITDM Kurnool",
+      motto: "Not Me, But You • राष्ट्रीय सेवा योजना",
+      minDisplayTimeMs: 400,
+      fadeDurationMs: 350
+    };
+
+    if (config.enabled === false) return;
+    if (document.getElementById('nssPreloader')) return;
+
+    // Detect depth for asset URLs
+    const isSubfolder = window.location.pathname.includes('/events/') ||
+                        window.location.pathname.includes('\\events\\') ||
+                        window.location.pathname.includes('/team/') ||
+                        window.location.pathname.includes('\\team\\') ||
+                        window.location.pathname.includes('/nss-in-news/') ||
+                        window.location.pathname.includes('\\nss-in-news\\');
+    const logoSrc = (isSubfolder ? '../' : '') + 'assets/images/nss-logo.png';
+
+    preloaderElement = document.createElement('div');
+    preloaderElement.id = 'nssPreloader';
+    preloaderElement.className = 'nss-preloader';
+    preloaderElement.setAttribute('aria-label', 'Loading page content');
+    preloaderElement.setAttribute('role', 'status');
+
+    preloaderElement.innerHTML = `
+      <div class="nss-preloader-content">
+        <div class="nss-preloader-emblem-wrap">
+          <div class="nss-preloader-ring"></div>
+          <div class="nss-preloader-pulse-glow"></div>
+          <div class="nss-preloader-logo-inner">
+            <img src="${logoSrc}" alt="NSS Logo" onerror="this.style.display='none'">
+          </div>
+        </div>
+        <h2 class="nss-preloader-title">${config.title || 'National Service Scheme'}</h2>
+        <div class="nss-preloader-subtitle">${config.subtitle || 'IIITDM Kurnool'}</div>
+        <div class="nss-preloader-motto">${config.motto || 'Not Me, But You'}</div>
+        <div class="nss-preloader-progress-track">
+          <div class="nss-preloader-progress-bar"></div>
+        </div>
+      </div>
+    `;
+
+    // Append to body if body is already available, or to documentElement
+    if (document.body) {
+      document.body.appendChild(preloaderElement);
+    } else {
+      document.addEventListener('DOMContentLoaded', () => {
+        if (preloaderElement && !preloaderElement.parentElement) {
+          document.body.prepend(preloaderElement);
+        }
+      });
+    }
+  }
+
+  // Run injection immediately
+  injectPreloader();
+
+  function dismissPreloader() {
+    if (!preloaderElement) {
+      preloaderElement = document.getElementById('nssPreloader');
+    }
+    if (!preloaderElement) return;
+
+    const nssData = window.NSS_DATA || {};
+    const config = nssData.preloader || {};
+    const minTime = typeof config.minDisplayTimeMs === 'number' ? config.minDisplayTimeMs : 400;
+    const fadeDuration = typeof config.fadeDurationMs === 'number' ? config.fadeDurationMs : 350;
+
+    const elapsed = performance.now() - preloaderStartTime;
+    const remainingTime = Math.max(0, minTime - elapsed);
+
+    setTimeout(() => {
+      if (preloaderElement) {
+        preloaderElement.classList.add('fade-out');
+        setTimeout(() => {
+          if (preloaderElement && preloaderElement.parentElement) {
+            preloaderElement.parentElement.removeChild(preloaderElement);
+          }
+        }, fadeDuration);
+      }
+    }, remainingTime);
+  }
+
   const data = window.NSS_DATA || {};
 
   // Application State
@@ -46,18 +140,22 @@
   };
 
   async function init() {
-    await loadHeader();
-    await loadNssTeamSection();
-    await loadFooter();
-    renderNssTeamData();
-    renderEventsGrid();
-    setupFilters();
-    checkUrlParameters();
-    filterEvents();
-    setupDropdowns();
-    setupEventListeners();
-    setupToast();
-    loadEventPageMedia();
+    try {
+      await loadHeader();
+      await loadNssTeamSection();
+      await loadFooter();
+      renderNssTeamData();
+      renderEventsGrid();
+      setupFilters();
+      checkUrlParameters();
+      filterEvents();
+      setupDropdowns();
+      setupEventListeners();
+      setupToast();
+      loadEventPageMedia();
+    } finally {
+      dismissPreloader();
+    }
   }
 
   /**
@@ -1366,7 +1464,8 @@
     downloadCurrentImage,
     showToast,
     renderNssTeamData,
-    loadEventPageMedia
+    loadEventPageMedia,
+    dismissPreloader
   };
 
   // Run on DOM ready

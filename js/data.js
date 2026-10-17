@@ -55,6 +55,18 @@ window.NSS_DATA = {
   },
 
   // ----------------------------------------------------------------------------
+  // 2B. PRELOADER CONFIGURATION (GLOBAL - AUTO-REFLECTS ON EVERY PAGE)
+  // ----------------------------------------------------------------------------
+  preloader: {
+    enabled: true,
+    title: "National Service Scheme",
+    subtitle: "IIITDM Kurnool",
+    motto: "Not Me, But You • राष्ट्रीय सेवा योजना",
+    minDisplayTimeMs: 400, // Smooth minimal visible duration for crisp UX
+    fadeDurationMs: 350
+  },
+
+  // ----------------------------------------------------------------------------
   // 3. IMPACT STATISTICS (Displayed in the animated counter section)
   // ----------------------------------------------------------------------------
   impactStats: [
