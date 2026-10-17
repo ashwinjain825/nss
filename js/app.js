@@ -147,6 +147,7 @@
       await loadNssTeamSection();
       await loadFooter();
       renderNssTeamData();
+      renderLatestInitiatives();
       renderEventsGrid();
       setupFilters();
       checkUrlParameters();
@@ -158,6 +159,58 @@
     } finally {
       dismissPreloader();
     }
+  }
+
+  /**
+   * 0A. Render Latest 4 Initiatives on Homepage (Auto-updates with NSS_DATA.events)
+   */
+  function renderLatestInitiatives() {
+    const initiativesGrid = document.getElementById('latestInitiativesGrid');
+    if (!initiativesGrid) return;
+
+    const nssData = window.NSS_DATA || {};
+    const eventsList = Array.isArray(nssData.events) ? [...nssData.events] : [];
+    if (eventsList.length === 0) return;
+
+    // Strict reverse-chronological sort (newest first)
+    eventsList.sort((a, b) => parseEventDate(b.date) - parseEventDate(a.date));
+
+    // Slice top 4 newest events
+    const latest4 = eventsList.slice(0, 4);
+
+    initiativesGrid.innerHTML = latest4.map((ev, idx) => {
+      // Determine link to event detail page
+      let pageHref = ev.pageUrl || '';
+      if (!pageHref) {
+        const fileNum = String(idx + 1).padStart(4, '0');
+        pageHref = `events/event${fileNum}.html`;
+      }
+      if (!pageHref.startsWith('events/') && !pageHref.startsWith('http')) {
+        pageHref = 'events/' + pageHref;
+      }
+
+      // Determine image source
+      let imgSrc = ev.image || 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80';
+      const fallbackImg = 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80';
+
+      const summaryText = ev.summary || ev.fullDescription || 'Click to view complete details, activity report, and photo gallery for this NSS initiative.';
+
+      return `
+        <a href="${pageHref}" class="initiative-card" title="View details for ${ev.title || ''}">
+          <div class="initiative-img-wrapper">
+            <img src="${imgSrc}" alt="${ev.title || ''}" loading="lazy" onerror="this.src='${fallbackImg}'">
+            <div class="initiative-overlay">
+              <p>${summaryText}</p>
+              <span class="view-event-tag">View Event Details &rarr;</span>
+            </div>
+          </div>
+          <div class="initiative-content">
+            <div class="initiative-date-tag">${ev.date || ''}</div>
+            <h3 class="initiative-title">${ev.title || ''}</h3>
+          </div>
+        </a>
+      `;
+    }).join('');
   }
 
   /**

@@ -184,8 +184,8 @@
     }
     .initiatives-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 22px;
       margin-top: 20px;
     }
     .initiative-card {
@@ -196,6 +196,14 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .initiative-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-700);
     }
     .initiative-img-wrapper {
       position: relative;
@@ -211,6 +219,10 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .initiative-card:hover .initiative-img-wrapper img {
+      transform: scale(1.05);
     }
     .initiative-overlay {
       position: absolute;
@@ -218,7 +230,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(10, 25, 47, 0.9);
+      background: rgba(10, 25, 47, 0.92);
       color: #ffffff;
       padding: 16px;
       opacity: 0;
@@ -227,25 +239,54 @@
       flex-direction: column;
       justify-content: center;
       text-align: center;
+      z-index: 2;
     }
     .initiative-card:hover .initiative-overlay {
       opacity: 1;
     }
     .initiative-overlay p {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       line-height: 1.5;
-      margin: 0;
+      margin: 0 0 10px 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .initiative-overlay .view-event-tag {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #fbbf24;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
     .initiative-content {
       padding: 14px 16px;
       border-top: 1px solid var(--border-light);
+      background: #ffffff;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .initiative-date-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--primary-700);
+      margin-bottom: 4px;
+      text-align: center;
     }
     .initiative-title {
-      font-size: 1.05rem;
+      font-size: 0.96rem;
       font-weight: 700;
       color: var(--primary-900);
       margin: 0;
       text-align: center;
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
   </style>
 </head>
@@ -278,59 +319,16 @@
         Welcome to the official portal of the <strong>National Service Scheme (NSS)</strong> at Indian Institute of Information Technology, Design and Manufacturing (IIITDM), Kurnool. Committed to community development, health camps, rural education, and social responsibility across Jagannathagattu and neighboring villages in Andhra Pradesh.
       </p>
 
-      <!-- OUR INITIATIVES -->
+      <!-- OUR INITIATIVES (DYNAMICALLY LOADED FROM NSS_DATA.events) -->
       <div class="initiatives-section">
-        <div class="section-pretitle">OUR RECENT INITIATIVES</div>
-        <div class="initiatives-grid">
-          
-          <div class="initiative-card">
-            <div class="initiative-img-wrapper">
-              <img src="assets/images/events/mega-blood-donation-2026.jpg" alt="Blood Donation Drive" onerror="this.src='https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&w=600&q=80'">
-              <div class="initiative-overlay">
-                <p>A high-impact blood donation camp organized with great enthusiasm. Students, research scholars, and faculty participated selflessly.</p>
-              </div>
-            </div>
-            <div class="initiative-content">
-              <h3 class="initiative-title">Annual Mega Blood Donation Drive</h3>
-            </div>
-          </div>
-
-          <div class="initiative-card">
-            <div class="initiative-img-wrapper">
-              <img src="assets/images/events/sapling-care-jagannathagattu.jpg" alt="Plantation Drive" onerror="this.src='https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80'">
-              <div class="initiative-overlay">
-                <p>Massive afforestation drive planting over 300 drought-tolerant native saplings across the rocky terrain of Jagannathagattu.</p>
-              </div>
-            </div>
-            <div class="initiative-content">
-              <h3 class="initiative-title">Campus Plantation Drive Phase-V</h3>
-            </div>
-          </div>
-
-          <div class="initiative-card">
-            <div class="initiative-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80" alt="STEM Literacy" onerror="this.src='https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80'">
-              <div class="initiative-overlay">
-                <p>Interactive hands-on session introducing 8th and 9th grade rural students to visual block programming and robotics basics.</p>
-              </div>
-            </div>
-            <div class="initiative-content">
-              <h3 class="initiative-title">Rural STEM & Coding Literacy</h3>
-            </div>
-          </div>
-
-          <div class="initiative-card">
-            <div class="initiative-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" alt="Dental Screening" onerror="this.src='https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80'">
-              <div class="initiative-overlay">
-                <p>Comprehensive free dental screening and hygiene awareness camp conducted for all campus support staff and nearby village residents.</p>
-              </div>
-            </div>
-            <div class="initiative-content">
-              <h3 class="initiative-title">Community Dental Health Camp</h3>
-            </div>
-          </div>
-
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 8px;">
+          <div class="section-pretitle" style="margin-bottom: 0;">OUR RECENT INITIATIVES</div>
+          <a href="event.html" style="font-size: 0.88rem; font-weight: 600; color: var(--primary-700); display: inline-flex; align-items: center; gap: 6px;">
+            View All Events &rarr;
+          </a>
+        </div>
+        <div class="initiatives-grid" id="latestInitiativesGrid">
+          <!-- Dynamically populated with the latest 4 events from window.NSS_DATA.events -->
         </div>
       </div>
       
