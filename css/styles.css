@@ -1513,145 +1513,6 @@ img {
 }
 
 /* --------------------------------------------------------------------------
-   8. PROFESSOR / DATA MANAGER MODE (FLOATING PANEL)
-   -------------------------------------------------------------------------- */
-.editor-trigger-fab {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  z-index: 1002;
-  background: linear-gradient(135deg, #0a192f, #1b3a6b);
-  color: #ffffff;
-  padding: 12px 20px;
-  border-radius: var(--radius-full);
-  box-shadow: 0 8px 24px rgba(10, 25, 47, 0.35);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.88rem;
-  font-weight: 700;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  transition: var(--transition-normal);
-}
-
-.editor-trigger-fab:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 12px 30px rgba(10, 25, 47, 0.45);
-}
-
-.editor-panel-wrapper {
-  position: fixed;
-  bottom: 90px;
-  right: 28px;
-  width: 440px;
-  max-height: 600px;
-  background: #ffffff;
-  border-radius: var(--radius-xl);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-  border: 1px solid var(--border-medium);
-  z-index: 1002;
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
-  animation: slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.editor-panel-wrapper.active {
-  display: flex;
-}
-
-@keyframes slide-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.editor-panel-header {
-  background: var(--primary-900);
-  color: #ffffff;
-  padding: 18px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.editor-panel-title {
-  font-size: 1rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.editor-panel-tabs {
-  display: flex;
-  background: var(--bg-alt);
-  border-bottom: 1px solid var(--border-light);
-}
-
-.editor-tab-btn {
-  flex: 1;
-  padding: 10px 8px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  text-align: center;
-  border-bottom: 2px solid transparent;
-  transition: var(--transition-fast);
-}
-
-.editor-tab-btn.active {
-  color: var(--primary-800);
-  border-bottom-color: var(--primary-800);
-  background: #ffffff;
-}
-
-.editor-panel-body {
-  padding: 20px;
-  overflow-y: auto;
-  flex: 1;
-}
-
-.code-export-box {
-  width: 100%;
-  height: 220px;
-  background: #0f172a;
-  color: #38bdf8;
-  padding: 12px;
-  border-radius: var(--radius-md);
-  font-family: monospace;
-  font-size: 0.78rem;
-  resize: vertical;
-  margin-bottom: 14px;
-}
-
-.form-group {
-  margin-bottom: 16px;
-}
-
-.form-label {
-  display: block;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 5px;
-}
-
-.form-control {
-  width: 100%;
-  padding: 9px 12px;
-  border-radius: var(--radius-md);
-  border: 1.5px solid var(--border-medium);
-  font-size: 0.88rem;
-  color: var(--text-primary);
-  transition: var(--transition-fast);
-}
-
-.form-control:focus {
-  border-color: var(--primary-600);
-  box-shadow: 0 0 0 3px rgba(37, 84, 146, 0.15);
-}
-
-/* --------------------------------------------------------------------------
    9. IIT BOMBAY STYLE OFFICIAL FOOTER COMPONENT
    Pure Deep Black (#000000), 3-Column Grid, Rust/Orange Highlights, Map Embed
    -------------------------------------------------------------------------- */
@@ -1946,11 +1807,6 @@ img {
   }
   .events-grid {
     grid-template-columns: 1fr;
-  }
-  .editor-panel-wrapper {
-    width: calc(100vw - 32px);
-    right: 16px;
-    bottom: 80px;
   }
   .footer-grid {
     grid-template-columns: 1fr;
@@ -2894,3 +2750,435 @@ img {
     width: 40%;
   }
 }
+
+/* ==========================================================================
+   ATTENDANCE MODULE - ZERO-SCROLL LOGIN LAYOUT & STYLING (PROFESSIONAL THEME)
+   ========================================================================== */
+
+/* Page Viewport & Strict Scroll Lock */
+body.attendance-page {
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: #f4f5f7;
+  color: #1e293b;
+}
+
+body.attendance-page #site-header {
+  flex-shrink: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+/* Viewport container taking remaining vertical space without overflowing */
+.attendance-login-viewport {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 16px 24px;
+  position: relative;
+  background: #eaedf2;
+}
+
+/* Two-column container on desktop */
+.attendance-layout-grid {
+  display: grid;
+  grid-template-columns: minmax(380px, 460px) minmax(380px, 1fr);
+  max-width: 1060px;
+  width: 100%;
+  max-height: calc(100vh - 180px);
+  height: auto;
+  align-items: stretch;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #d8dee6;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04);
+  overflow: hidden;
+}
+
+/* Left Pane: Login Card */
+.attendance-login-pane {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px 36px;
+  background: #ffffff;
+  z-index: 2;
+  position: relative;
+  border-right: 1px solid #e2e8f0;
+  overflow: hidden;
+}
+
+.attendance-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.attendance-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.attendance-system-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #475569;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.attendance-status-badge.coming-soon-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: #991b1b;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  padding: 3px 9px;
+  border-radius: 4px;
+}
+
+.attendance-card-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.25;
+  margin-bottom: 4px;
+  letter-spacing: -0.2px;
+}
+
+.attendance-card-subtitle {
+  font-size: 0.82rem;
+  color: #64748b;
+  line-height: 1.35;
+  margin-bottom: 14px;
+}
+
+/* User Type Switcher Tabs (No icons, clean pill toggle) */
+.attendance-role-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #f1f5f9;
+  border-radius: 6px;
+  padding: 3px;
+  gap: 4px;
+  margin-bottom: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.role-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #64748b;
+  border-radius: 4px;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  background: transparent;
+}
+
+.role-toggle-btn:hover {
+  color: #0f172a;
+}
+
+.role-toggle-btn.active {
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  font-weight: 600;
+}
+
+/* Alert Banner */
+.attendance-alert-banner {
+  display: flex;
+  align-items: flex-start;
+  padding: 8px 12px;
+  background: #f8fafc;
+  border-left: 3px solid #64748b;
+  border-radius: 4px;
+  margin-bottom: 14px;
+}
+
+.attendance-alert-banner .alert-body strong {
+  display: block;
+  font-size: 0.78rem;
+  color: #334155;
+  line-height: 1.25;
+}
+
+.attendance-alert-banner .alert-body p {
+  font-size: 0.72rem;
+  color: #64748b;
+  line-height: 1.3;
+  margin: 2px 0 0 0;
+}
+
+/* Form Groups and Disabled Inputs */
+.attendance-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.attendance-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.attendance-form .form-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.label-with-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.meta-disabled-text {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.input-plain-wrapper {
+  width: 100%;
+}
+
+.attendance-form .form-control {
+  width: 100%;
+  height: 38px;
+  padding: 0 12px;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  color: #64748b;
+  cursor: not-allowed;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.attendance-form .form-control:disabled {
+  background: #f8fafc;
+  color: #94a3b8;
+  border-color: #e2e8f0;
+}
+
+.form-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2px;
+  font-size: 0.72rem;
+}
+
+.remember-label.disabled-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.remember-label.disabled-check input {
+  accent-color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.institutional-help-text {
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Submit Button in Disabled State */
+.attendance-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+  margin-top: 6px;
+  background: #e2e8f0;
+  color: #64748b;
+  font-size: 0.84rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: not-allowed;
+  border: 1px solid #cbd5e1;
+}
+
+.attendance-submit-btn:disabled {
+  opacity: 0.9;
+  cursor: not-allowed;
+}
+
+.attendance-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid #f1f5f9;
+  font-size: 0.7rem;
+  color: #64748b;
+  text-align: center;
+}
+
+/* Right Column: Institutional Identity & Context Panel (Professional Dark Charcoal / Slate) */
+.attendance-info-pane {
+  background: #1e293b;
+  color: #ffffff;
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.info-pane-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.info-brand-emblem {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+}
+
+.info-inst-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.35;
+  margin-bottom: 10px;
+  letter-spacing: -0.2px;
+}
+
+.info-sub-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.info-motto-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 16px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   RESPONSIVENESS & MOBILE FIT (ZERO SCROLL MAINTAINED)
+   ========================================================================== */
+@media (max-width: 860px) {
+  .attendance-layout-grid {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+    max-height: calc(100vh - 160px);
+  }
+
+  .attendance-info-pane {
+    display: none; /* Hide secondary pane on small screens to maintain zero-scroll */
+  }
+
+  .attendance-login-pane {
+    border-right: none;
+    padding: 24px 24px;
+  }
+
+  .attendance-login-viewport {
+    padding: 10px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .attendance-login-pane {
+    padding: 18px 18px;
+  }
+
+  .attendance-card-title {
+    font-size: 1.25rem;
+  }
+
+  .attendance-card-subtitle {
+    font-size: 0.76rem;
+    margin-bottom: 10px;
+  }
+
+  .attendance-alert-banner {
+    padding: 6px 10px;
+    margin-bottom: 10px;
+  }
+
+  .attendance-alert-banner .alert-body p {
+    display: none;
+  }
+
+  .attendance-form {
+    gap: 8px;
+  }
+
+  .attendance-form .form-control {
+    height: 36px;
+    font-size: 0.78rem;
+  }
+
+  .attendance-submit-btn {
+    height: 38px;
+    font-size: 0.8rem;
+  }
+
+  .attendance-card-footer {
+    margin-top: 10px;
+    padding-top: 8px;
+    font-size: 0.65rem;
+  }
+}

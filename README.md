@@ -29,8 +29,6 @@ Inspired by the NSS portals of premier institutions (**IIT Guwahati, IIT Roorkee
    - Responsive grid with hover preview and full-screen image lightbox.
 6. **Student Volunteer Registration**:
    - Interactive modal with form validation for students to enroll in NSS.
-7. **In-Browser Professor / Data Manager Mode**:
-   - A floating editor button (`👨‍🏫 Professor / Template Editor`) on the website allowing professors to visually add events, edit faculty info, preview changes live, and download or copy the updated `data.js` file with one click!
 
 ---
 
@@ -43,8 +41,7 @@ iiitdmk-nss-portal/
 │   └── styles.css        # Responsive styling, modern animations & design tokens
 ├── js/
 │   ├── data.js           # Central configuration file for professors to fill in
-│   ├── app.js            # Core interactive application logic & filters
-│   └── editor.js         # Professor / Template in-browser editing tool
+│   └── app.js            # Core interactive application logic & filters
 └── README.md             # Documentation & guide
 ```
 
@@ -69,19 +66,9 @@ http://localhost:8000
 
 ---
 
-## ✏️ How Professors Can Fill in and Update Data
+## ✏️ How to Fill in and Update Data
 
-All portal data is decoupled into `js/data.js`. You have two convenient ways to update the content:
-
-### Method A: Using the In-Browser Template Editor (Easiest)
-1. Open the website in your browser.
-2. Click the floating **"Professor / Template Editor"** button in the bottom-right corner.
-3. Fill in the event details (Title, Year, Date, Category, Summary, Metrics).
-4. Click **"Add & Preview on Page"** to see it immediately update the live website.
-5. Go to the **"Export Code"** tab and click **"Download data.js"** to replace the existing `js/data.js` file!
-
-### Method B: Directly Editing `js/data.js`
-Open `js/data.js` in any text editor (Notepad, VS Code, etc.). The file is fully commented:
+All portal data is decoupled into `js/data.js`. Open `js/data.js` in any text editor (Notepad, VS Code, etc.). The file is fully commented:
 - **To add an event for a new year (e.g. 2026)**: Add an object to the `events` array:
   ```javascript
   {

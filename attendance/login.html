@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Attendance Portal Login | NSS IIITDM Kurnool</title>
+  <meta name="description" content="NSS Attendance and Duty Management Portal for Admin and Students at IIITDM Kurnool.">
+  <link rel="icon" href="../assets/images/iiitdmk-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="attendance-page">
+
+  <!-- Shared Header Component (dynamically loaded from ../header.html and ../menubar.html) -->
+  <div id="site-header"></div>
+
+  <!-- Attendance Login Container: Viewport-fitted without scrolling -->
+  <main class="attendance-login-viewport" id="attendanceLoginViewport">
+    <div class="attendance-layout-grid">
+      
+      <!-- Left Column: Login Card & Portal Controls -->
+      <section class="attendance-login-pane" aria-labelledby="loginHeading">
+        <div class="attendance-card">
+          
+          <!-- Portal Header -->
+          <div class="attendance-card-header">
+            <div class="attendance-badge-row">
+              <span class="attendance-status-badge coming-soon-badge" id="portalStatusBadge">Coming Soon</span>
+            </div>
+            <h1 id="loginHeading" class="attendance-card-title">Attendance Portal</h1>
+          </div>
+
+          <!-- User Role Switcher Tabs: Student & Admin (No icons) -->
+          <div class="attendance-role-toggle" role="tablist" aria-label="Select Login Role">
+            <button type="button" 
+                    class="role-toggle-btn active" 
+                    id="tabStudent" 
+                    role="tab" 
+                    aria-selected="true" 
+                    aria-controls="roleTabPanel"
+                    onclick="switchRole('student')">
+              <span>Student</span>
+            </button>
+            <button type="button" 
+                    class="role-toggle-btn" 
+                    id="tabAdmin" 
+                    role="tab" 
+                    aria-selected="false" 
+                    aria-controls="roleTabPanel"
+                    onclick="switchRole('admin')">
+              <span>Admin</span>
+            </button>
+          </div>
+
+          <!-- Coming Soon Notice Banner (No icons) -->
+
+          <!-- Disabled Login Form Interface (Clean input boxes, no icons) -->
+          <form class="attendance-form" id="attendanceLoginForm" onsubmit="return false;" novalidate>
+            
+            <div class="form-group">
+              <label for="identifierInput" id="identifierLabel" class="form-label">
+                Institute Email
+              </label>
+              <div class="input-plain-wrapper">
+                <input type="text" 
+                       id="identifierInput" 
+                       class="form-control" 
+                       placeholder="roll@iiitk.ac.in" 
+                       disabled 
+                       readonly>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="label-with-meta">
+                <label for="passwordInput" class="form-label">Password</label>
+                <span class="meta-disabled-text">Forgot Password?</span>
+              </div>
+              <div class="input-plain-wrapper">
+                <input type="password" 
+                       id="passwordInput" 
+                       class="form-control" 
+                       placeholder="" 
+                       disabled 
+                       readonly>
+              </div>
+            </div>
+
+            <div class="form-options">
+              <label class="remember-label disabled-check">
+                <input type="checkbox" disabled checked>
+                <span>Remember this terminal</span>
+              </label>
+            </div>
+
+            <!-- Submit Button (Disabled, no icons) -->
+            <button type="submit" class="attendance-submit-btn" id="loginSubmitBtn" disabled>
+              <span class="btn-text" id="submitBtnText">Sign In as Student</span>
+            </button>
+          </form>
+
+        </div>
+      </section>
+
+      <!-- Right Column: Institutional Identity & Context Panel -->
+      <aside class="attendance-info-pane" aria-label="NSS Information">
+        <div class="info-pane-content">
+          <div class="info-brand-emblem">
+            <img src="../assets/images/nss-logo.png" alt="NSS Logo" class="info-logo" onerror="this.style.display='none'">
+          </div>
+          <h2 class="info-inst-title">National Service Scheme <br> IIITDM Kurnool</h2>
+          <div class="info-motto-tag">Not me But You</div>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- Interactive script for tabs (Disabled state maintained) -->
+  <script>
+    function switchRole(role) {
+      const tabStudent = document.getElementById('tabStudent');
+      const tabAdmin = document.getElementById('tabAdmin');
+      const label = document.getElementById('identifierLabel');
+      const input = document.getElementById('identifierInput');
+      const submitText = document.getElementById('submitBtnText');
+      const alertTitle = document.getElementById('roleAlertTitle');
+      const alertDesc = document.getElementById('roleAlertDesc');
+      const helpRoleText = document.getElementById('helpRoleText');
+
+      if (role === 'admin') {
+        tabStudent.classList.remove('active');
+        tabStudent.setAttribute('aria-selected', 'false');
+        tabAdmin.classList.add('active');
+        tabAdmin.setAttribute('aria-selected', 'true');
+
+        if (label) label.textContent = 'Admin / Faculty In-Charge ID';
+        if (input) input.placeholder = 'e.g., faculty@iiitk.ac.in';
+        if (submitText) submitText.textContent = 'Sign In as Administrator';
+        if (alertTitle) alertTitle.textContent = 'Admin Portal Coming Soon';
+        if (alertDesc) alertDesc.textContent = 'Faculty administration, attendance approval, and volunteer rosters are currently in deployment.';
+        if (helpRoleText) helpRoleText.textContent = 'Faculty & Cell In-Charges';
+      } else {
+        tabAdmin.classList.remove('active');
+        tabAdmin.setAttribute('aria-selected', 'false');
+        tabStudent.classList.add('active');
+        tabStudent.setAttribute('aria-selected', 'true');
+
+        if (label) label.textContent = 'Student Roll No. / Institute Email';
+        if (input) input.placeholder = 'e.g., 123cs0001 or roll@iiitk.ac.in';
+        if (submitText) submitText.textContent = 'Sign In as Student';
+        if (alertTitle) alertTitle.textContent = 'Student Portal Coming Soon';
+        if (alertDesc) alertDesc.textContent = 'Online attendance logging and duty hour tracking will be available soon for registered volunteers.';
+        if (helpRoleText) helpRoleText.textContent = 'Academic Year 2026–27';
+      }
+    }
+  </script>
+
+  <!-- Global scripts (Header, dynamic preloader, active navigation) -->
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

@@ -5,9 +5,6 @@
  * This file contains all dynamic configuration and content for the NSS portal.
  * Professors, Faculty Advisors, and Student Coordinators can easily update,
  * add, or remove data below without writing any HTML or CSS code.
- *
- * TIP: You can also use the interactive "Professor / Data Editor Mode" built
- * into the website to add events or edit details visually and export this file!
  * ==============================================================================
  */
 

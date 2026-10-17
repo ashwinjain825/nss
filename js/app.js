@@ -41,6 +41,8 @@
                         window.location.pathname.includes('\\events\\') ||
                         window.location.pathname.includes('/team/') ||
                         window.location.pathname.includes('\\team\\') ||
+                        window.location.pathname.includes('/attendance/') ||
+                        window.location.pathname.includes('\\attendance\\') ||
                         window.location.pathname.includes('/nss-in-news/') ||
                         window.location.pathname.includes('\\nss-in-news\\');
     const logoSrc = (isSubfolder ? '../' : '') + 'assets/images/nss-logo.png';
@@ -528,6 +530,8 @@
                           window.location.pathname.includes('\\team\\') || 
                           window.location.pathname.includes('/events/') || 
                           window.location.pathname.includes('\\events\\') || 
+                          window.location.pathname.includes('/attendance/') || 
+                          window.location.pathname.includes('\\attendance\\') || 
                           window.location.pathname.includes('/nss-in-news/') || 
                           window.location.pathname.includes('\\nss-in-news\\');
       const headerPath = isSubfolder ? '../header.html' : 'header.html';
@@ -555,6 +559,8 @@
           .replace(/href="contact\.html/g, 'href="../contact.html')
           .replace(/href="team\/index\.html/g, 'href="../team/index.html')
           .replace(/href="team\/past-team\.html/g, 'href="../team/past-team.html')
+          .replace(/href="attendance\/login\.html/g, 'href="../attendance/login.html')
+          .replace(/href="attendance\/index\.html/g, 'href="../attendance/login.html')
           .replace(/href="nss-in-news\/index\.html/g, 'href="../nss-in-news/index.html');
 
         // If inside /team/, links pointing to team/index.html or team/past-team.html can just point to index.html or past-team.html
@@ -568,6 +574,13 @@
         if (window.location.pathname.includes('/events/') || window.location.pathname.includes('\\events\\')) {
           menuHtml = menuHtml
             .replace(/href="event\.html/g, 'href="../event.html');
+        }
+
+        // If inside /attendance/, links pointing to attendance can just stay on login.html
+        if (window.location.pathname.includes('/attendance/') || window.location.pathname.includes('\\attendance\\')) {
+          menuHtml = menuHtml
+            .replace(/href="\.\.\/attendance\/login\.html/g, 'href="login.html')
+            .replace(/href="\.\.\/attendance\/index\.html/g, 'href="login.html');
         }
       }
 
@@ -592,7 +605,9 @@
     const path = window.location.pathname.toLowerCase();
     let currentNav = 'index';
 
-    if (path.includes('event.html') || path.includes('events.html') || path.includes('/events/') || path.includes('\\events\\')) {
+    if (path.includes('attendance') || path.includes('/attendance/') || path.includes('\\attendance\\')) {
+      currentNav = 'attendance';
+    } else if (path.includes('event.html') || path.includes('events.html') || path.includes('/events/') || path.includes('\\events\\')) {
       currentNav = 'events';
     } else if (path.includes('team') || path.includes('team.html')) {
       currentNav = 'team';
@@ -607,6 +622,8 @@
         currentNav = 'team';
       } else if (path.includes('events')) {
         currentNav = 'events';
+      } else if (path.includes('attendance')) {
+        currentNav = 'attendance';
       } else {
         currentNav = 'index';
       }
