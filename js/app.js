@@ -957,7 +957,6 @@
             <img src="${imgSrc}" alt="${ev.title || ''}" class="event-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80'">
             <div class="event-card-badges">
               <span class="event-year-badge">${ev.year || ''}</span>
-              <span class="event-status-badge ${statusBadgeClass}">${ev.status || ''}</span>
             </div>
           </div>
           <div class="event-card-body">
@@ -1122,8 +1121,7 @@
         </button>
       </div>
 
-      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
-        <span class="event-status-badge badge-${(ev.status || 'completed').toLowerCase()}" style="position: static;">${ev.status || 'Completed'}</span>
+      <div style="display: flex; align-items: center; justify-content: flex-end; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
         <span style="font-size: 0.85rem; color: var(--text-muted);"><i class="fa-regular fa-calendar"></i> Academic Year: <strong>${ev.year || '2025-2026'}</strong></span>
       </div>
 

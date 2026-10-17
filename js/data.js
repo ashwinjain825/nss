@@ -182,70 +182,323 @@ window.NSS_DATA = {
   // ----------------------------------------------------------------------------
   events: [
     {
-        "id": "ev-2026-upcoming-camp",
-        "title": "Special 7-Day Rural Residential Camp 2026",
+        "id": "ev-2026-world-ozone-day",
+        "title": "Seed Planting Drive – World Ozone Day 2026",
         "year": "2025-2026",
-        "date": "April 05 - 11, 2026",
-        "category": "community",
-        "status": "Upcoming",
-        "venue": "Adopted Village (Jagannathagattu Rural Cluster)",
-        "partner": "District Administration & Local Gram Panchayat",
-        "summary": "Annual flagship residential camp focusing on health awareness, village socio-economic survey, solar lamp maintenance, and school infrastructure revitalization.",
-        "fullDescription": "A contingent of 50 selected NSS volunteers will reside in the adopted village for 7 days, conducting Swachhata rallies, street plays on social issues, free medical checkups, career guidance for village youth, and tree plantation along village roads.",
+        "date": "September 16, 2026",
+        "category": "environment",
+        "status": "Completed",
+        "venue": "Kalpana Chawla (Girls Hostel), Cricket Ground, Near Workshop, & Near SFC",
+        "partner": "IIITDM Kurnool Administration",
+        "summary": "NSS Unit of IIITDM Kurnool organized a campus-wide seed planting drive on 16 September 2026 to commemorate World Ozone Day under the theme 'Healthy Ozone | Healthy Planet | Brighter Tomorrow'.",
+        "fullDescription": "The NSS Unit of IIITDM Kurnool organized a seed planting drive on the occasion of World Ozone Day on 16 September 2026 across strategic zones including Kalpana Chawla Girls Hostel, Cricket Ground, Workshop area, and SFC. Student volunteers planted seeds to support afforestation, enhance biodiversity, and spread awareness on ozone layer preservation.",
         "metrics": [
             {
-                "label": "Camp Duration",
-                "value": "7 Days"
+                "label": "Campus Zones Planted",
+                "value": "4"
             },
             {
-                "label": "Expected Volunteers",
-                "value": "50"
+                "label": "Drive Duration",
+                "value": "1.5 Hrs"
             },
             {
-                "label": "Target Households",
-                "value": "350"
+                "label": "Student Engagement",
+                "value": "100%"
+            }
+        ],
+        "coordinator": "NSS Unit, IIITDM Kurnool",
+        "image": "assets/images/events/event0007/IMG_3040.JPG",
+        "gallery": [
+            "assets/images/events/event0007/IMG_3040.JPG",
+            "assets/images/events/event0007/IMG_3045.JPG",
+            "assets/images/events/event0007/IMG_3054.JPG",
+            "assets/images/events/event0007/IMG_3059.JPG",
+            "assets/images/events/event0007/IMG_3103.JPG",
+            "assets/images/events/event0007/IMG_3126.JPG",
+            "assets/images/events/event0007/IMG_3132.JPG"
+        ],
+        "reportUrl": "assets/images/events/event0007/World_Ozone_Day_2026_Report.pdf",
+        "featured": true,
+        "pageUrl": "events/event0007.html"
+    },
+    {
+        "id": "ev-2026-orphanage-visit",
+        "title": "Orphanage Visit & Outreach 2026",
+        "year": "2025-2026",
+        "date": "August 23, 2026",
+        "category": "community",
+        "status": "Completed",
+        "venue": "Local Children's Home & Orphanage, Kurnool District",
+        "partner": "District Child Welfare Committee & Community Care Trust",
+        "summary": "NSS IIITDM Kurnool conducted a meaningful orphanage visit on 23rd August 2026, engaging children in science activities, games, and distributing school kits and essentials.",
+        "fullDescription": "On 23rd August 2026, student volunteers and faculty representatives from the NSS Unit of IIITDM Kurnool conducted an Orphanage Visit and Child Welfare Outreach Programme at a local children's home. Volunteers organized science activities, storytelling, and distributed educational kits and sports gear.",
+        "metrics": [
+            {
+                "label": "Children Engaged",
+                "value": "80+"
+            },
+            {
+                "label": "Student Volunteers",
+                "value": "35"
+            },
+            {
+                "label": "Kits & Books Distributed",
+                "value": "100+"
+            }
+        ],
+        "coordinator": "NSS Community Outreach & Child Welfare Wing",
+        "image": "assets/images/events/event0008/IMG_6603.JPG",
+        "gallery": [
+            "assets/images/events/event0008/APE06619_1.JPG",
+            "assets/images/events/event0008/APE06621.JPG",
+            "assets/images/events/event0008/APE06657.JPG",
+            "assets/images/events/event0008/APE06659.JPG",
+            "assets/images/events/event0008/IMG_6603.JPG",
+            "assets/images/events/event0008/IMG_6632.JPG",
+            "assets/images/events/event0008/IMG_6702.JPG",
+            "assets/images/events/event0008/IMG_6862.JPG",
+            "assets/images/events/event0008/IMG_6926.JPG"
+        ],
+        "reportUrl": "#",
+        "featured": true,
+        "pageUrl": "events/event0008.html"
+    },
+    {
+        "id": "ev-2026-womens-day",
+        "title": "Women's Day Celebrations 2026",
+        "year": "2025-2026",
+        "date": "March 08, 2026",
+        "category": "community",
+        "status": "Completed",
+        "venue": "Auditorium & Seminar Hall, IIITDM Kurnool",
+        "partner": "Internal Complaints Committee (ICC) & Student Affairs",
+        "summary": "International Women's Day was celebrated at IIITDM Kurnool with keynotes, panel discussions, self-defense demonstrations, and felicitations recognizing women in STEM and leadership.",
+        "fullDescription": "On 8th March 2026, the NSS unit of IIITDM Kurnool celebrated International Women's Day, honoring women achievers in academia and engineering. The event gathered students, faculty, and staff for panel discussions, cultural presentations, and felicitation ceremonies.",
+        "metrics": [
+            {
+                "label": "Participants",
+                "value": "200+"
+            },
+            {
+                "label": "Event Scope",
+                "value": "Full Day"
+            },
+            {
+                "label": "Achievers Felicitated",
+                "value": "15"
+            }
+        ],
+        "coordinator": "NSS Gender Equity & Women Empowerment Cell",
+        "image": "assets/images/events/event0006/WhatsApp Image 2026-09-24 at 10.44.10 PM_7.jpeg",
+        "gallery": [
+            "assets/images/events/event0006/WhatsApp Image 2026-09-24 at 10.38.22 PM_1.jpeg",
+            "assets/images/events/event0006/WhatsApp Image 2026-09-24 at 10.38.23 PM_2.jpeg",
+            "assets/images/events/event0006/WhatsApp Image 2026-09-24 at 10.38.23 PM_3.jpeg",
+            "assets/images/events/event0006/WhatsApp Image 2026-09-24 at 10.38.23 PM_4.jpeg",
+            "assets/images/events/event0006/WhatsApp Image 2026-09-24 at 10.38.24 PM_5.jpeg",
+            "assets/images/events/event0006/WhatsApp Image 2026-09-24 at 10.43.26 PM_9.jpeg",
+            "assets/images/events/event0006/WhatsApp Image 2026-09-24 at 10.43.27 PM_10.jpeg",
+            "assets/images/events/event0006/WhatsApp Image 2026-09-24 at 10.44.10 PM_7.jpeg",
+            "assets/images/events/event0006/WhatsApp Image 2026-09-24 at 10.44.57 PM_11.jpeg",
+            "assets/images/events/event0006/WhatsApp Image 2026-09-24 at 10.44.57 PM_8.jpeg"
+        ],
+        "reportUrl": "#",
+        "featured": true,
+        "pageUrl": "events/event0006.html"
+    },
+    {
+        "id": "ev-2026-road-safety",
+        "title": "Road Safety Awareness Programme",
+        "year": "2025-2026",
+        "date": "January 31, 2026",
+        "category": "community",
+        "status": "Completed",
+        "venue": "Krishna Seminar Hall",
+        "partner": "District Traffic Police & Transport Department",
+        "summary": "NSS IIITDM Kurnool conducted an impactful Road Safety Awareness Programme at Krishna Seminar Hall, sensitizing students and campus residents on traffic norms, helmet rules, defensive driving, and life-saving accident response.",
+        "fullDescription": "The National Service Scheme (NSS) unit of IIITDM Kurnool organized a comprehensive Road Safety Awareness Programme on 31st January 2026 at Krishna Seminar Hall. Faculty coordinators and road safety experts emphasized accident prevention, emergency protocols, and the role of youth in fostering civic discipline on roads.",
+        "metrics": [
+            {
+                "label": "Participants & Volunteers",
+                "value": "180+"
+            },
+            {
+                "label": "Workshop Duration",
+                "value": "1 Day"
+            },
+            {
+                "label": "Safety Pledge",
+                "value": "100%"
             }
         ],
         "coordinator": "NSS Programme Officer & Faculty Advisors",
-        "image": "assets/images/events/rural-residential-camp.jpg",
+        "image": "assets/images/events/event0001/E0001-IMG001.jpeg",
         "gallery": [
-            "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=1000&q=80"
+            "assets/images/events/event0001/WhatsApp Image 2026-09-24 at 10.16.35 PM_6.jpeg",
+            "assets/images/events/event0001/WhatsApp Image 2026-09-24 at 10.16.37 PM_5.jpeg",
+            "assets/images/events/event0001/WhatsApp Image 2026-09-24 at 10.16.38 PM_3.jpeg",
+            "assets/images/events/event0001/WhatsApp Image 2026-09-24 at 10.16.38 PM_4.jpeg",
+            "assets/images/events/event0001/WhatsApp Image 2026-09-24 at 10.16.39 PM.jpeg",
+            "assets/images/events/event0001/WhatsApp Image 2026-09-24 at 10.16.39 PM_1.jpeg",
+            "assets/images/events/event0001/WhatsApp Image 2026-09-24 at 10.16.39 PM_2.jpeg"
         ],
         "reportUrl": "#",
         "featured": true,
         "pageUrl": "events/event0001.html"
     },
     {
-        "id": "ev-2026-blood-camp",
-        "title": "Annual Mega Blood Donation Drive 2026",
+        "id": "ev-2026-republic-day",
+        "title": "Republic Day Celebrations 2026",
         "year": "2025-2026",
-        "date": "February 24, 2026",
-        "category": "blood-health",
+        "date": "January 26, 2026",
+        "category": "community",
         "status": "Completed",
-        "venue": "Student Activity Center (SAC), IIITDM Kurnool Campus",
-        "partner": "Indian Red Cross Society, Kurnool Chapter & Govt General Hospital",
-        "summary": "A high-impact blood donation camp organized with great enthusiasm. Students, research scholars, and faculty participated selflessly to donate blood for patients with Thalassemia and emergency needs.",
-        "fullDescription": "Continuing its proud tradition of community health support, the NSS unit of IIITDM Kurnool conducted its Annual Blood Donation Camp in association with the Indian Red Cross Society. Over 110 volunteers registered, and 86 healthy units of blood were safely collected after stringent medical screenings. Refreshments and donor certificates were distributed to all participants.",
+        "venue": "Institute Central Plaza & Main Flag Post, IIITDM Kurnool",
+        "partner": "Student Affairs & Cultural Council",
+        "summary": "The 77th Republic Day was celebrated with patriotic fervor at IIITDM Kurnool with ceremonial flag hoisting, volunteer parade inspection, Director's address, and cultural performances.",
+        "fullDescription": "The 77th Republic Day was celebrated with profound patriotic fervor and enthusiasm at IIITDM Kurnool on 26th January 2026. The event commenced with flag hoisting by the Director, followed by national anthem, NSS volunteer parade, and cultural presentations.",
         "metrics": [
             {
-                "label": "Donors Screened",
-                "value": "115"
+                "label": "Faculty & Students",
+                "value": "500+"
             },
             {
-                "label": "Units Collected",
-                "value": "86"
+                "label": "Republic Day",
+                "value": "77th"
             },
             {
-                "label": "Student Volunteers",
+                "label": "Honor Guard Volunteers",
                 "value": "45"
             }
         ],
-        "coordinator": "NSS Faculty In-Charge & Student Core Team",
-        "image": "assets/images/events/mega-blood-donation-2026.jpg",
+        "coordinator": "NSS Unit & Institute Administration",
+        "image": "assets/images/events/event0003/IMG_0175.JPG",
         "gallery": [
-            "https://images.unsplash.com/photo-1615461066841-6116e61058f4?auto=format&fit=crop&w=1000&q=80",
-            "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1000&q=80",
-            "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1000&q=80"
+            "assets/images/events/event0003/IMG_0001.JPG",
+            "assets/images/events/event0003/IMG_0043.JPG",
+            "assets/images/events/event0003/IMG_0140.JPG",
+            "assets/images/events/event0003/IMG_0175.JPG",
+            "assets/images/events/event0003/IMG_0216.JPG",
+            "assets/images/events/event0003/IMG_0304.JPG",
+            "assets/images/events/event0003/IMG_0333.JPG",
+            "assets/images/events/event0003/IMG_0345.JPG",
+            "assets/images/events/event0003/IMG_0366.JPG",
+            "assets/images/events/event0003/IMG_0422.JPG",
+            "assets/images/events/event0003/IMG_0582.JPG"
+        ],
+        "reportUrl": "#",
+        "featured": true,
+        "pageUrl": "events/event0003.html"
+    },
+    {
+        "id": "ev-2026-3k-republic-run",
+        "title": "3K Republic Run 2026",
+        "year": "2025-2026",
+        "date": "January 25, 2026",
+        "category": "community",
+        "status": "Completed",
+        "venue": "Campus Main Gate to Hillock Circuit, IIITDM Kurnool",
+        "partner": "Sports Council & Fit India Movement Cell",
+        "summary": "A high-energy 3K Republic Run held on the eve of Republic Day promoting physical fitness, national unity, and active living across the scenic Jagannathagattu campus.",
+        "fullDescription": "On the eve of the 77th Republic Day, the NSS Unit of IIITDM Kurnool organized the 3K Republic Run on 25th January 2026. Over 300 runners participated across the hillock perimeter route promoting fitness and patriotism under Fit India.",
+        "metrics": [
+            {
+                "label": "Student Runners",
+                "value": "300+"
+            },
+            {
+                "label": "Course Length",
+                "value": "3 km"
+            },
+            {
+                "label": "Route Marshals",
+                "value": "40"
+            }
+        ],
+        "coordinator": "NSS Unit & Physical Education Department",
+        "image": "assets/images/events/event0004/IMG_0285.JPG",
+        "gallery": [
+            "assets/images/events/event0004/IMG_0023.JPG",
+            "assets/images/events/event0004/IMG_0040.JPG",
+            "assets/images/events/event0004/IMG_0043.JPG",
+            "assets/images/events/event0004/IMG_0285.JPG"
+        ],
+        "reportUrl": "#",
+        "featured": true,
+        "pageUrl": "events/event0004.html"
+    },
+    {
+        "id": "ev-2026-national-youth-day",
+        "title": "National Youth Day 2026",
+        "year": "2025-2026",
+        "date": "January 24, 2026",
+        "category": "community",
+        "status": "Completed",
+        "venue": "Seminar Hall & Campus Auditorium, IIITDM Kurnool",
+        "partner": "Literary & Debate Club & Student Affairs",
+        "summary": "National Youth Day commemorated at IIITDM Kurnool honoring Swami Vivekananda's birth anniversary with youth symposium, keynote speeches, and student elocution sessions.",
+        "fullDescription": "On 24th January 2026, the NSS unit of IIITDM Kurnool commemorated National Youth Day celebrating the ideals of Swami Vivekananda. The celebration featured floral tributes, keynote faculty lectures, and competitive student elocution on nation building.",
+        "metrics": [
+            {
+                "label": "Youth Participants",
+                "value": "250+"
+            },
+            {
+                "label": "Vivekananda Jayanti",
+                "value": "163rd"
+            },
+            {
+                "label": "Elocution Finalists",
+                "value": "18"
+            }
+        ],
+        "coordinator": "NSS Youth & Leadership Wing",
+        "image": "assets/images/events/event0005/WhatsApp Image 2026-09-24 at 10.25.40 PM_8.jpeg",
+        "gallery": [
+            "assets/images/events/event0005/WhatsApp Image 2026-09-24 at 10.25.38 PM_1.jpeg",
+            "assets/images/events/event0005/WhatsApp Image 2026-09-24 at 10.25.38 PM_2.jpeg",
+            "assets/images/events/event0005/WhatsApp Image 2026-09-24 at 10.25.38 PM_3.jpeg",
+            "assets/images/events/event0005/WhatsApp Image 2026-09-24 at 10.25.39 PM_4.jpeg",
+            "assets/images/events/event0005/WhatsApp Image 2026-09-24 at 10.25.39 PM_5.jpeg",
+            "assets/images/events/event0005/WhatsApp Image 2026-09-24 at 10.25.39 PM_6.jpeg",
+            "assets/images/events/event0005/WhatsApp Image 2026-09-24 at 10.25.40 PM_7.jpeg",
+            "assets/images/events/event0005/WhatsApp Image 2026-09-24 at 10.25.40 PM_8.jpeg",
+            "assets/images/events/event0005/WhatsApp Image 2026-09-24 at 10.25.40 PM_9.jpeg"
+        ],
+        "reportUrl": "#",
+        "featured": true,
+        "pageUrl": "events/event0005.html"
+    },
+    {
+        "id": "ev-2025-medical-camp-kethavaram",
+        "title": "Medical Camp @Kethavaram",
+        "year": "2025-2026",
+        "date": "December 28, 2025",
+        "category": "blood-health",
+        "status": "Completed",
+        "venue": "Kethavaram Village (Adopted Cluster)",
+        "partner": "Govt General Hospital, Kurnool & Primary Health Centre",
+        "summary": "Free rural health check-up, pediatric evaluation, diagnostic screening, and medicine distribution camp organized by NSS IIITDM Kurnool volunteers at Kethavaram village.",
+        "fullDescription": "On 28th December 2025, the NSS unit of IIITDM Kurnool organized a comprehensive Free Medical Camp at Kethavaram Village. Over 240 villagers and school children received health screenings, diagnostic evaluations, and free medicines.",
+        "metrics": [
+            {
+                "label": "Villagers Screened",
+                "value": "240+"
+            },
+            {
+                "label": "Student Volunteers",
+                "value": "35"
+            },
+            {
+                "label": "Free Medicines",
+                "value": "100%"
+            }
+        ],
+        "coordinator": "NSS Health & Wellness Wing",
+        "image": "assets/images/events/dental-health-screening.jpg",
+        "gallery": [
+            "assets/images/events/dental-health-screening.jpg",
+            "assets/images/events/rural-residential-camp.jpg"
         ],
         "reportUrl": "#",
         "featured": true,
