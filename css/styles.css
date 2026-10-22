@@ -977,7 +977,7 @@ img {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 20px;
-  align-items: stretch;
+  align-items: start;
 }
 
 .event-photo-card {
@@ -999,20 +999,22 @@ img {
 .event-photo-media-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10;
   background: #0f172a;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .event-photo-card img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  max-height: 480px;
+  object-fit: contain;
   display: block;
   transition: transform 0.3s ease;
+  cursor: pointer;
 }
 
 .event-photo-card:hover img {
@@ -1021,7 +1023,8 @@ img {
 
 .event-photo-card video {
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-height: 480px;
   object-fit: contain;
   display: block;
   background: #000000;

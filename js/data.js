@@ -731,20 +731,265 @@ window.NSS_DATA = {
         year: "2023–2024",
         faculty: [
           {
-            name: "Dr. Faculty Advisor (Sciences)",
-            designation: "Assistant Professor",
+            name: "Dr. Noel Nittala",
+            designation: "Faculty-in-Charge & Program Officer",
             department: "Sciences & Humanities",
-            role: "NSS Programme Officer",
-            photo: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80"
+            role: "FIC NSS & Program Officer",
+            photo: "./assets/images/nss-team/23-24/dr_noel_nittala_fic_nss_program_officer.jpeg"
+          },
+          {
+            name: "Dr. V. Siva Prasad",
+            designation: "Program Officer",
+            department: "Mechanical Engineering",
+            role: "Program Officer",
+            photo: "./assets/images/nss-team/23-24/dr_v_siva_prasad_program_officer.jpg"
           }
         ],
         students: [
           {
-            name: "Siddharth Rao",
+            name: "Sumanth Siddamsetty",
             role: "President",
             branch: "B.Tech",
             department: "Mechanical Engineering",
-            photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80"
+            photo: "./assets/images/nss-team/23-24/sumanth_siddamsetty_president.jpg"
+          },
+          {
+            name: "Aryan Kumar",
+            role: "Vice-President",
+            branch: "B.Tech",
+            department: "Computer Science & Engineering",
+            photo: "./assets/images/nss-team/23-24/aryan_kumar_vice_president.jpg"
+          },
+          {
+            name: "Prasanthi",
+            role: "Vice-President",
+            branch: "B.Tech",
+            department: "Electronics & Communication Engineering",
+            photo: "./assets/images/nss-team/23-24/prasanthi_vice_president.jpg"
+          },
+          {
+            name: "Sumanth Segu",
+            role: "Treasurer",
+            branch: "B.Tech",
+            department: "Mechanical Engineering",
+            photo: "./assets/images/nss-team/23-24/sumanth_segu_treasurer.jpg"
+          },
+          {
+            name: "Rohith Sonawane",
+            role: "Chief-Secretary",
+            branch: "B.Tech",
+            department: "Mechanical Engineering",
+            photo: "./assets/images/nss-team/23-24/rohith_sonawane_chief_secretary.jpg"
+          },
+          {
+            name: "Jyothi Singh",
+            role: "Chief-Secretary",
+            branch: "B.Tech",
+            department: "Computer Science & Engineering",
+            photo: "./assets/images/nss-team/23-24/jyothi_singh_chief_secretary.jpg"
+          },
+          {
+            name: "Aditya Rai",
+            role: "Conveyer",
+            branch: "B.Tech",
+            department: "Mechanical Engineering",
+            photo: "./assets/images/nss-team/23-24/aditya_rai_conveyer.jpg"
+          },
+          {
+            name: "Kushal",
+            role: "CSE-Secretary",
+            branch: "B.Tech",
+            department: "Computer Science & Engineering",
+            photo: "./assets/images/nss-team/23-24/kushal_cse_secretary.jpg"
+          },
+          {
+            name: "Suguna Sree",
+            role: "CSE-Secretary",
+            branch: "B.Tech",
+            department: "Computer Science & Engineering",
+            photo: "./assets/images/nss-team/23-24/suguna_sree_cse_secretary.jpg"
+          },
+          {
+            name: "Mahesh Chituri",
+            role: "ECE-Secretary",
+            branch: "B.Tech",
+            department: "Electronics & Communication Engineering",
+            photo: "./assets/images/nss-team/23-24/mahesh_chituri_ece_secretary.jpg"
+          },
+          {
+            name: "Nathanya",
+            role: "ECE-Secretary",
+            branch: "B.Tech",
+            department: "Electronics & Communication Engineering",
+            photo: "./assets/images/nss-team/23-24/nathanya_ece_secretary.jpg"
+          },
+          {
+            name: "Sanchay",
+            role: "Mech-Secretary",
+            branch: "B.Tech",
+            department: "Mechanical Engineering",
+            photo: "./assets/images/nss-team/23-24/sanchay_mech_secretary.jpg"
+          },
+          {
+            name: "Sai Priya",
+            role: "Mech-Secretary",
+            branch: "B.Tech",
+            department: "Mechanical Engineering",
+            photo: "./assets/images/nss-team/23-24/sai_priya_mech_secretary.jpg"
+          },
+          {
+            name: "Manjunath",
+            role: "AI&DS-Secretary",
+            branch: "B.Tech",
+            department: "Artificial Intelligence & Data Science",
+            photo: "./assets/images/nss-team/23-24/manjunath_aids_secretary.jpg"
+          },
+          {
+            name: "Sathvika",
+            role: "AI&DS-Secretary",
+            branch: "B.Tech",
+            department: "Artificial Intelligence & Data Science",
+            photo: "./assets/images/nss-team/23-24/sathvika_aids_secretary.jpg"
+          },
+          {
+            name: "Aditya Yadav",
+            role: "Media",
+            branch: "B.Tech",
+            department: "Computer Science & Engineering",
+            photo: "./assets/images/nss-team/23-24/aditya_yadav_media.jpg"
+          },
+          {
+            name: "Subhash Teku",
+            role: "Media",
+            branch: "B.Tech",
+            department: "Mechanical Engineering",
+            photo: "./assets/images/nss-team/23-24/subhash_teku_media.jpg"
+          },
+          {
+            name: "Ashutosh Mishra",
+            role: "Photography",
+            branch: "B.Tech",
+            department: "Computer Science & Engineering",
+            photo: "./assets/images/nss-team/23-24/ashutosh_mishra_photography.jpg"
+          },
+          {
+            name: "Kaustubh",
+            role: "Photography",
+            branch: "B.Tech",
+            department: "Electronics & Communication Engineering",
+            photo: "./assets/images/nss-team/23-24/kaustubh_photography.jpg"
+          }
+        ]
+      },
+      {
+        year: "2021–2022",
+        faculty: [
+          {
+            name: "Dr. Noel Nittala",
+            designation: "Faculty-in-Charge & Program Officer",
+            department: "Sciences & Humanities",
+            role: "FIC NSS & Program Officer",
+            photo: "./assets/images/nss-team/21-22/dr_noel_nittala_fic_nss_program_officer.png"
+          },
+          {
+            name: "Dr. V. Siva Prasad",
+            designation: "Program Officer",
+            department: "Mechanical Engineering",
+            role: "Program Officer",
+            photo: "./assets/images/nss-team/21-22/dr_v_siva_prasad_program_officer.jpg"
+          }
+        ],
+        students: [
+          {
+            name: "Ayush Shukla",
+            role: "President",
+            branch: "B.Tech",
+            department: "Mechanical Engineering",
+            photo: "./assets/images/nss-team/21-22/ayush_shukla_president.jpg"
+          },
+          {
+            name: "Lavish Singh",
+            role: "Vice-President",
+            branch: "B.Tech",
+            department: "Computer Science & Engineering",
+            photo: "./assets/images/nss-team/21-22/lavish_singh_vice_president.jpg"
+          },
+          {
+            name: "Aditya Pandey",
+            role: "Chief-Secretary",
+            branch: "B.Tech",
+            department: "Mechanical Engineering",
+            photo: "./assets/images/nss-team/21-22/aditya_pandey_chief_secretary.jpg"
+          },
+          {
+            name: "Rishitha Reddy",
+            role: "Joint Secretary",
+            branch: "B.Tech",
+            department: "Electronics & Communication Engineering",
+            photo: "./assets/images/nss-team/21-22/rishitha_reddy_joint_secretary.png"
+          },
+          {
+            name: "Devesh Arya",
+            role: "Media-Incharge",
+            branch: "B.Tech",
+            department: "Electronics & Communication Engineering",
+            photo: "./assets/images/nss-team/21-22/devesh_arya_media_incharge.jpg"
+          },
+          {
+            name: "Sandeep Anand",
+            role: "CSE-Secretary",
+            branch: "B.Tech",
+            department: "Computer Science & Engineering",
+            photo: "./assets/images/nss-team/21-22/sandeep_anand_cse_secretary.jpg"
+          },
+          {
+            name: "Vineela",
+            role: "CSE-Secretary",
+            branch: "B.Tech",
+            department: "Computer Science & Engineering",
+            photo: "./assets/images/nss-team/21-22/vineela_cse_secretary.jpg"
+          },
+          {
+            name: "Sudeepthi",
+            role: "ECE-Secretary",
+            branch: "B.Tech",
+            department: "Electronics & Communication Engineering",
+            photo: "./assets/images/nss-team/21-22/sudeepthi_ece_secretary.jpg"
+          },
+          {
+            name: "Shubham Gehlot",
+            role: "ECE-Secretary",
+            branch: "B.Tech",
+            department: "Electronics & Communication Engineering",
+            photo: "./assets/images/nss-team/21-22/shubham_gehlot_ece_secretary.jpg"
+          },
+          {
+            name: "Shiv Shankar Kumar",
+            role: "Mech-Secretary",
+            branch: "B.Tech",
+            department: "Mechanical Engineering",
+            photo: "./assets/images/nss-team/21-22/shiv_shankar_kumar_mech_secretary.jpg"
+          },
+          {
+            name: "Rama Devi",
+            role: "Mech-Secretary",
+            branch: "B.Tech",
+            department: "Mechanical Engineering",
+            photo: "./assets/images/nss-team/21-22/rama_devi_mech_secretary.jpg"
+          },
+          {
+            name: "Sindhu Priya",
+            role: "AI&DS-Secretary",
+            branch: "B.Tech",
+            department: "Artificial Intelligence & Data Science",
+            photo: "./assets/images/nss-team/21-22/sindhu_priya_aids_secretary.jpg"
+          },
+          {
+            name: "Sujan",
+            role: "AI&DS-Secretary",
+            branch: "B.Tech",
+            department: "Artificial Intelligence & Data Science",
+            photo: "./assets/images/nss-team/21-22/sujan_aids_secretary.jpg"
           }
         ]
       }
