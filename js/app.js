@@ -120,6 +120,9 @@
     searchQuery: '',
     currentLightboxUrl: '',
     currentLightboxTitle: '',
+    lightboxItems: [],
+    lightboxIndex: -1,
+    lightboxEventName: '',
     isMobileMenuOpen: false
   };
 
@@ -1226,9 +1229,9 @@
               const photoFilename = `IIITDMK_NSS_${sanitizedTitle}_Photo_${idx + 1}.jpg`;
               return `
                 <div class="modal-photo-item" title="Click to view full photo">
-                  <img src="${imgUrl}" alt="${ev.title}" loading="lazy" onclick="window.NSS_PORTAL.openLightbox('${imgUrl}', '${ev.title} (Photo ${idx + 1})')">
-                  <div class="modal-photo-overlay" onclick="window.NSS_PORTAL.openLightbox('${imgUrl}', '${ev.title} (Photo ${idx + 1})')">
-                    <button class="modal-photo-btn" title="View Fullscreen" onclick="event.stopPropagation(); window.NSS_PORTAL.openLightbox('${imgUrl}', '${ev.title} (Photo ${idx + 1})')">
+                  <img src="${imgUrl}" alt="${ev.title}" loading="lazy" onclick="window.NSS_PORTAL.openLightbox('${imgUrl}', '${ev.title} (Photo ${idx + 1})', null, ${idx}, '${ev.title.replace(/'/g, "\\'")}')">
+                  <div class="modal-photo-overlay" onclick="window.NSS_PORTAL.openLightbox('${imgUrl}', '${ev.title} (Photo ${idx + 1})', null, ${idx}, '${ev.title.replace(/'/g, "\\'")}')">
+                    <button class="modal-photo-btn" title="View Fullscreen" onclick="event.stopPropagation(); window.NSS_PORTAL.openLightbox('${imgUrl}', '${ev.title} (Photo ${idx + 1})', null, ${idx}, '${ev.title.replace(/'/g, "\\'")}')">
                       <i class="fa-solid fa-expand"></i>
                     </button>
                     <button class="modal-photo-btn" title="Download This Photo" onclick="event.stopPropagation(); window.NSS_PORTAL.downloadImage('${imgUrl}', '${photoFilename}')">
@@ -1337,32 +1340,83 @@
   }
 
   /**
-   * 6. Enhanced Lightbox with Top Action Toolbar and Download Button
+   * 6. Enhanced Lightbox with Light Professional Theme, Prev/Next Navigation,
+   * and Event-Named Timestampped Downloads
    */
+  function getTimestampString() {
+    const d = new Date();
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    const dd = String(d.getDate()).padStart(2, '0');
+    const hh = String(d.getHours()).padStart(2, '0');
+    const min = String(d.getMinutes()).padStart(2, '0');
+    const sec = String(d.getSeconds()).padStart(2, '0');
+    return `${yyyy}${mm}${dd}_${hh}${min}${sec}`;
+  }
+
+  function getActiveEventName() {
+    if (state.lightboxEventName) return state.lightboxEventName;
+    const h1 = document.querySelector('.event-detail-title');
+    if (h1 && h1.textContent.trim()) {
+      return h1.textContent.trim();
+    }
+    const breadcrumb = document.querySelector('.breadcrumb-current');
+    if (breadcrumb && breadcrumb.textContent.trim()) {
+      return breadcrumb.textContent.trim();
+    }
+    return 'IIITDMK_NSS_Event';
+  }
+
   function ensureLightboxModal() {
     let modal = document.getElementById('galleryLightboxModal');
     if (!modal) {
       modal = document.createElement('div');
       modal.id = 'galleryLightboxModal';
-      modal.className = 'modal-backdrop';
+      modal.className = 'modal-backdrop lightbox-modal-backdrop';
+      modal.setAttribute('role', 'dialog');
+      modal.setAttribute('aria-modal', 'true');
+      modal.setAttribute('aria-label', 'Enlarged Event Photograph');
       modal.innerHTML = `
-        <div class="modal-container" style="max-width: 95vw; width: auto; background: #0a192f; color: #ffffff; padding: 0; overflow: hidden; border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.6);">
-          <div class="lightbox-top-toolbar" style="display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; background: #0a192f; border-bottom: 1px solid rgba(255,255,255,0.1);">
-            <div id="lightboxCaptionTitle" class="lightbox-title-text" style="font-size: 0.95rem; font-weight: 700; color: #ffffff; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 70%;">IIITDM Kurnool NSS Photograph</div>
-            <div class="lightbox-actions" style="display: flex; align-items: center; gap: 10px;">
-              <button class="lightbox-download-btn" onclick="window.NSS_PORTAL.downloadCurrentImage()" title="Download High-Res Photo" style="background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #fff; padding: 6px 14px; border-radius: 6px; font-size: 0.82rem; font-weight: 600; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+        <div class="modal-container lightbox-card-container" onclick="event.stopPropagation()">
+          <div class="lightbox-top-toolbar">
+            <div class="lightbox-header-left">
+              <span id="lightboxCounterBadge" class="lightbox-counter-badge">1 / 1</span>
+              <div id="lightboxCaptionTitle" class="lightbox-title-text" title="Photograph Title">IIITDM Kurnool NSS Photograph</div>
+            </div>
+            <div class="lightbox-actions">
+              <button class="lightbox-download-btn" onclick="window.NSS_PORTAL.downloadCurrentImage()" title="Download Photo with Event & Timestamp">
                 <i class="fa-solid fa-download"></i> Download
               </button>
-              <button class="modal-close-btn" style="position: static; background: rgba(255,255,255,0.15); color: #ffffff; width: 32px; height: 32px; border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;" onclick="window.NSS_PORTAL.closeModal(document.getElementById('galleryLightboxModal'))" aria-label="Close lightbox">
+              <button class="lightbox-icon-btn lightbox-close-btn" onclick="window.NSS_PORTAL.closeModal(document.getElementById('galleryLightboxModal'))" title="Close Lightbox (Esc)" aria-label="Close dialog">
                 <i class="fa-solid fa-xmark"></i>
               </button>
             </div>
           </div>
-          <div style="background: #020617; text-align: center; padding: 16px; display: flex; align-items: center; justify-content: center; min-height: 200px; max-height: 80vh;">
-            <img id="lightboxImg" src="" alt="Enlarged Photo" style="max-width: 100%; max-height: 76vh; width: auto; height: auto; object-fit: contain; margin: 0 auto; display: block; border-radius: 4px;">
+          <div class="lightbox-stage">
+            <button type="button" id="lightboxPrevBtn" class="lightbox-nav-btn prev-btn" onclick="window.NSS_PORTAL.prevLightbox()" title="Previous Image (Left Arrow)" aria-label="Previous photograph">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <img id="lightboxImg" class="lightbox-main-img" src="" alt="Enlarged Event Photograph">
+            <button type="button" id="lightboxNextBtn" class="lightbox-nav-btn next-btn" onclick="window.NSS_PORTAL.nextLightbox()" title="Next Image (Right Arrow)" aria-label="Next photograph">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
           </div>
-          <div id="lightboxCaption" style="padding: 10px 18px; background: #0a192f; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.82rem; color: #94a3b8;">
-            National Service Scheme • IIITDM Kurnool Official Media Archive
+          <div id="lightboxCaption" class="lightbox-bottom-bar">
+            <div class="lightbox-bottom-info">
+              <div id="lightboxBottomEventTitle" class="lightbox-bottom-event">National Service Scheme</div>
+              <div class="lightbox-bottom-sub">
+                <span class="sub-tag">IIITDM Kurnool</span>
+                <span>•</span>
+                <span>Official Media Archive</span>
+                <span>•</span>
+                <span id="lightboxBottomIndex">Photo 1</span>
+              </div>
+            </div>
+            <div class="lightbox-bottom-actions">
+              <button class="lightbox-download-btn" onclick="window.NSS_PORTAL.downloadCurrentImage()" style="padding: 6px 14px; font-size: 0.78rem;">
+                <i class="fa-solid fa-download"></i> Save Image
+              </button>
+            </div>
           </div>
         </div>
       `;
@@ -1379,46 +1433,142 @@
     return modal;
   }
 
-  function openLightbox(imageUrl, caption) {
+  function collectPageGalleryItems() {
+    const items = [];
+    const seen = new Set();
+
+    // 1. Check all event photo cards on the page (static or dynamically rendered)
+    const cards = document.querySelectorAll('.event-photo-card:not(.event-video-card)');
+    cards.forEach((card, idx) => {
+      const img = card.querySelector('img');
+      if (!img || !img.src) return;
+      if (seen.has(img.src)) return;
+      seen.add(img.src);
+      const nameEl = card.querySelector('.event-photo-name');
+      const title = (nameEl ? nameEl.textContent.trim() : '') || img.alt || `Photo ${idx + 1}`;
+      items.push({ url: img.src, title: title });
+    });
+
+    // 2. If inside an event detail modal on events index, check modal-photo-item
+    if (items.length === 0) {
+      const modalItems = document.querySelectorAll('.modal-photo-item img');
+      modalItems.forEach((img, idx) => {
+        if (!img || !img.src || seen.has(img.src)) return;
+        seen.add(img.src);
+        items.push({ url: img.src, title: img.alt || `Photo ${idx + 1}` });
+      });
+    }
+
+    return items;
+  }
+
+  function openLightbox(imageUrl, caption, galleryItems, startIndex, eventName) {
     ensureLightboxModal();
     if (!elements.lightboxModal) return;
-    state.currentLightboxUrl = imageUrl;
-    state.currentLightboxTitle = caption || 'IIITDM Kurnool NSS Photograph';
+
+    if (eventName) {
+      state.lightboxEventName = eventName;
+    } else {
+      state.lightboxEventName = getActiveEventName();
+    }
+
+    if (Array.isArray(galleryItems) && galleryItems.length > 0) {
+      state.lightboxItems = galleryItems;
+    } else {
+      state.lightboxItems = collectPageGalleryItems();
+    }
+
+    if (typeof startIndex === 'number' && startIndex >= 0) {
+      state.lightboxIndex = startIndex;
+    } else {
+      const foundIdx = state.lightboxItems.findIndex(it => it.url === imageUrl);
+      state.lightboxIndex = foundIdx >= 0 ? foundIdx : 0;
+    }
+
+    // Fallback if no list found
+    if (state.lightboxItems.length === 0 && imageUrl) {
+      state.lightboxItems = [{ url: imageUrl, title: caption || 'Event Photograph' }];
+      state.lightboxIndex = 0;
+    }
+
+    updateLightboxView();
+    openModal(elements.lightboxModal);
+  }
+
+  function updateLightboxView() {
+    if (!state.lightboxItems || state.lightboxItems.length === 0) return;
+    if (state.lightboxIndex < 0) state.lightboxIndex = 0;
+    if (state.lightboxIndex >= state.lightboxItems.length) state.lightboxIndex = state.lightboxItems.length - 1;
+
+    const current = state.lightboxItems[state.lightboxIndex];
+    if (!current) return;
+
+    state.currentLightboxUrl = current.url;
+    state.currentLightboxTitle = current.title || `Photograph ${state.lightboxIndex + 1}`;
 
     if (elements.lightboxImg) {
-      elements.lightboxImg.src = imageUrl;
+      elements.lightboxImg.src = current.url;
+      elements.lightboxImg.alt = state.currentLightboxTitle;
     }
 
     const titleEl = document.getElementById('lightboxCaptionTitle');
     if (titleEl) {
       titleEl.textContent = state.currentLightboxTitle;
+      titleEl.title = state.currentLightboxTitle;
     }
 
-    if (elements.lightboxCaption) {
-      elements.lightboxCaption.innerHTML = `
-        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
-          <div>
-            <div style="font-weight: 700; color: #ffffff; font-size: 0.95rem; margin-bottom: 2px;">
-              ${state.currentLightboxTitle}
-            </div>
-            <div style="font-size: 0.82rem; color: #94a3b8;">
-              National Service Scheme • IIITDM Kurnool Official Media Archive
-            </div>
-          </div>
-          <button class="lightbox-download-btn" onclick="window.NSS_PORTAL.downloadCurrentImage()" style="background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #fff; padding: 6px 14px; border-radius: 6px; font-size: 0.82rem; font-weight: 600; border: none; cursor: pointer;">
-            <i class="fa-solid fa-download"></i> Download Photo
-          </button>
-        </div>
-      `;
+    const counterBadge = document.getElementById('lightboxCounterBadge');
+    if (counterBadge) {
+      counterBadge.textContent = `${state.lightboxIndex + 1} / ${state.lightboxItems.length}`;
     }
 
-    openModal(elements.lightboxModal);
+    const bottomEvent = document.getElementById('lightboxBottomEventTitle');
+    if (bottomEvent) {
+      bottomEvent.textContent = getActiveEventName();
+    }
+
+    const bottomIndex = document.getElementById('lightboxBottomIndex');
+    if (bottomIndex) {
+      bottomIndex.textContent = `Photo ${state.lightboxIndex + 1} of ${state.lightboxItems.length}`;
+    }
+
+    // Update nav button states (only 1 image -> hide or disable)
+    const prevBtn = document.getElementById('lightboxPrevBtn');
+    const nextBtn = document.getElementById('lightboxNextBtn');
+    const isSingle = state.lightboxItems.length <= 1;
+
+    if (prevBtn) {
+      prevBtn.style.display = isSingle ? 'none' : 'flex';
+      prevBtn.disabled = isSingle;
+    }
+    if (nextBtn) {
+      nextBtn.style.display = isSingle ? 'none' : 'flex';
+      nextBtn.disabled = isSingle;
+    }
+  }
+
+  function nextLightbox() {
+    if (!state.lightboxItems || state.lightboxItems.length <= 1) return;
+    state.lightboxIndex = (state.lightboxIndex + 1) % state.lightboxItems.length;
+    updateLightboxView();
+  }
+
+  function prevLightbox() {
+    if (!state.lightboxItems || state.lightboxItems.length <= 1) return;
+    state.lightboxIndex = (state.lightboxIndex - 1 + state.lightboxItems.length) % state.lightboxItems.length;
+    updateLightboxView();
   }
 
   function downloadCurrentImage() {
     if (!state.currentLightboxUrl) return;
-    const sanitized = (state.currentLightboxTitle || 'NSS_Photo').replace(/[^a-zA-Z0-9_-]/g, '_');
-    downloadImage(state.currentLightboxUrl, `IIITDMK_${sanitized}.jpg`);
+    const eventName = getActiveEventName();
+    const eventSlug = eventName.replace(/[^a-zA-Z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+    const timestamp = getTimestampString();
+    const photoIdx = (state.lightboxIndex >= 0 ? state.lightboxIndex + 1 : 1);
+    
+    // Format: {Event_Name}_{Timestamp}_Photo{N}.jpg
+    const downloadFilename = `${eventSlug}_${timestamp}_Photo${photoIdx}.jpg`;
+    downloadImage(state.currentLightboxUrl, downloadFilename);
   }
 
   /**
@@ -1504,7 +1654,15 @@
     });
 
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeAllModals();
+      if (e.key === 'Escape') {
+        closeAllModals();
+      } else if (elements.lightboxModal && elements.lightboxModal.classList.contains('open')) {
+        if (e.key === 'ArrowRight') {
+          nextLightbox();
+        } else if (e.key === 'ArrowLeft') {
+          prevLightbox();
+        }
+      }
     });
   }
 
@@ -1600,7 +1758,8 @@
   }
 
   function attachPhotoCardLightboxListeners() {
-    document.querySelectorAll('.event-photo-card').forEach((card, idx) => {
+    const cards = Array.from(document.querySelectorAll('.event-photo-card:not(.event-video-card)'));
+    cards.forEach((card, idx) => {
       const img = card.querySelector('img');
       const wrap = card.querySelector('.event-photo-media-wrap');
       if (img && wrap && !wrap.hasAttribute('data-lightbox-bound')) {
@@ -1612,7 +1771,7 @@
           if (e.target.closest('a, button, video')) return;
           const nameEl = card.querySelector('.event-photo-name');
           const title = (nameEl ? nameEl.textContent.trim() : '') || img.alt || `Event Photograph ${idx + 1}`;
-          openLightbox(img.src, title);
+          openLightbox(img.src, title, null, idx);
         });
       }
     });
@@ -1647,7 +1806,7 @@
       const photoCaption = `${eventName} - ${item.name}`;
       return `
         <div class="event-photo-card">
-          <div class="event-photo-media-wrap" onclick="window.NSS_PORTAL.openLightbox('${item.url}', '${photoCaption.replace(/'/g, "\\'")}')" title="Click to enlarge photo">
+          <div class="event-photo-media-wrap" onclick="window.NSS_PORTAL.openLightbox('${item.url}', '${photoCaption.replace(/'/g, "\\'")}', null, ${idx})" title="Click to enlarge photo">
             <img src="${item.url}" alt="${eventName} Photo ${idx + 1}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80'">
           </div>
           <div class="event-photo-footer">
@@ -1670,6 +1829,8 @@
     closeModal,
     closeAllModals,
     openLightbox,
+    nextLightbox,
+    prevLightbox,
     openEventDetailsById,
     filterEvents,
     downloadImage,
