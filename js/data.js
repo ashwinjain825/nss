@@ -886,14 +886,14 @@ window.NSS_DATA = {
         faculty: [
           {
             name: "Dr. Noel Nittala",
-            designation: "Faculty-in-Charge & Program Officer",
-            department: "Sciences & Humanities",
+            designation: "Assistant Professor",
+            department: "Department of Science",
             role: "FIC NSS & Program Officer",
             photo: "./assets/images/nss-team/21-22/dr_noel_nittala_fic_nss_program_officer.png"
           },
           {
             name: "Dr. V. Siva Prasad",
-            designation: "Program Officer",
+            designation: "Assistant Professor",
             department: "Mechanical Engineering",
             role: "Program Officer",
             photo: "./assets/images/nss-team/21-22/dr_v_siva_prasad_program_officer.jpg"
