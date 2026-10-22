@@ -565,7 +565,7 @@ window.NSS_DATA = {
           roll: "524ME0013",
           branch: "3rd Year B.Tech",
           department: "ME",
-          photo: "./assets/images/nss-team/524ME0013.jpg"
+          photo: "./assets/images/nss-team/2026-27/524ME0013.jpg"
         },
         {
           name: "Billa Saikrishna",
@@ -573,7 +573,7 @@ window.NSS_DATA = {
           roll: "124AD0047",
           branch: "3rd Year B.Tech",
           department: "AIDS",
-          photo: "./assets/images/nss-team/124AD0047.jpg"
+          photo: "./assets/images/nss-team/2026-27/124AD0047.jpg"
         },
         {
           name: "Hasini Kolluri",
@@ -581,7 +581,7 @@ window.NSS_DATA = {
           roll: "124AD0017",
           branch: "3rd Year B.Tech",
           department: "AIDS",
-          photo: "./assets/images/nss-team/124AD0017.jpg"
+          photo: "./assets/images/nss-team/2026-27/124AD0017.jpg"
         },
         {
           name: "Priya Deepika",
@@ -589,7 +589,7 @@ window.NSS_DATA = {
           roll: "124AD0002",
           branch: "3rd Year B.Tech",
           department: "AIDS",
-          photo: "./assets/images/nss-team/124AD0002.jpg"
+          photo: "./assets/images/nss-team/2026-27/124AD0002.jpg"
         },
         {
           name: "Duvva Sai Vivek",
@@ -597,7 +597,7 @@ window.NSS_DATA = {
           roll: "124AD0048",
           branch: "3rd Year B.Tech",
           department: "AIDS",
-          photo: "./assets/images/nss-team/124AD0048.jpg"
+          photo: "./assets/images/nss-team/2026-27/124AD0048.jpg"
         },
         {
           name: "Ashwin Jain",
@@ -605,7 +605,7 @@ window.NSS_DATA = {
           roll: "125AD0039",
           branch: "2nd Year B.Tech",
           department: "AIDS",
-          photo: "./assets/images/nss-team/125AD0039.jpg"
+          photo: "./assets/images/nss-team/2026-27/125AD0039.jpg"
         },
         {
           name: "Prachi Arya",
@@ -613,7 +613,7 @@ window.NSS_DATA = {
           roll: "125ME0005",
           branch: "2nd Year B.Tech",
           department: "ME",
-          photo: "./assets/images/nss-team/125ME0005.jpg"
+          photo: "./assets/images/nss-team/2026-27/125ME0005.jpg"
         },
         {
           name: "Samyak Prakash",
@@ -621,7 +621,7 @@ window.NSS_DATA = {
           roll: "125CS0066",
           branch: "2nd Year B.Tech",
           department: "CS",
-          photo: "./assets/images/nss-team/125CS0066.jpg"
+          photo: "./assets/images/nss-team/2026-27/125CS0066.jpg"
         },
         {
           name: "Animesh",
@@ -629,7 +629,7 @@ window.NSS_DATA = {
           roll: "125ME0039",
           branch: "2nd Year B.Tech",
           department: "ME",
-          photo: "./assets/images/nss-team/125ME0039.jpg"
+          photo: "./assets/images/nss-team/2026-27/125ME0039.jpg"
         },
         {
           name: "Satyam Kumar",
@@ -637,7 +637,7 @@ window.NSS_DATA = {
           roll: "125ME0047",
           branch: "2nd Year B.Tech",
           department: "ME",
-          photo: "./assets/images/nss-team/125ME0047.jpg"
+          photo: "./assets/images/nss-team/2026-27/125ME0047.jpg"
         },
         {
           name: "Gorla Srujan",
@@ -645,7 +645,7 @@ window.NSS_DATA = {
           roll: "125ME0033",
           branch: "2nd Year B.Tech",
           department: "ME",
-          photo: "./assets/images/nss-team/125ME0033.jpg"
+          photo: "./assets/images/nss-team/2026-27/125ME0033.jpg"
         },
         {
           name: "Ram Charan",
@@ -653,7 +653,7 @@ window.NSS_DATA = {
           roll: "125CS0007",
           branch: "2nd Year B.Tech",
           department: "CSE",
-          photo: "./assets/images/nss-team/125CS0007.jpg"
+          photo: "./assets/images/nss-team/2026-27/125CS0007.jpg"
         },
         {
           name: "Charitha",
@@ -661,7 +661,7 @@ window.NSS_DATA = {
           roll: "125CS0015",
           branch: "2nd Year B.Tech",
           department: "CSE",
-          photo: "./assets/images/nss-team/125CS0015.jpg"
+          photo: "./assets/images/nss-team/2026-27/125CS0015.jpg"
         },
         {
           name: "Ekshitha Royal",
@@ -669,7 +669,7 @@ window.NSS_DATA = {
           roll: "125EC0014",
           branch: "2nd Year B.Tech",
           department: "ECE",
-          photo: "./assets/images/nss-team/125EC0014.jpg"
+          photo: "./assets/images/nss-team/2026-27/125EC0014.jpg"
         },
         {
           name: "Lekana Akshaya",
@@ -677,7 +677,7 @@ window.NSS_DATA = {
           roll: "525CS0011",
           branch: "2nd Year B.Tech",
           department: "CSE",
-          photo: "./assets/images/nss-team/525CS0011.jpg"
+          photo: "./assets/images/nss-team/2026-27/525CS0011.jpg"
         },
         {
           name: "Rahul P",
@@ -685,7 +685,7 @@ window.NSS_DATA = {
           roll: "525ME0008",
           branch: "2nd Year B.Tech",
           department: "ME",
-          photo: "./assets/images/nss-team/525ME0008.jpg"
+          photo: "./assets/images/nss-team/2026-27/525ME0008.jpg"
         },
         {
           name: "Sandeep V",
@@ -693,7 +693,7 @@ window.NSS_DATA = {
           roll: "525ME0001",
           branch: "2nd Year B.Tech",
           department: "ME",
-          photo: "./assets/images/nss-team/525ME0001.jpg"
+          photo: "./assets/images/nss-team/2026-27/525ME0001.jpg"
         },
         {
           name: "Jaswanth",
@@ -701,7 +701,7 @@ window.NSS_DATA = {
           roll: "525EC0003",
           branch: "2nd Year B.Tech",
           department: "ECE",
-          photo: "./assets/images/nss-team/525EC0003.jpg"
+          photo: "./assets/images/nss-team/2026-27/525EC0003.jpg"
         }
       ]
     },
