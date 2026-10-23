@@ -293,12 +293,15 @@
     if (!teamContainer) return; // Only exists on index.html
 
     try {
-      let response = await fetch('current-team.html');
+      let response = await fetch('team/current-team.html');
       if (!response.ok) {
-        response = await fetch('team/current-team.html');
+        response = await fetch('current-team.html');
       }
       if (!response.ok) throw new Error(`HTTP error ${response.status}`);
-      const html = await response.text();
+      let html = await response.text();
+      // When loaded into homepage (root level), adjust any subfolder relative paths
+      html = html.replace(/src="\.\.\/assets\//g, 'src="assets/')
+                 .replace(/href="\/team\/"/g, 'href="team/index.html"');
       teamContainer.innerHTML = html;
     } catch (err) {
       console.warn('Loading fallback NSS team component markup (useful for local file:// mode):', err);
@@ -670,12 +673,13 @@
       const headerPath = isSubfolder ? '../header.html' : 'header.html';
       const menuPath = isSubfolder ? '../menubar.html' : 'menubar.html';
 
-      const response = await fetch(headerPath);
-      if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+      const [response, responseMenu] = await Promise.all([
+        fetch(headerPath),
+        fetch(menuPath)
+      ]);
+      if (!response.ok) throw new Error('HTTP error ' + response.status);
       let html = await response.text();
-      
-      const responseMenu = await fetch(menuPath);
-      let menuHtml = responseMenu.ok ? await responseMenu.text() : '';
+      let menuHtml = (responseMenu && responseMenu.ok) ? await responseMenu.text() : '';
 
       // If in subfolder, adjust root relative links and images in header & menubar
       if (isSubfolder) {
@@ -783,8 +787,6 @@
     <div class="masthead-center-content">
       <h1 class="masthead-nss-title">National Service Scheme (NSS)</h1>
       <h2 class="masthead-inst-name-en">Indian Institute of Information Technology, Design and Manufacturing, Kurnool</h2>
-      <div class="masthead-nss-hindi">राष्ट्रीय सेवा योजना</div>
-      <div class="masthead-inst-name-hi">भारतीय सूचना प्रौद्योगिकी अभिकल्पना एवं विनिर्माण संस्थान कर्नूल</div>
     </div>
     <div class="masthead-logo-link nss-logo-wrapper" title="National Service Scheme">
       <img src="assets/images/nss-logo.png" alt="National Service Scheme Logo" class="masthead-logo">
@@ -792,7 +794,7 @@
   </div>
 </header>
 
-<nav class="main-header light-theme-menu">
+<nav class="main-header">
   <div class="container nav-wrapper">
     <ul id="navMenu" class="nav-menu">
       <li><a href="index.html" class="nav-link" data-nav="index">Home</a></li>
@@ -801,47 +803,17 @@
         <ul class="nav-dropdown-menu">
           <li class="nav-dropdown-item"><a href="event.html" class="nav-dropdown-link">All Events</a></li>
           <li class="nav-dropdown-item"><a href="event.html?year=2025-2026" class="nav-dropdown-link">Current Year (2025-26)</a></li>
-          <li class="nav-dropdown-item"><a href="event.html?year=2024-2025" class="nav-dropdown-link">2024-2025</a></li>
-          <li class="nav-dropdown-item"><a href="event.html?year=2023-2024" class="nav-dropdown-link">2023-2024</a></li>
-          <li class="nav-dropdown-item"><a href="event.html?year=2022-2023" class="nav-dropdown-link">2022-2023</a></li>
-          <li class="nav-dropdown-divider"></li>
-          <li class="nav-dropdown-item"><a href="event.html?year=2019-2018 Archive" class="nav-dropdown-link">2018-19 Historical Archive</a></li>
         </ul>
       </li>
       <li class="nav-item-dropdown" data-nav="team">
-        <a href="team.html" id="nssTeamNavLink" class="nav-link nav-dropdown-toggle">NSS Team</a>
-        <ul class="nav-dropdown-menu">
-          <li class="nav-dropdown-item"><a href="team.html#team" class="nav-dropdown-link">Current NSS Team</a></li>
-          <li class="nav-dropdown-item"><a href="past-team.html" class="nav-dropdown-link">Past Year Teams Archive</a></li>
-          <li class="nav-dropdown-item"><a href="team.html" class="nav-dropdown-link">Full NSS Team Directory</a></li>
-          <li class="nav-dropdown-item"><a href="team.html#patronSection" class="nav-dropdown-link">Chief Patron (Director)</a></li>
-          <li class="nav-dropdown-item"><a href="team.html#currentFacultyGrid" class="nav-dropdown-link">Faculty In-Charges & Advisors</a></li>
-          <li class="nav-dropdown-item"><a href="team.html#currentStudentsGrid" class="nav-dropdown-link">Student Office Bearers</a></li>
-        </ul>
+        <a href="#nss-team" id="nssTeamNavLink" class="nav-link">NSS Team</a>
       </li>
-      <li class="nav-item-dropdown" data-nav="gallery">
-        <a href="gallery.html" class="nav-link nav-dropdown-toggle">Gallery</a>
-        <ul class="nav-dropdown-menu">
-          <li class="nav-dropdown-item"><a href="gallery.html" class="nav-dropdown-link">Photo Gallery & Downloads</a></li>
-          <li class="nav-dropdown-item"><a href="gallery.html?cat=blood-health" class="nav-dropdown-link">Blood Donation & Health</a></li>
-          <li class="nav-dropdown-item"><a href="gallery.html?cat=environment" class="nav-dropdown-link">Tree Plantation & Greenery</a></li>
-          <li class="nav-dropdown-item"><a href="gallery.html?cat=education" class="nav-dropdown-link">STEM & Rural School Visits</a></li>
-          <li class="nav-dropdown-item"><a href="gallery.html?cat=community" class="nav-dropdown-link">Youth Day & Community</a></li>
-        </ul>
+      <li class="nav-item-dropdown" data-nav="attendance">
+        <a href="attendance/login.html" id="nssAttendanceNavLink" class="nav-link">Attendance</a>
       </li>
-      <li><a href="existing-website.html" class="nav-link" data-nav="existing-website">Existing Website</a></li>
-      <li class="nav-item-dropdown">
-        <a href="javascript:void(0)" class="nav-link nav-dropdown-toggle">Institute Links</a>
-        <ul class="nav-dropdown-menu">
-          <li class="nav-dropdown-item"><a href="https://iiitk.ac.in" target="_blank" class="nav-dropdown-link" rel="noopener noreferrer">IIITDM Kurnool Home</a></li>
-          <li class="nav-dropdown-item"><a href="https://iiitk.ac.in/Activities/Social-Service-Group/page" target="_blank" class="nav-dropdown-link" rel="noopener noreferrer">Existing NSS on iiitk.ac.in</a></li>
-          <li class="nav-dropdown-item"><a href="https://iiitk.ac.in/academic-administration/page" target="_blank" class="nav-dropdown-link" rel="noopener noreferrer">Student Affairs</a></li>
-          <li class="nav-dropdown-item"><a href="https://iiitk.samarth.ac.in/" target="_blank" class="nav-dropdown-link" rel="noopener noreferrer">Samarth ERP Portal</a></li>
-        </ul>
-      </li>
-      <li><a href="contact.html" class="nav-link" data-nav="contact">Contact</a></li>
+      <li><a href="#iiitk-footer" class="nav-link" data-nav="contact">Contact</a></li>
     </ul>
-    <button id="mobileMenuToggle" class="mobile-menu-toggle light-theme-toggle" aria-label="Toggle Navigation Menu">
+    <button id="mobileMenuToggle" class="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
       <i class="fa-solid fa-bars"></i>
     </button>
   </div>

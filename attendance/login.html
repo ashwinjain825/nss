@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Attendance Portal Login | NSS IIITDM Kurnool</title>
   <meta name="description" content="NSS Attendance and Duty Management Portal for Admin and Students at IIITDM Kurnool.">
   <link rel="icon" href="../assets/images/iiitdmk-logo.png" type="image/png">
@@ -126,34 +126,19 @@
       const label = document.getElementById('identifierLabel');
       const input = document.getElementById('identifierInput');
       const submitText = document.getElementById('submitBtnText');
-      const alertTitle = document.getElementById('roleAlertTitle');
-      const alertDesc = document.getElementById('roleAlertDesc');
-      const helpRoleText = document.getElementById('helpRoleText');
 
       if (role === 'admin') {
-        tabStudent.classList.remove('active');
-        tabStudent.setAttribute('aria-selected', 'false');
-        tabAdmin.classList.add('active');
-        tabAdmin.setAttribute('aria-selected', 'true');
-
+        if (tabStudent) { tabStudent.classList.remove('active'); tabStudent.setAttribute('aria-selected', 'false'); }
+        if (tabAdmin) { tabAdmin.classList.add('active'); tabAdmin.setAttribute('aria-selected', 'true'); }
         if (label) label.textContent = 'Admin / Faculty In-Charge ID';
         if (input) input.placeholder = 'e.g., faculty@iiitk.ac.in';
         if (submitText) submitText.textContent = 'Sign In as Administrator';
-        if (alertTitle) alertTitle.textContent = 'Admin Portal Coming Soon';
-        if (alertDesc) alertDesc.textContent = 'Faculty administration, attendance approval, and volunteer rosters are currently in deployment.';
-        if (helpRoleText) helpRoleText.textContent = 'Faculty & Cell In-Charges';
       } else {
-        tabAdmin.classList.remove('active');
-        tabAdmin.setAttribute('aria-selected', 'false');
-        tabStudent.classList.add('active');
-        tabStudent.setAttribute('aria-selected', 'true');
-
-        if (label) label.textContent = 'Student Roll No. / Institute Email';
-        if (input) input.placeholder = 'e.g., 123cs0001 or roll@iiitk.ac.in';
+        if (tabAdmin) { tabAdmin.classList.remove('active'); tabAdmin.setAttribute('aria-selected', 'false'); }
+        if (tabStudent) { tabStudent.classList.add('active'); tabStudent.setAttribute('aria-selected', 'true'); }
+        if (label) label.textContent = 'Institute Email';
+        if (input) input.placeholder = 'roll@iiitk.ac.in';
         if (submitText) submitText.textContent = 'Sign In as Student';
-        if (alertTitle) alertTitle.textContent = 'Student Portal Coming Soon';
-        if (alertDesc) alertDesc.textContent = 'Online attendance logging and duty hour tracking will be available soon for registered volunteers.';
-        if (helpRoleText) helpRoleText.textContent = 'Academic Year 2026–27';
       }
     }
   </script>
