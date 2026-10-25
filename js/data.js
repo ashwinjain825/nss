@@ -182,6 +182,45 @@ window.NSS_DATA = {
   // ----------------------------------------------------------------------------
   events: [
     {
+        "id": "ev-2026-rudravaram-village-visit",
+        "title": "Rudravaram Village Visit",
+        "year": "2025-2026",
+        "date": "October 10, 2026",
+        "category": "community",
+        "status": "Completed",
+        "venue": "Rudravaram Village, Kurnool District",
+        "partner": "Rudravaram Village Panchayat & Local Community",
+        "summary": "NSS Unit of IIITDM Kurnool conducted a community immersion and village visit to Rudravaram on 10th October 2026, interacting with residents and raising awareness on health, hygiene, and education.",
+        "fullDescription": "On 10th October 2026, student volunteers and faculty representatives from the NSS Unit of IIITDM Kurnool conducted a community immersion and field visit at Rudravaram Village, Kurnool District. The outreach focused on understanding rural living conditions, conducting cleanliness and sanitation campaigns, and engaging local youth and school children.",
+        "metrics": [
+            {
+                "label": "Villagers & Youth Reached",
+                "value": "150+"
+            },
+            {
+                "label": "Student Volunteers",
+                "value": "40+"
+            },
+            {
+                "label": "Field Immersion",
+                "value": "1 Day"
+            }
+        ],
+        "coordinator": "NSS Rural Outreach & Community Development Wing",
+        "image": "assets/images/events/event0009/IMG_20261024_153859_617.jpg",
+        "gallery": [
+            "assets/images/events/event0009/IMG_20261024_153859_617.jpg",
+            "assets/images/events/event0009/IMG_20261024_153900_625.jpg",
+            "assets/images/events/event0009/IMG_20261024_153902_059.jpg",
+            "assets/images/events/event0009/IMG_20261024_153903_123.jpg",
+            "assets/images/events/event0009/IMG_20261024_153904_712.jpg",
+            "assets/images/events/event0009/IMG_20261024_153906_615.jpg"
+        ],
+        "reportUrl": "#",
+        "featured": true,
+        "pageUrl": "events/event0009.html"
+    },
+    {
         "id": "ev-2026-world-ozone-day",
         "title": "Seed Planting Drive – World Ozone Day 2026",
         "year": "2025-2026",
@@ -1109,3 +1148,4 @@ window.NSS_DATA = {
     }
   ]
 };
+
