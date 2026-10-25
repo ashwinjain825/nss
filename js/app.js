@@ -271,10 +271,6 @@
         <a href="${pageHref}" class="initiative-card" title="View details for ${ev.title || ''}">
           <div class="initiative-img-wrapper">
             <img src="${imgSrc}" alt="${ev.title || ''}" loading="lazy" onerror="this.src='${fallbackImg}'">
-            <div class="initiative-overlay">
-              <p>${summaryText}</p>
-              <span class="view-event-tag">View Event Details &rarr;</span>
-            </div>
           </div>
           <div class="initiative-content">
             <div class="initiative-date-tag">${ev.date || ''}</div>
@@ -983,6 +979,9 @@
 
     if (elements.searchInput) {
       elements.searchInput.addEventListener('input', (e) => {
+        if (elements.clearSearchBtn) {
+          elements.clearSearchBtn.style.display = e.target.value.trim() ? 'block' : 'none';
+        }
         state.searchQuery = e.target.value.trim().toLowerCase();
         filterEvents();
       });
@@ -990,6 +989,7 @@
 
     if (elements.clearSearchBtn && elements.searchInput) {
       elements.clearSearchBtn.addEventListener('click', () => {
+        elements.clearSearchBtn.style.display = 'none';
         elements.searchInput.value = '';
         state.searchQuery = '';
         filterEvents();
@@ -1021,18 +1021,22 @@
     // Strict reverse-chronological sort (newest first)
     eventsList.sort((a, b) => parseEventDate(b.date) - parseEventDate(a.date));
 
+    // Update total count indicator in page header if present
+    const totalCountEl = document.getElementById('instTotalEventsCount');
+    if (totalCountEl) {
+      totalCountEl.textContent = eventsList.length;
+    }
+
     // Determine current path depth (root vs subfolder)
     const isSubfolder = window.location.pathname.includes('/events/') ||
                         window.location.pathname.includes('\\events\\');
 
     elements.eventsGrid.innerHTML = eventsList.map((ev, idx) => {
-      const statusBadgeClass = ev.status === 'Completed' ? 'badge-completed' : (ev.status === 'Upcoming' ? 'badge-upcoming' : 'badge-ongoing');
-      
       // Determine link to event detail page
       let pageHref = ev.pageUrl || '';
       if (!pageHref) {
         const fileNum = String(idx + 1).padStart(4, '0');
-        pageHref = `events/event${fileNum}.html`;
+        pageHref = 'events/event' + fileNum + '.html';
       }
 
       if (isSubfolder) {
@@ -1054,33 +1058,40 @@
       }
 
       const venueText = ev.venue || 'IIITDM Kurnool Campus';
-      const partnerText = ev.partner || 'NSS IIITDM Kurnool';
+      const partnerText = ev.partner || 'NSS Unit, IIITDM Kurnool';
+      const categoryText = (ev.category || 'Institutional').replace(/-/g, ' ').toUpperCase();
 
-      return `
-        <article class="event-card" data-year="${ev.year || ''}" data-id="${ev.id || ''}">
-          <div class="event-card-img-wrapper">
-            <img src="${imgSrc}" alt="${ev.title || ''}" class="event-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80'">
-            <div class="event-card-badges">
-              <span class="event-year-badge">${ev.year || ''}</span>
-            </div>
-          </div>
-          <div class="event-card-body">
-            <div class="event-meta-row">
-              <span class="event-meta-item"><i class="fa-regular fa-calendar-check" style="margin-right: 4px;"></i>${ev.date || ''}</span>
-              <span class="event-meta-sep">|</span>
-              <span class="event-meta-item"><i class="fa-solid fa-location-dot" style="margin-right: 4px;"></i>${venueText}</span>
-            </div>
-            <h2 class="event-title">
-              <a href="${pageHref}">${ev.title || ''}</a>
-            </h2>
-            <p class="event-summary">${ev.summary || ''}</p>
-            <div class="event-card-footer">
-              <span class="event-partner-tag">${partnerText}</span>
-              <a href="${pageHref}" class="event-details-btn">Read Report &rarr;</a>
-            </div>
-          </div>
-        </article>
-      `;
+      // Metrics pill rendering
+      let metricHtml = '';
+      if (Array.isArray(ev.metrics) && ev.metrics.length > 0) {
+        const primaryMetric = ev.metrics[0];
+        metricHtml = '<span class="inst-meta-chip"><i class="fa-solid fa-users-viewfinder"></i>' + primaryMetric.value + ' ' + primaryMetric.label + '</span>';
+      }
+
+      return '<article class="event-card" data-year="' + (ev.year || '') + '" data-id="' + (ev.id || '') + '">' +
+        '<div class="event-card-img-wrapper">' +
+          '<img src="' + imgSrc + '" alt="' + (ev.title || '') + '" class="event-card-img" loading="lazy" onerror="this.src=\'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80\'">' +
+          '<span class="event-category-tag">' + categoryText + '</span>' +
+        '</div>' +
+        '<div class="event-card-body">' +
+          '<div class="event-meta-row">' +
+            '<span class="event-meta-item"><i class="fa-regular fa-calendar"></i>' + (ev.date || '') + '</span>' +
+            '<span class="event-meta-sep">|</span>' +
+            '<span class="event-meta-item"><i class="fa-solid fa-location-dot"></i>' + venueText + '</span>' +
+          '</div>' +
+          '<h2 class="event-title">' +
+            '<a href="' + pageHref + '">' + (ev.title || '') + '</a>' +
+          '</h2>' +
+          '<p class="event-summary">' + (ev.summary || '') + '</p>' +
+          '<div class="event-card-footer">' +
+            '<div class="event-footer-left">' +
+              metricHtml +
+              '<span class="event-partner-tag" title="' + partnerText + '"><i class="fa-regular fa-building" style="margin-right: 4px;"></i>' + partnerText + '</span>' +
+            '</div>' +
+            '<a href="' + pageHref + '" class="event-details-btn" aria-label="View report for ' + (ev.title || '') + '">View Report &rarr;</a>' +
+          '</div>' +
+        '</div>' +
+      '</article>';
     }).join('');
   }
 

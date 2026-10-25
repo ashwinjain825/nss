@@ -3,51 +3,97 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Events &amp; Community Drives | NSS IIITDM Kurnool</title>
-  <meta name="description" content="Chronological repository of social activities, health drives, community outreach, and institutional archives organized by the NSS Unit at IIITDM Kurnool.">
+  <title>Events &amp; Activities | NSS IIITDM Kurnool</title>
+  <meta name="description" content="Official repository and chronological archive of community outreach, social drives, health camps, and institutional activities organized by the National Service Scheme (NSS) at IIITDM Kurnool.">
   <link rel="icon" href="../assets/images/iiitdmk-logo.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="../css/styles.css">
 </head>
-<body class="institutional-page">
+<body class="institutional-page page-events-archive">
 
-  <!-- Shared Header Component (loaded dynamically from header.html) -->
+  <!-- Shared Official Institute Header Component (loaded dynamically from header.html + menubar.html) -->
   <div id="site-header"></div>
 
+  <!-- Breadcrumb Navigation Bar -->
+  <div class="inst-subnav-bar">
+    <div class="container">
+      <nav class="inst-breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html"><i class="fa-solid fa-house" style="font-size: 0.78rem; margin-right: 4px;"></i> Home</a>
+        <span class="inst-breadcrumb-sep">/</span>
+        <span class="inst-breadcrumb-current">Events &amp; Community Drives</span>
+      </nav>
+    </div>
+  </div>
+
   <!-- ========================================================================
-       EVENTS REPOSITORY (CLEAN INSTITUTIONAL ARCHIVE)
+       EVENTS REPOSITORY: FORMAL ACADEMIC PORTAL LAYOUT
        ======================================================================== -->
   <main class="events-section">
     <div class="container">
       
-      <header class="section-header" style="text-align: left; margin-bottom: 28px;">
-        <h1 class="section-title" style="margin-bottom: 8px;">Events &amp; Community Activities</h1>
-        <p class="section-subtitle" style="margin: 0; max-width: 820px; font-size: 0.95rem; color: var(--text-secondary);">
-          Official activity reports, service camps, healthcare initiatives, and historical archives conducted by the National Service Scheme (NSS) at IIITDM Kurnool. Select an academic year to filter activities.
-        </p>
+      <!-- Academic Page Banner & Section Header -->
+      <header class="inst-page-header">
+        <div class="inst-page-header-main">
+          <div class="inst-badge-official">
+            <span class="inst-badge-dot"></span>
+            Official Institutional Repository
+          </div>
+          <h1 class="inst-page-title">Events &amp; Community Activities</h1>
+          <p class="inst-page-desc">
+            Chronological documentation, field reports, village immersions, healthcare initiatives, and social outreach activities organized by the National Service Scheme (NSS Unit) at IIITDM Kurnool.
+          </p>
+        </div>
+        <div class="inst-page-header-meta">
+          <div class="inst-meta-box">
+            <span class="inst-meta-num" id="instTotalEventsCount">9</span>
+            <span class="inst-meta-label">Archived Drives</span>
+          </div>
+          <div class="inst-meta-box">
+            <span class="inst-meta-num">2026-27</span>
+            <span class="inst-meta-label">Current Cycle</span>
+          </div>
+        </div>
       </header>
 
-      <!-- Year Filter Tabs -->
-      <nav id="yearTabsContainer" class="year-tabs-container" aria-label="Filter events by academic year">
-        <button type="button" class="year-tab-btn active" data-year="all">All Years</button>
-        <button type="button" class="year-tab-btn" data-year="2025-2026">Current Year (2025-26)</button>
-      </nav>
-
-      <!-- Live Search & Count -->
-      <div class="filter-controls-row">
-        <div class="search-input-wrapper">
-          <input type="text" id="eventSearchInput" class="search-input" placeholder="Filter events by keyword, venue, or title..." aria-label="Search events">
+      <!-- Institutional Filter & Search Console -->
+      <section class="inst-filter-console" aria-label="Event filters and search controls">
+        
+        <!-- Tab Navigation for Academic Years -->
+        <div class="inst-filter-tabs-wrapper">
+          <span class="inst-filter-label"><i class="fa-regular fa-calendar" style="margin-right: 6px;"></i>Academic Year:</span>
+          <nav id="yearTabsContainer" class="year-tabs-container" aria-label="Filter events by academic year">
+            <button type="button" class="year-tab-btn active" data-year="all">All Years</button>
+            <button type="button" class="year-tab-btn" data-year="2026-2027">2026–2027</button>
+            <button type="button" class="year-tab-btn" data-year="2025-2026">2025–2026</button>
+            <button type="button" class="year-tab-btn" data-year="2024-2025">2024–2025</button>
+            <button type="button" class="year-tab-btn" data-year="2023-2024">2023–2024</button>
+            <button type="button" class="year-tab-btn" data-year="2022-2023">2022–2023</button>
+            <button type="button" class="year-tab-btn" data-year="legacy-archive">2018–19 Archive</button>
+          </nav>
         </div>
-        <div class="filter-count-wrap">
-          <span id="eventsCountDisplay" style="font-size: 0.88rem; font-weight: 500; color: var(--text-secondary);">
-            Showing all events
-          </span>
-        </div>
-      </div>
 
-      <!-- Events Grid: Loaded dynamically from data.js -->
+        <!-- Filter Controls: Search and Live Count -->
+        <div class="filter-controls-row">
+          <div class="search-input-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+            <input type="text" id="eventSearchInput" class="search-input" placeholder="Search events by title, keyword, location, or partner..." aria-label="Search events">
+            <button type="button" id="clearSearchBtn" class="clear-search-btn" title="Clear search" aria-label="Clear search input" style="display: none;">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div class="filter-count-wrap">
+            <span id="eventsCountDisplay" class="inst-count-badge">
+              Loading events...
+            </span>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Events Listing Container: Populated dynamically by js/app.js renderEventsGrid() -->
       <div id="eventsGrid" class="events-grid">
         <!-- Rendered by js/app.js renderEventsGrid() -->
       </div>
